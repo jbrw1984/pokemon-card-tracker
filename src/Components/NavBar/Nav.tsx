@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-class NavBar extends React.Component {
+class TopNav extends React.Component {
     render () {
         return (
             <Navbar bg="light" expand="lg">
@@ -34,4 +34,4 @@ class NavBar extends React.Component {
     }
 }
 
-export default NavBar;
+export default TopNav;
