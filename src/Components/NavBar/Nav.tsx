@@ -4,24 +4,25 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './TopNav.css';
+import pokemonLogo from './pokemon-logo.png';
 
 class TopNav extends React.Component {
   render () {
     return (
-      <Navbar className="top-nav" expand="lg">
+      <Navbar id="top-nav" expand="lg" variant="dark">
         <Container>
           <Navbar.Brand href="#home">
             <img 
-              src="./pokemon-logo-black-transparent 1.png"
-              width="30"
+              src={pokemonLogo}
               height="30"
-              className="d-inline-block align-top"
+              width="82.05"
+              id="pokemon-logo"
               alt="React Bootstrap logo"
             />
           </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
+              <Navbar.Collapse id="basic-navbar-nav" >
+                <Nav className="me-auto" >
                   <Nav.Link href="#home">Home</Nav.Link>
                     <Nav.Link href="#link">Link</Nav.Link>
                     <NavDropdown title="Dropdown" id="basic-nav-dropdown">
