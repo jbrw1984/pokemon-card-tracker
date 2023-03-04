@@ -1,5 +1,13 @@
 #top-nav {
     background-color: #ED1B24;
-    color: white;
+    --bs-navbar-color: white;
+    --bs-navbar-toggler-border-color: white;
+    --bs-navbar-hover-color: #ED1B24;
+}
+
+.top-nav-link:hover {
+    background-color: white;
+    font-weight: bold;
+    border-radius: 0.3rem;
 }
 

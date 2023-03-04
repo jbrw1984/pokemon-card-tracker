@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import TopNav from './Components/NavBar/Nav'
 import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
