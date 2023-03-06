@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './TopNav.css';
-import pokemonLogo from './pokemon-logo.png';
+import pokemonLogo from './pokemon-logo-black-transparent.png';
 
 class TopNav extends React.Component {
   render () {
@@ -18,7 +18,7 @@ class TopNav extends React.Component {
             <img 
               src={pokemonLogo}
               height="30"
-              width="82.05"
+              width="81.82"
               id="pokemon-logo"
               alt="React Bootstrap logo"
             />
@@ -33,22 +33,15 @@ class TopNav extends React.Component {
                   {/* My cart button */}
                 </Nav>
                 <Nav>
-                <Form className="d-flex">
-                  <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                  />
-                </Form>
-                <NavDropdown title="Sort By" id="basic-nav-dropdown">
+                
+                <NavDropdown title="Sort By" id="basic-nav-dropdown" className="sort-filter">
                   <NavDropdown.Item href="#action/3.2">Price High to Low</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.3">Price Low to High</NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action/3.4">Rating High to Low</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.5">Rating Low to High</NavDropdown.Item>
                 </NavDropdown>
-                <NavDropdown title="Filter" id="basic-nav-dropdown">
+                <NavDropdown title="Filter" id="basic-nav-dropdown" className="sort-filter">
                   <NavDropdown.Item href="#action/3.6">
                     <Form className="mb-3">
                       <Form.Group>
@@ -61,6 +54,14 @@ class TopNav extends React.Component {
                     </Form>
                   </NavDropdown.Item>
                 </NavDropdown>
+                <Form className="d-flex">
+                  <Form.Control
+                    type="search"
+                    placeholder="Search"
+                    className="me-2"
+                    aria-label="Search"
+                  />
+                </Form>
                 </Nav>
               </Navbar.Collapse>
         </Container>
