@@ -17,7 +17,7 @@ class Footer extends React.Component {
                             width="30"
                             height="30"
                             className="d-inline-block align-top"
-                        />{''}
+                        />{' '}
                         Pokemon Trading Cards. All original content herein is Copyright &copy;{new Date().getFullYear()}
                     </Navbar.Brand>
                 </Container>
