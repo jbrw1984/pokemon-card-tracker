@@ -8,6 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './TopNav.css';
 import pokemonLogo from './pokemon-logo-black-transparent.png';
+import cartImg from './cart.png';
 
 class TopNav extends React.Component {
   render () {
@@ -33,7 +34,6 @@ class TopNav extends React.Component {
                   {/* My cart button */}
                 </Nav>
                 <Nav>
-                
                 <NavDropdown title="Sort By" id="basic-nav-dropdown" className="sort-filter">
                   <NavDropdown.Item href="#action/3.2">Price High to Low</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.3">Price Low to High</NavDropdown.Item>
@@ -54,7 +54,7 @@ class TopNav extends React.Component {
                     </Form>
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Form className="d-flex">
+                <Form className="d-flex" id="nav-search">
                   <Form.Control
                     type="search"
                     placeholder="Search"
@@ -62,6 +62,15 @@ class TopNav extends React.Component {
                     aria-label="Search"
                   />
                 </Form>
+                <Navbar.Brand href="#cart">
+                  <img 
+                    src={cartImg}
+                    height="30"
+                    width="30"
+                    id="cart-img"
+                    alt="Add To Cart"
+                  />
+                </Navbar.Brand>
                 </Nav>
               </Navbar.Collapse>
         </Container>
