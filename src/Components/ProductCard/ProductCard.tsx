@@ -1,17 +1,15 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import pokemonCard from './274465 1.png'
 
-function ProductCard() {
+function ProductCard(props: any) {
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="left" src={pokemonCard} />
+      <Card.Img variant="top" src={props.image} />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+        <Card.Title>{props.name}</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          {props.description}
         </Card.Text>
         <Button variant="primary">Go somewhere</Button>
       </Card.Body>
