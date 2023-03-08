@@ -5,6 +5,7 @@ import App from './App';
 import TopNav from './Components/NavBar/Nav'
 import Footer from './Components/Footer/Footer'
 import reportWebVitals from './reportWebVitals';
+import ProductCard from './Components/ProductCard/ProductCard';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,7 +13,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <TopNav />
-    <App />
+    <ProductCard />
     <Footer />
   </React.StrictMode>
 );
