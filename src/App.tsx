@@ -15,8 +15,6 @@ function App() {
           <ProductCard 
             name={cardInfo.name}
             image={cardInfo.image}
-            salePrice={cardInfo.salePrice}
-            marketPrice={cardInfo.marketPrice}
             description={cardInfo.description}
           />
         ))}
