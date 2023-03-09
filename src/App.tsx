@@ -12,23 +12,19 @@ import cardInfo from './Components/ProductCard/cardInfo';
 function App() {
   return (
 
-    <>
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/details">Details</Link></li>
-        </ul>
-      </nav>
-
+      // <nav>
+      //   <ul>
+      //     <li><Link to="/">Home</Link></li>
+      //     <li><Link to="/details">Details</Link></li>
+      //   </ul>
+      // </nav>
 
       <Routes>
         <Route path="/" element={<Home /> } />
         <Route path="/details" element={<Details />} />
       </Routes>
-    </>
+   
 
-    
-    
     // <div className="App">
     //   <TopNav />
 

@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './TopNav.css';
 import pokemonLogo from './pokemon-logo-black-transparent.png';
 import cartImg from './cart.png';
+import { Link } from 'react-router-dom';
 
 class TopNav extends React.Component {
   render () {
@@ -16,22 +17,21 @@ class TopNav extends React.Component {
       <Navbar id="top-nav" expand="lg" variant="dark">
         <Container>
           <Navbar.Brand href="#home">
-            <img 
-              src={pokemonLogo}
-              height="30"
-              width="81.82"
-              id="pokemon-logo"
-              alt="React Bootstrap logo"
-            />
+            <Link to="/">
+              <img 
+                src={pokemonLogo}
+                height="30"
+                width="81.82"
+                id="pokemon-logo"
+                alt="React Bootstrap logo"
+              />
+            </Link>
+            
           </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav" >
                 <Nav className="me-auto" >
-                  <Nav.Link href="#home" className="top-nav-link">Home</Nav.Link>
-                  {/* Search Form */}
-                  {/* Filter Form */}
-                  {/* Sort by Form */}
-                  {/* My cart button */}
+                  <Nav.Link href="#home" className="top-nav-link"><Link to="/">Home</Link></Nav.Link>
                 </Nav>
                 <Nav>
                 <NavDropdown title="Sort By" id="basic-nav-dropdown" className="sort-filter">
