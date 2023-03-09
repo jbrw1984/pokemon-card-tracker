@@ -1,6 +1,7 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from "react-router-dom";
 import './ProductCard.css';
 
 function ProductCard(props: any) {
@@ -15,7 +16,7 @@ function ProductCard(props: any) {
         <Card.Text>
           {props.description}
         </Card.Text>
-        <Button variant="dark" className="card-btn">VIEW MORE DETAILS</Button>
+        <Button variant="dark" className="card-btn"><Link to="/details">VIEW MORE DETAILS</Link></Button>
       </Card.Body>
     </Card>
   );

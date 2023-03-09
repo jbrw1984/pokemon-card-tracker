@@ -11,6 +11,7 @@ function Details() {
     return (
       <div className="App">
         <TopNav />
+        <h1>THE DETAILS PAGE</h1>
 
         <div className="product-cards">
           {cardInfo.map(cardInfo => (
