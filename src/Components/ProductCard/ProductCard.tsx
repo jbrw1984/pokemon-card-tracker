@@ -1,17 +1,21 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import './ProductCard.css';
 
 function ProductCard(props: any) {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={props.image} />
-      <Card.Body>
+    <Card className="card-component">
+      <Card.Img src={props.image} className="card-img" />
+      <Card.Body className="card-body">
+        <Card.Text>Pokemon Go</Card.Text>
         <Card.Title>{props.name}</Card.Title>
+        <Card.Title className="sale-price">${props.salePrice}</Card.Title>
+        <Card.Text>Market Price: <span className="mkt-price-num">${props.marketPrice}</span></Card.Text>
         <Card.Text>
           {props.description}
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="dark" className="card-btn">VIEW MORE DETAILS</Button>
       </Card.Body>
     </Card>
   );
