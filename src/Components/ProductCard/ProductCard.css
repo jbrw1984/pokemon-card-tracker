@@ -1,10 +1,11 @@
 .card-component {
-  max-width: 25rem;
+  width: 20rem;
   display: block;
   background: #FFFFFF;
   border: 1px solid #D0D0D0;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 6px;
+  margin: .5rem;
 }
 
 .card-img {
@@ -17,13 +18,25 @@
   text-align: left;
 }
 
+.card-name, .sale-price, .card-title {
+  margin: 0.1rem;
+}
+
 .sale-price {
   font-weight: 900;
+}
+
+.mkt-price {
+  font-size: .8rem;
 }
 
 .mkt-price-num {
   color: #468226;
   font-weight: bold;
+}
+
+.card-desc {
+  font-size: .65rem;
 }
 
 .card-btn {

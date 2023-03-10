@@ -9,11 +9,11 @@ function ProductCard(props: any) {
     <Card className="card-component">
       <Card.Img src={props.image} className="card-img" />
       <Card.Body className="card-body">
-        <Card.Text>Pokemon Go</Card.Text>
-        <Card.Title>{props.name}</Card.Title>
+        <Card.Text className="card-title">Pokemon Go</Card.Text>
+        <Card.Title className="card-name">{props.name}</Card.Title>
         <Card.Title className="sale-price">${props.salePrice}</Card.Title>
-        <Card.Text>Market Price: <span className="mkt-price-num">${props.marketPrice}</span></Card.Text>
-        <Card.Text>
+        <Card.Text className="mkt-price">Market Price: <span className="mkt-price-num">${props.marketPrice}</span></Card.Text>
+        <Card.Text className="card-desc">
           {props.description}
         </Card.Text>
         <Button variant="dark" className="card-btn">
