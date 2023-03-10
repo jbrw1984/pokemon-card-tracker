@@ -1,6 +1,10 @@
-.Home {
-    text-align: center;
-  }
+.product-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
+}
   
   /* .App-logo {
     height: 40vmin;
