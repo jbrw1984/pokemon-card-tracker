@@ -2,3 +2,7 @@
     background-color: #CE1820; 
     color: white;
 }
+
+#footer-container {
+    justify-content: center;
+}
