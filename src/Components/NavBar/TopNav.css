@@ -5,9 +5,16 @@
     --bs-navbar-toggler-border-color: white;
 }
 
+.top-nav-link {
+    color: white;
+    text-decoration: none;
+}
+
 .top-nav-link:hover {
     font-weight: bold;
     border-radius: 0.3rem;
+    color: white;
+    text-decoration: none;
 }
 
 .sort-filter {

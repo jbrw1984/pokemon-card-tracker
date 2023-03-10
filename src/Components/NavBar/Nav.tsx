@@ -31,7 +31,7 @@ class TopNav extends React.Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav" >
                 <Nav className="me-auto" >
-                  <Nav.Link href="#home" className="top-nav-link"><Link to="/">Home</Link></Nav.Link>
+                  <Nav.Link href="#home"><Link className="top-nav-link" to="/">Home</Link></Nav.Link>
                 </Nav>
                 <Nav>
                 <NavDropdown title="Sort By" id="basic-nav-dropdown" className="sort-filter">
