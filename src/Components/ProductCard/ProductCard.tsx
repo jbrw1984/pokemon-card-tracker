@@ -16,7 +16,9 @@ function ProductCard(props: any) {
         <Card.Text>
           {props.description}
         </Card.Text>
-        <Button variant="dark" className="card-btn"><Link to="/details">VIEW MORE DETAILS</Link></Button>
+        <Button variant="dark" className="card-btn">
+          <Link to="/details" className="btn-link">VIEW MORE DETAILS</Link>
+        </Button>
       </Card.Body>
     </Card>
   );
