@@ -1,8 +1,14 @@
 #footer-nav {
     background-color: #CE1820; 
-    color: white;
+    --bs-navbar-color: white;
+    justify-content: center;
 }
 
-#footer-container {
-    justify-content: center;
+.footer-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer-text {
+    font-size: 0.65rem;
 }
