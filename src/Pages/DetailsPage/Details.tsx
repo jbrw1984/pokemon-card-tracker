@@ -1,11 +1,11 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom"; 
-import logo from './logo.svg';
 import './Details.css';
 import TopNav from '../../Components/NavBar/Nav';
-import ProductCard from '../../Components/ProductCard/ProductCard';
+// import ProductCard from '../../Components/ProductCard/ProductCard';
 import Footer from '../../Components/Footer/Footer';
 import cardInfo from '../../Components/ProductCard/cardInfo';
+import CardRater from '../../Components/CardRater/CardRater';
 
 function Details() {
     return (
@@ -13,7 +13,9 @@ function Details() {
         <TopNav />
         <h1>THE DETAILS PAGE</h1>
 
-        <div className="product-cards">
+        <CardRater />
+
+        {/* <div className="product-cards">
           {cardInfo.map(cardInfo => (
             <ProductCard 
               name={cardInfo.name}
@@ -21,7 +23,7 @@ function Details() {
               description={cardInfo.description}
             />
           ))}
-        </div>
+        </div> */}
 
         <Footer />
         
