@@ -1,29 +1,42 @@
 .cardRaterForm {
-    width: 35rem;
-    height: 20rem; 
+    width: 26.85rem;
+    height: 15rem; 
     background-color: #FEFBE5;
     border: 1px; 
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
     border-radius: 6px;
     margin: 5rem auto; 
+    padding: 1.5rem; 
 }
 
 .cardRaterSlider {
+    display: block; 
     width: 88%; 
-    margin: 10px 10px auto ;
+    margin-right: auto; 
+    margin-left: auto; 
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    
 }
 
 .cardRaterLabel {
+    display: block; 
+    text-align: left;
     font-weight: bold;
+    font-size: 1.2rem; 
 }
 
-.cardRaterGroup {
+.cardRaterText {
+    display: block; 
     text-align: left;
+    font-size: 0.6rem; 
 }
 
 .cardRaterButton {
     float: right;
-    width: 10rem; 
-    height: 3rem;
-    margin: auto 10rem 5rem; 
+    width: 6.1rem; 
+    height: 2rem;
+    
+    font-size: 0.5rem;
+    padding: 0.6rem 0.85rem; 
 }
