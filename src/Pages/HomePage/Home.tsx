@@ -1,6 +1,3 @@
-import React from 'react';
-import {Route, Routes} from "react-router-dom"; 
-import logo from './logo.svg';
 import './Home.css';
 import TopNav from '../../Components/NavBar/Nav';
 import ProductCard from '../../Components/ProductCard/ProductCard';

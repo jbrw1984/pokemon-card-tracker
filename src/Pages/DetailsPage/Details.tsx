@@ -1,10 +1,6 @@
-import React from 'react';
-import {Route, Routes} from "react-router-dom"; 
 import './Details.css';
 import TopNav from '../../Components/NavBar/Nav';
-// import ProductCard from '../../Components/ProductCard/ProductCard';
 import Footer from '../../Components/Footer/Footer';
-import cardInfo from '../../Components/ProductCard/cardInfo';
 import CardRater from '../../Components/CardRater/CardRater';
 
 function Details() {

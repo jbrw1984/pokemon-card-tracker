@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import { Col } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './CardRater.css';
