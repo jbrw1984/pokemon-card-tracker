@@ -14,9 +14,9 @@ function Details() {
         <TopNav />
         <h1>THE DETAILS PAGE</h1>
 
-        <div className="InfoRow">
-          <CardRater />
+        <div className="InfoFlexBox">
           <PriceHistory />
+          <CardRater />
         </div>
         
         <Footer />
