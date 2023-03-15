@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link, Route, Routes} from "react-router-dom"; 
-import logo from './logo.svg';
+//import React from 'react';
+import { Route, Routes} from "react-router-dom"; 
+//import logo from './logo.svg';
 import './App.css';
 import Home from './Pages/HomePage/Home'; 
 import Details from './Pages/DetailsPage/Details';
-import TopNav from './Components/NavBar/Nav';
-import ProductCard from './Components/ProductCard/ProductCard';
-import Footer from './Components/Footer/Footer';
-import cardInfo from './Components/ProductCard/cardInfo';
+//import TopNav from './Components/NavBar/Nav';
+//import ProductCard from './Components/ProductCard/ProductCard';
+//import Footer from './Components/Footer/Footer';
+//import cardInfo from './Components/ProductCard/cardInfo';
 
 function App() {
   return (
