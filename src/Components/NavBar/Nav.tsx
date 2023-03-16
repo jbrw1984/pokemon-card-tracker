@@ -31,17 +31,17 @@ class TopNav extends React.Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav" >
                 <Nav className="me-auto" >
-                  <Nav.Link href="#home"><Link className="top-nav-link" to="/">Home</Link></Nav.Link>
+                  <Nav.Link href="#home" className='collapse-btn'><Link className="top-nav-link" to="/">Home</Link></Nav.Link>
                 </Nav>
                 <Nav>
-                  <NavDropdown title="Sort By" id="basic-nav-dropdown" className="sort-filter">
+                  <NavDropdown title="Sort By" id="basic-nav-dropdown" className="sort-filter collapse-btn">
                     <NavDropdown.Item href="#action/3.2">Price High to Low</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.3">Price Low to High</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="#action/3.4">Rating High to Low</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.5">Rating Low to High</NavDropdown.Item>
                   </NavDropdown>
-                  <NavDropdown title="Filter" id="basic-nav-dropdown" className="sort-filter">
+                  <NavDropdown title="Filter" id="basic-nav-dropdown" className="sort-filter collapse-btn">
                     <NavDropdown.Item href="#action/3.6">
                       <Form className="mb-3">
                         <Form.Group>
@@ -54,7 +54,7 @@ class TopNav extends React.Component {
                       </Form>
                     </NavDropdown.Item>
                   </NavDropdown>
-                  <Form className="d-flex" id="nav-search">
+                  <Form className="d-flex collapse-btn" id="nav-search">
                     <Form.Control
                       type="search"
                       placeholder="Search"
@@ -62,7 +62,7 @@ class TopNav extends React.Component {
                       aria-label="Search"
                     />
                   </Form>
-                  <Navbar.Brand href="#cart">
+                  <Navbar.Brand href="#cart" className='collapse-btn'>
                     <img 
                       src={cartImg}
                       height="30"
