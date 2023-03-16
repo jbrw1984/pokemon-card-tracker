@@ -1,8 +1,40 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { Col, Table } from "react-bootstrap";
 import './PriceHistory.css';
 
-function PriceHistory() {
+type SpecificSinglePokemonCard = {
+    id: number;
+    name: string;
+    description: string;
+    salePrice: number;
+    marketPrice: number;
+    image: string;
+    priceHistory: priceHistoryData[]
+  };
+  
+  type priceHistoryData = {
+    month: number; 
+    day: number; 
+    year: number; 
+    quantity: number; 
+    price: number; 
+  }
+
+interface PriceHistoryProps{
+    cardInfo: SpecificSinglePokemonCard; 
+}
+
+const PriceHistory: FC<PriceHistoryProps > = ({ cardInfo }): JSX.Element => {
+
+    const renderPriceData = (priceHistory : priceHistoryData) => {
+        return (
+        <tr /*key={index}*/>
+            <th>{priceHistory.month}/{priceHistory.day}/{priceHistory.year}</th>
+            <th>{priceHistory.quantity}</th>
+            <th>{priceHistory.price}</th>
+        </tr>
+        ); 
+    }; 
 
     return (
         <div className="PriceHistoryComponent">
@@ -16,31 +48,13 @@ function PriceHistory() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th>2/1/2023</th>
-                        <th>1</th>
-                        <th>$3.99</th>
-                    </tr>
-                    <tr>
-                        <th>2/1/2023</th>
-                        <th>3</th>
-                        <th>$3.99</th>
-                    </tr>
-                    <tr>
-                        <th>2/1/2023</th>
-                        <th>4</th>
-                        <th>$3.99</th>
-                    </tr>
-                    <tr>
-                        <th>2/1/2023</th>
-                        <th>6</th>
-                        <th>$3.99</th>
-                    </tr>
+                    {cardInfo.priceHistory.map(renderPriceData)}
                 </tbody>
             </Table>
         </div>
         
     );
-  }
+
+}
   
   export default PriceHistory;

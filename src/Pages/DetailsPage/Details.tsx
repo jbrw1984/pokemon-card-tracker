@@ -15,7 +15,7 @@ function Details() {
         <h1>THE DETAILS PAGE</h1>
 
         <div className="InfoFlexBox">
-          <PriceHistory />
+          <PriceHistory cardInfo={cardInfo[0]}/>
           <CardRater />
         </div>
         
