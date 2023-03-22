@@ -1,8 +1,12 @@
 import ProductCard from "../ProductCard/ProductCard";
 import cardInfo from "../ProductCard/cardInfo";
 import './DisplayCards.css';
+import ReactPaginate from "react-paginate";
 
 function DisplayCards () {
+
+  const cardsPerPage: number = 12;
+
   return (
     <div className="card-container">
       {cardInfo.map(cardInfo => (
