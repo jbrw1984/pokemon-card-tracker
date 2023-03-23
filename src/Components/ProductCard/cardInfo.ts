@@ -10,7 +10,7 @@ type PokemonCard = {
 const cardInfo: PokemonCard[] = [
   {
     id: 123,
-    name: "Charmander",
+    name: "Charmand",
     description: "Card Description here",
     salePrice: 12.23,
     marketPrice: 11.99,
