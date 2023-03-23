@@ -8,7 +8,6 @@ function DisplayCards () {
   const [cards, setCards] = useState(cardInfo);
   const [pageNumber, setPageNumber] = useState(0);
   
-
   const cardsPerPage: number = 12;
   const pagesVisited: number = pageNumber * cardsPerPage;
 
@@ -34,30 +33,35 @@ function DisplayCards () {
 
   return (
     <div className="page-container">
-      <ReactPaginate 
-        pageCount={pageCount}
-        previousLabel={"<"}
-        nextLabel={">"}
-        onPageChange={changePage}
-        containerClassName={"pagination-btn"}
-        pageClassName={"page-num-btn"}
-        breakClassName={"break-btn"}
-      />
+      <div className="pagination-container">
+        <h4>Page {pageNumber + 1} of {pageCount}</h4>
+        <ReactPaginate 
+          pageCount={pageCount}
+          previousLabel={"<"}
+          nextLabel={">"}
+          onPageChange={changePage}
+          containerClassName={"pagination-btn"}
+          pageClassName={"page-num-btn"}
+          breakClassName={"break-btn"}
+        />
+      </div>
       <div className="card-container">
         {displaySetOfCards}
       </div>
-      <ReactPaginate 
-        pageCount={pageCount}
-        previousLabel={"<"}
-        nextLabel={">"}
-        onPageChange={changePage}
-        containerClassName={"pagination-btn"}
-        pageClassName={"page-num-btn"}
-        breakClassName={"break-btn"}
-      />
+      <div className="pagination-container">
+        <h4>Page {pageNumber + 1} of {pageCount}</h4>
+        <ReactPaginate 
+          pageCount={pageCount}
+          previousLabel={"<"}
+          nextLabel={">"}
+          onPageChange={changePage}
+          containerClassName={"pagination-btn"}
+          pageClassName={"page-num-btn"}
+          breakClassName={"break-btn"}
+        />
+      </div>
     </div>
   );
 }
-
 
 export default DisplayCards;
