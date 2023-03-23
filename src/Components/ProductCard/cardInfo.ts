@@ -28,6 +28,7 @@ const cardInfo: PokemonCard[] = [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
+      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
     ] 
   },

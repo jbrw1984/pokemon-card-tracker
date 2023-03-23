@@ -48,7 +48,8 @@ const PriceHistory: FC<PriceHistoryProps > = ({ cardInfo }): JSX.Element => {
                     </tr>
                 </thead>
                 <tbody>
-                    {cardInfo.priceHistory.map(renderPriceData)}
+                    {/*Incorporate some kind of use of state here to store the number of items to show as 4*/}
+                    {cardInfo.priceHistory.slice(0, 4).map(renderPriceData)}
                 </tbody>
             </Table>
         </div>
