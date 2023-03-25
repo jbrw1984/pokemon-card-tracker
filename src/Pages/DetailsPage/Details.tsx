@@ -11,7 +11,7 @@ function Details() {
       <div className="App">
         <TopNav />
 
-        <CardDescription cardInfo={cardInfo[0]}/>
+        <CardDescription cardInfo={cardInfo[1]}/>
 
         <div className="InfoFlexBox">
           <PriceHistory cardInfo={cardInfo[0]}/>

@@ -1,0 +1,19 @@
+.cardDescComponent {
+    margin-top: 3rem; 
+    margin-right: 10%; 
+    margin-left: 10%; 
+    border: 1px solid #D0D0D0;
+    display: flex; 
+    flex-direction: row;
+
+}
+
+.cardDescImage {
+    float: left; 
+    width: 17.3rem; 
+    height: 24.1rem; 
+}
+
+.cardDescBody {
+    float: right; 
+}

@@ -12,9 +12,9 @@ interface CardDescriptionProps {
 
 const CardDescription: FC<CardDescriptionProps> = ({ cardInfo}): JSX.Element => {
     return (
-        <Card>
-            <Card.Img src={cardInfo.image}></Card.Img>
-            <Card.Body>
+        <Card className="cardDescComponent">
+            <Card.Img className="cardDescImage" src={cardInfo.image}></Card.Img>
+            <Card.Body className="cardDescBody">
                 <Card.Title>{cardInfo.name}</Card.Title>
                 <Card.Subtitle>{cardInfo.salePrice}</Card.Subtitle>
                 <Card.Text>Market Price: ${cardInfo.marketPrice} | Card Rating: {cardInfo.rating}</Card.Text>
