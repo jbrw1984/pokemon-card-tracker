@@ -24,7 +24,7 @@ interface PriceHistoryProps{
     cardInfo: SpecificSinglePokemonCard; 
 }
 
-const PriceHistory: FC<PriceHistoryProps > = ({ cardInfo }): JSX.Element => {
+const PriceHistory: FC<PriceHistoryProps > = ({ cardInfo}): JSX.Element => {
 
     const renderPriceData = (priceHistory : priceHistoryData) => {
         return (
