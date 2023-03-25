@@ -1,0 +1,5 @@
+.InfoFlexBox {
+    display: flex; 
+    align-content: center; 
+    padding: 8rem 5rem;
+}
