@@ -1,27 +1,10 @@
 import React, { FC, useState } from "react";
 import { Col, Table } from "react-bootstrap";
+import {PokemonCard, priceHistoryData} from '../ProductCard/cardInfo'; 
 import './PriceHistory.css';
 
-type SpecificSinglePokemonCard = {
-    id: number;
-    name: string;
-    description: string;
-    salePrice: number;
-    marketPrice: number;
-    image: string;
-    priceHistory: priceHistoryData[]
-  };
-  
-  type priceHistoryData = {
-    month: number; 
-    day: number; 
-    year: number; 
-    quantity: number; 
-    price: number; 
-  }
-
 interface PriceHistoryProps{
-    cardInfo: SpecificSinglePokemonCard; 
+    cardInfo: PokemonCard; 
 }
 
 const PriceHistory: FC<PriceHistoryProps > = ({ cardInfo}): JSX.Element => {

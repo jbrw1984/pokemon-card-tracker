@@ -1,4 +1,4 @@
-type PokemonCard = {
+export type PokemonCard = {
   id: number;
   name: string;
   description: string;
@@ -8,7 +8,7 @@ type PokemonCard = {
   priceHistory: priceHistoryData[]
 };
 
-type priceHistoryData = {
+export type priceHistoryData = {
   month: number; 
   day: number; 
   year: number; 
