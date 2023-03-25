@@ -9,7 +9,7 @@ interface PriceHistoryProps{
 
 const PriceHistory: FC<PriceHistoryProps > = ({ cardInfo}): JSX.Element => {
 
-    const renderPriceData = (priceHistory : priceHistoryData) => {
+    const renderPriceData = (priceHistory : priceHistoryData) => { //passes in the priceHistory array within PokemonCard
         return (
         <tr /*key={index}*/>
             <th>{priceHistory.month}/{priceHistory.day}/{priceHistory.year}</th>
