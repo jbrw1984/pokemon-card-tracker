@@ -12,13 +12,17 @@ interface CardDescriptionProps {
 
 const CardDescription: FC<CardDescriptionProps> = ({ cardInfo}): JSX.Element => {
     return (
-        <Card className="cardDescComponent">
-            <Card.Img className="cardDescImage" src={cardInfo.image}></Card.Img>
-            <Card.Body className="cardDescBody">
-                <Card.Title>{cardInfo.name}</Card.Title>
-                <Card.Subtitle>{cardInfo.salePrice}</Card.Subtitle>
-                <Card.Text>Market Price: ${cardInfo.marketPrice} | Card Rating: {cardInfo.rating}</Card.Text>
-                <Card.Text>
+        <Card className="card-desc-comp">
+            <Card.Img className="card-desc-img" src={cardInfo.image}></Card.Img>
+            <Card.Body className="card-desc-body">
+                <Card.Title className="card-desc-name">{cardInfo.name}</Card.Title>
+                <Card.Subtitle className="card-desc-sale-price">${cardInfo.salePrice}</Card.Subtitle>
+
+                <Card.Text className="card-desc-price-rtn">
+                    Market Price: <span className="card-desc-market-price">${cardInfo.marketPrice}</span>  |  Card Rating: <span className="card-desc-rating">{cardInfo.rating}</span>
+                </Card.Text>
+
+                <Card.Text className="card-desc-info">
                     Attack 1:[L] Energize Attach a L Energy card from your discard pile to this Pokemon.
                     <ul>
                         <li>Card Number / Rarity:049/203 / Common</li>
@@ -29,10 +33,10 @@ const CardDescription: FC<CardDescriptionProps> = ({ cardInfo}): JSX.Element => 
                 </Card.Text>
 
                 <Form>
-                    <Form.Label>Edit Card Price</Form.Label>
-                    <InputGroup>
-                        <Form.Control type="number" placeholder="$1.00" min={1} max={10}></Form.Control>
-                        <Button id="button-addon1" variant="dark" type="submit" value="Submit">SUBMIT PRICE</Button>
+                    <Form.Label className="card-desc-form-label">Edit Card Price</Form.Label>
+                    <InputGroup className="price-input-group">
+                        <Form.Control className="price-text-input" type="number" placeholder="$1.00" min={0}></Form.Control>
+                        <Button className="button-addon1" id="button-addon1" variant="dark" type="submit" value="Submit">SUBMIT PRICE</Button>
                     </InputGroup>
                 </Form>
                 
