@@ -5,13 +5,12 @@ import './DisplayCards.css';
 import ReactPaginate from "react-paginate";
 
 function DisplayCards () {
-  const [cards, setCards] = useState(cardInfo);
   const [pageNumber, setPageNumber] = useState(0);
   
   const cardsPerPage: number = 12;
   const pagesVisited: number = pageNumber * cardsPerPage;
 
-  const displaySetOfCards = cards
+  const displaySetOfCards = cardInfo
     .slice(pagesVisited, pagesVisited + cardsPerPage)
     .map((card) => {
       return (
@@ -25,7 +24,7 @@ function DisplayCards () {
       );
     });
 
-  const pageCount: number = Math.ceil(cards.length / cardsPerPage);
+  const pageCount: number = Math.ceil(cardInfo.length / cardsPerPage);
 
   const changePage = ({ selected }: any) => {
     setPageNumber(selected);
@@ -47,18 +46,6 @@ function DisplayCards () {
       </div>
       <div className="card-container">
         {displaySetOfCards}
-      </div>
-      <div className="pagination-container">
-        <h4>Page {pageNumber + 1} of {pageCount}</h4>
-        <ReactPaginate 
-          pageCount={pageCount}
-          previousLabel={"<"}
-          nextLabel={">"}
-          onPageChange={changePage}
-          containerClassName={"pagination-btn"}
-          pageClassName={"page-num-btn"}
-          breakClassName={"break-btn"}
-        />
       </div>
     </div>
   );
