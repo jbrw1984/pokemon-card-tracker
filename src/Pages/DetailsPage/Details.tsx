@@ -3,6 +3,7 @@ import TopNav from '../../Components/NavBar/Nav';
 import Footer from '../../Components/Footer/Footer';
 import CardRater from '../../Components/CardRater/CardRater';
 import PriceHistory from '../../Components/PriceHistory/PriceHistory';
+import cardInfo from '../../Components/ProductCard/cardInfo';
 
 function Details() {
     return (
