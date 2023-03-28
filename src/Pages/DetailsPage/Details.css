@@ -1,5 +1,7 @@
-.InfoFlexBox {
+.info-flexbox {
     display: flex; 
     align-content: center; 
-    padding: 8rem 5rem;
+    gap: 2rem; 
+    padding: 1rem 5rem;
+    margin-top: 1rem; {/*CHANGE THIS*/}
 }

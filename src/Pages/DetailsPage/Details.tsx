@@ -3,15 +3,21 @@ import TopNav from '../../Components/NavBar/Nav';
 import Footer from '../../Components/Footer/Footer';
 import CardRater from '../../Components/CardRater/CardRater';
 import PriceHistory from '../../Components/PriceHistory/PriceHistory';
+import CardDescription from '../../Components/CardDescription/CardDescription'; 
 import cardInfo from '../../Components/ProductCard/cardInfo';
+import BackToResult from '../../Components/BackToResult/BackToResult';
+
 
 function Details() {
     return (
       <div className="App">
         <TopNav />
-        <h1>THE DETAILS PAGE</h1>
 
-        <div className="InfoFlexBox">
+        <BackToResult /> 
+
+        <CardDescription cardInfo={cardInfo[1]}/>
+
+        <div className="info-flexbox">
           <PriceHistory cardInfo={cardInfo[0]}/>
           <CardRater />
         </div>
