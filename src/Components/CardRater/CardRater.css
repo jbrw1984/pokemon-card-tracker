@@ -12,11 +12,70 @@
 .card-rater-slider {
     display: block; 
     width: 88%; 
-    margin-right: auto; 
-    margin-left: auto; 
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
+    height: 10px; 
+    margin: 1.5rem auto 0rem auto; 
+    z-index: 500;
+    position: relative; 
     
+}
+
+/* #myinput {
+    border-radius: 8px;
+    height: 4px;
+    width: 150px;
+    outline: none;
+    -webkit-appearance: none;
+} */
+
+/* input[type='range']::-webkit-slider-thumb {
+    width: 6px;
+    -webkit-appearance: none;
+    height: 12px;
+    background: black;
+    border-radius: 2px;
+} */
+
+input[type="range"]::-webkit-slider-runnable-track {
+    /* background: linear-gradient(90deg, #FCCD29 60%, #94938d 60%) !important; */
+    background: transparent;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    z-index: -9999; 
+    position: relative; 
+    
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    background: #FEB729 !important;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 20px; 
+    width: 20px; 
+    top: -20%; 
+    border-radius: 4px;
+    z-index: 9999;
+    position: relative; 
+
+}
+
+
+.slider-labels-flexbox {
+    width: 88%; 
+    margin: 0.5rem auto 0rem auto; 
+    display: flex; 
+
+}
+
+.upper-bound {
+    margin-left: auto; 
+}
+
+.upper-bound, .lower-bound {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+
 }
 
 .card-rater-label {
@@ -34,9 +93,11 @@
 
 .card-rater-btn {
     float: right;
-    width: 6.1rem; 
-    height: 2rem;
-    
-    font-size: 0.5rem;
+    width: 122px; 
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0em;
     padding: 0.6rem 0.85rem; 
+    margin-top: 2rem; 
 }
