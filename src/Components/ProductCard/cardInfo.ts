@@ -235,6 +235,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.23,
     marketPrice: 11.99,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -250,6 +251,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.13,
     marketPrice: 11.89,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -264,6 +266,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.23,
     marketPrice: 11.99,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -278,6 +281,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.13,
     marketPrice: 11.89,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -292,6 +296,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.23,
     marketPrice: 11.99,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -306,6 +311,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.13,
     marketPrice: 11.89,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -320,6 +326,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.23,
     marketPrice: 11.99,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -334,6 +341,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.13,
     marketPrice: 11.89,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -348,6 +356,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.23,
     marketPrice: 11.99,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -362,6 +371,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.13,
     marketPrice: 11.89,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -376,6 +386,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.23,
     marketPrice: 11.99,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -390,6 +401,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.13,
     marketPrice: 11.89,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -404,6 +416,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.23,
     marketPrice: 11.99,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -418,6 +431,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.13,
     marketPrice: 11.89,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -432,6 +446,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.23,
     marketPrice: 11.99,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -447,6 +462,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.13,
     marketPrice: 11.89,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -461,6 +477,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.23,
     marketPrice: 11.99,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -475,6 +492,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.13,
     marketPrice: 11.89,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -489,6 +507,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.23,
     marketPrice: 11.99,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -503,6 +522,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.13,
     marketPrice: 11.89,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -517,6 +537,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.23,
     marketPrice: 11.99,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -531,6 +552,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.13,
     marketPrice: 11.89,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -545,6 +567,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.23,
     marketPrice: 11.99,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -559,6 +582,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.13,
     marketPrice: 11.89,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -573,6 +597,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.23,
     marketPrice: 11.99,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -587,6 +612,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.13,
     marketPrice: 11.89,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -601,6 +627,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.23,
     marketPrice: 11.99,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
@@ -615,6 +642,7 @@ const cardInfo: PokemonCard[] = [
     description: "Card Description here",
     salePrice: 12.13,
     marketPrice: 11.89,
+    rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
       {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
