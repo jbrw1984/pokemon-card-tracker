@@ -7,6 +7,7 @@ import CardDescription from '../../Components/CardDescription/CardDescription';
 import cardInfo from '../../Components/ProductCard/cardInfo';
 import BackToResult from '../../Components/BackToResult/BackToResult';
 
+
 function Details() {
     return (
       <div className="App">
