@@ -10,7 +10,7 @@ export type PokemonCard = {
 };
 
 export type priceHistoryData = {
-  month: number; 
+  month: number;
   day: number; 
   year: number; 
   quantity: number; 
