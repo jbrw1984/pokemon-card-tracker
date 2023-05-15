@@ -8,5 +8,5 @@ export interface PokemonCard {
   marketPrice: number;
   rating: number[]; 
   image: string;
-  priceHistory: PriceHistoryData;
+  priceHistory: PriceHistoryData[];
 }
