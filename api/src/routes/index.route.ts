@@ -10,8 +10,9 @@ export class IndexRoute implements Routes {
   }
 
   private initializeRoutes() {
-    this.router.get(`${this.path}`, () => {
-      console.log(arguments);
+    this.router.get(`${this.path}`, (req, res) => {
+      console.log('test');
+      res.send('hello world');
     });
   }
 }
