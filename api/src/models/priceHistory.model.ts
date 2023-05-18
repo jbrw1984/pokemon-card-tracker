@@ -2,19 +2,18 @@ import { model, Schema, Document } from 'mongoose';
 import { PriceHistoryData } from '@interfaces/priceHistory.interface'; 
 
 const PriceHistorySchema: Schema = new Schema({
-// Will potentially calculate the date with BE logic
-//   month: {
-//     type: Number, 
-//     required: true, 
-//   }, 
-//   day: {
-//     type: Number, 
-//     required: true, 
-//   }, 
-//   year: {
-//     type: Number, 
-//     required: true, 
-//   }, 
+  month: {
+    type: Number, 
+    required: true, 
+  }, 
+  day: {
+    type: Number, 
+    required: true, 
+  }, 
+  year: {
+    type: Number, 
+    required: true, 
+  }, 
   quantity: {
     type: Number, 
     required: true, 
