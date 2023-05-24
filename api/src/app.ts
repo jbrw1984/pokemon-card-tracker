@@ -50,7 +50,7 @@ export class App {
       set('debug', true);
     }
 
-    await connect(dbConnection.url, dbConnection.options);
+    await connect(dbConnection.url);
   }
 
   private initializeMiddlewares() {
