@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { Container } from 'typedi';
 import { User } from '@interfaces/users.interface';
 import { UserService } from '@services/users.service';
+import { PokemonCard } from '@interfaces/cards.interface';
 
 // All routes that will need controllers
 // Get cards (all cards main page)
@@ -14,9 +15,9 @@ import { UserService } from '@services/users.service';
 export class CardsController {
   public user = Container.get(UserService);
 
-  public getUsers = async (req: Request, res: Response, next: NextFunction) => {
+  public getCards = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const findAllUsersData: User[] = await this.user.findAllUser();
+      const findAllCardsData: PokemonCard[] = await this.user.findAllUser();
 
       res.status(200).json({ data: findAllUsersData, message: 'findAll' });
     } catch (error) {
@@ -34,7 +35,7 @@ export class CardsController {
       next(error);
     }
   };
-
+  /*
   public createUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const userData: User = req.body;
@@ -68,4 +69,5 @@ export class CardsController {
       next(error);
     }
   };
+  */
 }
