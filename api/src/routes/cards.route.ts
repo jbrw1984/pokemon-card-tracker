@@ -11,8 +11,7 @@ export class CardsRoute implements Routes {
   }
 
   private initializeRoutes() {
-    this.router.get(`${this.path}/:id`, (req, res) => {
-      // Get the pokemon card based the id of the one selected on the home page
-    });
+    this.router.get(`${this.path}/:id`, );
+    
   }
 }
