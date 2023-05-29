@@ -6,7 +6,7 @@ import { HttpException } from '@exceptions/httpException';
 import { PokemonCard } from '@/interfaces/cards.interface';
 
 @Service()
-export class CardsService {
+export class CardService {
   public async findAllCards(): Promise<PokemonCard[]> {
     // Still need PokemonCardModel
     const cards: PokemonCard[] = await PokemonCardModel.find();

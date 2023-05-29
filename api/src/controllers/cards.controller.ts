@@ -3,6 +3,7 @@ import { Container } from 'typedi';
 import { User } from '@interfaces/users.interface';
 import { UserService } from '@services/users.service';
 import { PokemonCard } from '@interfaces/cards.interface';
+import { CardService } from '@/services/cards.service';
 
 // All routes that will need controllers
 // Get cards (all cards main page)
@@ -13,24 +14,26 @@ import { PokemonCard } from '@interfaces/cards.interface';
 // Create new price entry by id (New price history submit)
 
 export class CardsController {
-  public user = Container.get(UserService);
+  public card = Container.get(CardService);
 
+  // Controller to get all cards this will be used for the main page.
   public getCards = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const findAllCardsData: PokemonCard[] = await this.user.findAllUser();
+      const findAllCardsData: PokemonCard[] = await this.card.findAllCards();
 
-      res.status(200).json({ data: findAllUsersData, message: 'findAll' });
+      res.status(200).json({ data: findAllCardsData, message: 'findAll' });
     } catch (error) {
       next(error);
     }
   };
 
-  public getUserById = async (req: Request, res: Response, next: NextFunction) => {
+  public getCardById = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const userId: string = req.params.id;
-      const findOneUserData: User = await this.user.findUserById(userId);
+      // The url is naturally a string so convert to Int. 
+      const cardId: number = parseInt(req.params.id);
+      const findOneCardData: PokemonCard = await this.card.findCardById(cardId);
 
-      res.status(200).json({ data: findOneUserData, message: 'findOne' });
+      res.status(200).json({ data: findOneCardData, message: 'findOne' });
     } catch (error) {
       next(error);
     }
