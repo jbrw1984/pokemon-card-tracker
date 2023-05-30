@@ -33,10 +33,11 @@ const PokemonCardSchema: Schema = new Schema({
     required: true, 
   },
   // Square brackets used because priceHistory will be array 
+  // Not required because a card will have no priceHistory when created
   priceHistory: [{
     type: Schema.Types.ObjectId, 
     ref: PriceHistoryModel, 
-    required: true, 
+    required: false, 
   }]
 })
 

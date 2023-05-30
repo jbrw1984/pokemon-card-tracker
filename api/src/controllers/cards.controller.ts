@@ -6,13 +6,17 @@ import { PokemonCard } from '@interfaces/cards.interface';
 import { CardService } from '@/services/cards.service';
 
 // All routes that will need controllers
-// Get cards (all cards main page)
-  // Get cards by filter (filtered cards main page)
-  // Get cards by search (not exactly sure how this works, Maybe by name?)
-// Create new card 
-// Get card by id (details page)
-// Create card rating by id (Card rating slider submit)
+// Create new card: POST /cards
+// Get cards (all cards main page): GET /cards
+//   - Get cards by filter (filtered cards main page), uses query parans: GET /cards?params=
+//   - Get cards by search (not exactly sure how this works, Maybe by name), uses query params: GET /cards?params=
+// Get card by id (details page): GET /cards/:cardId
+// Create card rating by id (Card rating slider submit), custom action endpoint: POST /cards/:cardId/rating
 // Create new price entry by id (New price history submit)
+//   - This is a child object in Mongo, that is related to the card, but is a different Mongo model
+//   - POST /cards/:cardId/priceHistory
+// Get price history: GET /cards/:cardId/priceHistory -OR-
+// Include price history in cards endpoints: ?include=priceHistory
 
 export class CardsController {
   public card = Container.get(CardService);
