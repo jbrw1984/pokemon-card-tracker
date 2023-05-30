@@ -7,8 +7,9 @@ import { CardService } from '@/services/cards.service';
 
 // All routes that will need controllers
 // Get cards (all cards main page)
-// Get cards by filter (filtered cards main page)
-// Get cards by search (not exactly sure how this works, Maybe by name?)
+  // Get cards by filter (filtered cards main page)
+  // Get cards by search (not exactly sure how this works, Maybe by name?)
+// Create new card 
 // Get card by id (details page)
 // Create card rating by id (Card rating slider submit)
 // Create new price entry by id (New price history submit)

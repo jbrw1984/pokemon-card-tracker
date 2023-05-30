@@ -4,6 +4,7 @@ import { HttpException } from '@exceptions/httpException';
 // import { User } from '@interfaces/users.interface';
 // import { UserModel } from '@models/users.model';
 import { PokemonCard } from '@/interfaces/cards.interface';
+import { PokemonCardModel } from '@/models/cards.model';
 
 @Service()
 export class CardService {
@@ -17,7 +18,7 @@ export class CardService {
     const findCard: PokemonCard = await PokemonCardModel.findOne({ _id: cardId });
     if (!findCard) throw new HttpException(409, "Card doesn't exist");
 
-    return findPokemonCard;
+    return findCard;
   }
 
   
