@@ -1,9 +1,7 @@
 import { Document } from 'mongoose';
 
 export interface PriceHistoryData extends Document {
-    month: number;
-    day: number; 
-    year: number; 
+    date: Date; 
     quantity: number; 
     price: number; 
   }

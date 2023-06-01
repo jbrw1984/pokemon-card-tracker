@@ -10,9 +10,7 @@ export type PokemonCard = {
 };
 
 export type priceHistoryData = {
-  month: number;
-  day: number; 
-  year: number; 
+  date: Date;
   quantity: number; 
   price: number; 
 }
@@ -27,11 +25,11 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ] 
   },
   {
@@ -43,10 +41,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -58,10 +56,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -73,10 +71,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -88,10 +86,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -103,10 +101,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -118,10 +116,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -133,10 +131,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -148,10 +146,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -163,10 +161,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -178,10 +176,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -193,10 +191,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -208,10 +206,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -223,10 +221,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -238,11 +236,11 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ] 
   },
   {
@@ -254,10 +252,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -269,10 +267,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -284,10 +282,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -299,10 +297,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -314,10 +312,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -329,10 +327,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -344,10 +342,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -359,10 +357,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -374,10 +372,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -389,10 +387,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -404,10 +402,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -419,10 +417,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -434,10 +432,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -449,11 +447,11 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ] 
   },
   {
@@ -465,10 +463,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -480,10 +478,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -495,10 +493,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -510,10 +508,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -525,10 +523,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -540,10 +538,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -555,10 +553,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -570,10 +568,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -585,10 +583,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -600,10 +598,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -615,10 +613,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -630,10 +628,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   },
   {
@@ -645,10 +643,10 @@ const cardInfo: PokemonCard[] = [
     rating: 4,
     image: "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png", 
     priceHistory: [
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}, 
-      {month: 2, day: 1, year: 2023, quantity: 1, price: 3.99}
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
+      {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   }
 ];
