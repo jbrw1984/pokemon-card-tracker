@@ -9,11 +9,12 @@ afterAll(async () => {
 describe('Testing Cards', () => {
   // GET all cards. 
   describe('[GET] /', () => {
-    it('response statusCode 200', () => {
+    it('response statusCode 200', async () => {
       const cardsRoute = new CardsRoute();
       const app = new App([cardsRoute]);
 
-      return request(app.getServer()).get(`${cardsRoute.path}`).expect(200);
+      const result = await request(app.getServer()).get(`${cardsRoute.path}`);
+      expect(result.status).toEqual(200);
       debugger;
     });
   });
