@@ -15,14 +15,11 @@ describe('Testing Cards', () => {
 
       const result = await request(app.getServer()).get(`${cardsRoute.path}`);
       expect(result.status).toEqual(200);
-      // Check if the data has at least one value, with an ID with the legth of 24
+      // Check to see that the there is at least one value.
+      expect(result.body.data.length).toBeGreaterThanOrEqual(1);
+      // Check if the first items id is a length of 24.
       // Mongo Object ID data types are a 24 character hexadecimal code.
       expect(result.body.data[0]._id).toHaveLength(24);
-      debugger;
-
-      // expect at least one result
-      // expect that the first result has an id that is a string
-
     });
   });
   /*
