@@ -14,7 +14,7 @@ export class CardService {
     return cards;
   }
 
-  public async findCardById(cardId: number): Promise<PokemonCard> {
+  public async findCardById(cardId: string): Promise<PokemonCard> {
     const findCard: PokemonCard = await PokemonCardModel.findOne({ _id: cardId });
     if (!findCard) throw new HttpException(409, "Card doesn't exist");
 
