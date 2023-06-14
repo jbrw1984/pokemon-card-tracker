@@ -7,6 +7,7 @@ import { Document, Model, DocumentSetOptions, QueryOptions, Callback, UpdateQuer
 import { PriceHistoryData } from '@/interfaces/priceHistory.interface';
 import { CreateCardDto } from '@/dtos/cards.dto';
 import { CreatePriceHistoryDto } from '@/dtos/priceHistory.dto';
+import { PriceHistoryModel } from '@/models/priceHistory.model';
 
 afterAll(async () => {
     await new Promise<void>(resolve => setTimeout(() => resolve(), 500)); 
@@ -33,40 +34,31 @@ describe('Testing Cards Routes', () => {
             const cardsRoute = new CardsRoute(); 
             const app = new App([cardsRoute]); 
 
-            // const priceHistoryPostData : PriceHistoryData = {
-            //     date: new Date(1, 2, 3),
-            //     quantity: 1,
-            //     price: 1,
-                
-            // }
+            const priceHistoryData1: CreatePriceHistoryDto[] = [{
+                date: new Date(2023, 6, 13), 
+                quantity: 1, 
+                price: 1
+            }]
 
-            // const cardPostData : PokemonCard = {
-            //     name: 'Pikachu',
-            //     description: 'Electric Type',
-            //     salePrice: 1,
-            //     marketPrice: 1,
-            //     rating: [],
-            //     image: '',
-            //     priceHistory: [],
-                
-            // }
+            const priceHistoryPromises = priceHistoryData1.map(async (history) => {
+                const priceHistory = new PriceHistoryModel(history);
+                await priceHistory.save();
+                return priceHistory;
+              });
+              
+              const priceHistories1 = await Promise.all(priceHistoryPromises);
 
-            // const priceHistoryData: CreatePriceHistoryDto = {
-            //     date: new Date(2023, 6, 13), 
-            //     quantity: 1, 
-            //     price: 1
-            // }
-
-            const cardData: CreateCardDto = {
+            const cardData1: CreateCardDto = {
                 name: 'Pikachu',
                 description: 'Electric Type',
                 salePrice: 1,
                 marketPrice: 1,
                 rating: [],
                 image: 'a',
-                priceHistory: [],
+                priceHistory: priceHistories1,
             }
 
+            
 
 
             /**
@@ -76,14 +68,19 @@ describe('Testing Cards Routes', () => {
              */
             const response = await request(app.getServer())
                 .post(`${cardsRoute.path}`)
-                .send(cardData); 
+                .send(cardData1); 
                 
 
-            expect(response.body.data.name).toBe(cardData.name);
+            expect(response.body.data.name).toBe(cardData1.name);
 
             debugger; 
 
         });
+
+
+
+
+
     });
 
 })

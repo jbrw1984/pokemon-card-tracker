@@ -1,5 +1,4 @@
-import { Type } from 'class-transformer';
-import { IsEmail, IsString, IsNotEmpty, MinLength, MaxLength, IsNumber, IsArray } from 'class-validator';
+import { IsString, IsNotEmpty, MinLength, MaxLength, IsNumber, IsArray } from 'class-validator';
 import { CreatePriceHistoryDto } from './priceHistory.dto';
 
 
@@ -8,6 +7,7 @@ export class CreateCardDto {
   @IsString()
   @IsNotEmpty()
   @MinLength(1)
+  @MaxLength(20)
   public name: string; 
 
   @IsString()
@@ -36,6 +36,6 @@ export class CreateCardDto {
   // priceHistory: CreatePriceHistoryDto;
 
   @IsArray()
-  public priceHistory: number[]; 
+  public priceHistory: CreatePriceHistoryDto[]; 
 
 }

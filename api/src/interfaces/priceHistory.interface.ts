@@ -1,6 +1,4 @@
-import { Document } from 'mongoose';
-
-export interface PriceHistoryData extends Document {
+export interface PriceHistoryData {
     date: Date; 
     quantity: number; 
     price: number; 
