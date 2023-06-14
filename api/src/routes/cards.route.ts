@@ -18,12 +18,7 @@ export class CardsRoute implements Routes {
     this.router.get(`${this.path}`, this.card.getCards);
 
     // Route for post request for creating a new card
-    // this.router.post(`${this.path}`, this.card.createCard); 
-    // Put in validation middleware (dto)
-    this.router.post(`${this.path}`, ValidationMiddleware(CreateCardDto /*, 'body'*/), this.card.createCard);
-
-
-
+    this.router.post(`${this.path}`, ValidationMiddleware(CreateCardDto), this.card.createCard);
 
     this.router.get(`${this.path}/:id`, this.card.getCardById);
   }

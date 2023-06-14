@@ -23,8 +23,6 @@ export class CardService {
 
   public async createCard(cardData: PokemonCard): Promise<PokemonCard> {
     const createdCard: PokemonCard = await PokemonCardModel.create(cardData);
-
-    console.log("wait"); 
     
     //TODO: add some kind of catch for catching errors
     // if (!createdCard) throw new HttpException(409, "Card doesn't exist");

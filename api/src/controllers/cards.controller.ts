@@ -48,7 +48,6 @@ export class CardsController {
     try {
       // cardData is the pokemon card information that is sent by the user 
       // in the post request
-      // TODO: add TS typing to this variable
       const cardData : PokemonCard = req.body; 
 
       // Pass in cardData into the cards service method called createCard()
@@ -63,7 +62,7 @@ export class CardsController {
 
       // TODO: look into what to do if post request fails 
       next(error); 
-      // res.status(500).json({ error: 'Internal Server Error' });
+      res.status(500).json({ error: 'Internal Server Error' });
 
     }
   }

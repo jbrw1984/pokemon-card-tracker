@@ -22,15 +22,11 @@ describe('Testing Cards Routes', () => {
             const result = await request(app.getServer()).get(`${cardsRoute.path}`); 
             console.log(result); 
             debugger; 
-
-            //.post
-            //.send
-            // todo: supertest post request example
         });
     });
 
     describe('[POST] /', () => {
-        it('response Create Card', async () => {
+        it('Create Pikachu Card', async () => {
             const cardsRoute = new CardsRoute(); 
             const app = new App([cardsRoute]); 
 
@@ -40,13 +36,13 @@ describe('Testing Cards Routes', () => {
                 price: 1
             }]
 
-            const priceHistoryPromises = priceHistoryData1.map(async (history) => {
+            const priceHistoryPromises1 = priceHistoryData1.map(async (history) => {
                 const priceHistory = new PriceHistoryModel(history);
                 await priceHistory.save();
                 return priceHistory;
               });
               
-              const priceHistories1 = await Promise.all(priceHistoryPromises);
+              const priceHistories1 = await Promise.all(priceHistoryPromises1);
 
             const cardData1: CreateCardDto = {
                 name: 'Pikachu',
@@ -54,12 +50,11 @@ describe('Testing Cards Routes', () => {
                 salePrice: 1,
                 marketPrice: 1,
                 rating: [],
-                image: 'a',
+                image: 'Pikachu.png',
                 priceHistory: priceHistories1,
             }
 
-            
-
+            const priceHistory1Id = '648a4d3b3ca4e931fb7af4ab'; 
 
             /**
              * Request method creates new HTTP request that's used to send requests
@@ -70,23 +65,67 @@ describe('Testing Cards Routes', () => {
                 .post(`${cardsRoute.path}`)
                 .send(cardData1); 
                 
-
             expect(response.body.data.name).toBe(cardData1.name);
+            expect(response.body.data.description).toBe(cardData1.description);
+            expect(response.body.data.salePrice).toBe(cardData1.salePrice);
+            expect(response.body.data.marketPrice).toBe(cardData1.marketPrice);
+            expect(response.body.data.rating).toStrictEqual(cardData1.rating);
+            expect(response.body.data.image).toBe(cardData1.image);
+
+            // TODO: Test priceHistory field of response
+            // expect(response.body.data.priceHistory[0]).toBe(cardData1.priceHistory._id);
 
             debugger; 
 
         });
 
+        it('Create Charmander Card', async () => {
+            const cardsRoute = new CardsRoute(); 
+            const app = new App([cardsRoute]); 
 
+            const priceHistoryData2: CreatePriceHistoryDto[] = [{
+                date: new Date(2023, 6, 13), 
+                quantity: 1, 
+                price: 1
+            }]
+    
+            const priceHistoryPromises2 = priceHistoryData2.map(async (history) => {
+                const priceHistory = new PriceHistoryModel(history);
+                await priceHistory.save();
+                return priceHistory;
+              });
+              
+            const priceHistories2 = await Promise.all(priceHistoryPromises2);
+    
+            const cardData2: CreateCardDto = {
+                name: 'Charmander',
+                description: 'Fire Type',
+                salePrice: 23.10,
+                marketPrice: 46.20,
+                rating: [1, 9, 8, 2, 10],
+                image: 'Charmander.png',
+                priceHistory: priceHistories2,
+            }
 
+            /**
+             * Request method creates new HTTP request that's used to send requests
+             * Post method creates post request to specified path
+             * Send method sends the cardPostData to the post request
+             */
+            const response = await request(app.getServer())
+                .post(`${cardsRoute.path}`)
+                .send(cardData2); 
+                
+            expect(response.body.data.name).toBe(cardData2.name);
+            expect(response.body.data.description).toBe(cardData2.description);
+            expect(response.body.data.salePrice).toBe(cardData2.salePrice);
+            expect(response.body.data.marketPrice).toBe(cardData2.marketPrice);
+            expect(response.body.data.rating).toStrictEqual(cardData2.rating);
+            expect(response.body.data.image).toBe(cardData2.image);
 
-
+            debugger; 
+        });
     });
-
-})
-
-describe('Testing post', () => {
-
 })
 
 
