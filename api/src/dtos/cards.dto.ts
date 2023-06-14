@@ -25,7 +25,6 @@ export class CreateCardDto {
   public marketPrice: number; 
 
   @IsArray()
-  @IsNumber()
   public rating: number[]; 
 
   @IsString()

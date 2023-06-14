@@ -63,7 +63,7 @@ describe('Testing Cards Routes', () => {
                 salePrice: 1,
                 marketPrice: 1,
                 rating: [],
-                image: '',
+                image: 'a',
                 priceHistory: [],
             }
 
@@ -79,7 +79,7 @@ describe('Testing Cards Routes', () => {
                 .send(cardData); 
                 
 
-            expect(response.body.name).toBe(cardData.name);
+            expect(response.body.data.name).toBe(cardData.name);
 
             debugger; 
 
