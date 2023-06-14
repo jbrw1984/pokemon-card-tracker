@@ -3,11 +3,11 @@ import { PokemonCard } from '@interfaces/cards.interface';
 import { PriceHistoryModel } from '@models/priceHistory.model'
 
 const PokemonCardSchema: Schema = new Schema({
-  id: {
-    type: Number, 
-    required: true, 
-    unique: true,
-  }, 
+  // id: {
+  //   type: Number, 
+  //   required: true, 
+  //   unique: true,
+  // }, 
   name: {
     type: String, 
     required: true, 
@@ -16,11 +16,11 @@ const PokemonCardSchema: Schema = new Schema({
     type: String, 
     required: true, 
   },
-  SalePrice: {
+  salePrice: {
     type: Number, 
     required: true, 
   },
-  MarketPrice: {
+  marketPrice: {
     type: Number, 
     required: true, 
   },
@@ -42,4 +42,4 @@ const PokemonCardSchema: Schema = new Schema({
 })
 
 
-export const PokemonCardModel = model<PokemonCard>('PokemonCard', PokemonCardSchema); 
+export const PokemonCardModel = model<PokemonCard & Document>('PokemonCard', PokemonCardSchema); 

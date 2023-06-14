@@ -21,6 +21,13 @@ export class CardService {
     return findCard;
   }
 
-  
+  public async createCard(cardData: PokemonCard): Promise<PokemonCard> {
+    const createdCard: PokemonCard = await PokemonCardModel.create(cardData);
+    
+    //TODO: add some kind of catch for catching errors
+    // if (!createdCard) throw new HttpException(409, "Card doesn't exist");
+
+    return createdCard;
+  }
   
 }

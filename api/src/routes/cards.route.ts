@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import { Routes } from '@interfaces/routes.interface';
 import { CardsController } from '@/controllers/cards.controller';
+import { ValidationMiddleware } from '@/middlewares/validation.middleware';
+import { CreateCardDto } from '@/dtos/cards.dto';
 
 export class CardsRoute implements Routes {
   public path = '/cards';
@@ -14,6 +16,15 @@ export class CardsRoute implements Routes {
 
   private initializeRoutes() {
     this.router.get(`${this.path}`, this.card.getCards);
+
+    // Route for post request for creating a new card
+    // this.router.post(`${this.path}`, this.card.createCard); 
+    // Put in validation middleware (dto)
+    this.router.post(`${this.path}`, ValidationMiddleware(CreateCardDto /*, 'body'*/), this.card.createCard);
+
+
+
+
     this.router.get(`${this.path}/:id`, this.card.getCardById);
   }
 }
