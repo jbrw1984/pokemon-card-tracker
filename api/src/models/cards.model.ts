@@ -3,11 +3,13 @@ import { PokemonCard } from '@interfaces/cards.interface';
 import { PriceHistoryModel } from '@models/priceHistory.model'
 
 const PokemonCardSchema: Schema = new Schema({
-  // id: {
-  //   type: Number, 
-  //   required: true, 
-  //   unique: true,
-  // }, 
+  /*
+  id: {
+    type: Number, 
+    required: true, 
+    unique: true,
+  }, 
+  */
   name: {
     type: String, 
     required: true, 
