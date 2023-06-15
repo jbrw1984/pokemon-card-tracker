@@ -43,6 +43,30 @@ export class CardsController {
       next(error);
     }
   };
+
+  public createCard = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      // cardData is the pokemon card information that is sent by the user 
+      // in the post request
+      const cardData : PokemonCard = req.body; 
+
+      // Pass in cardData into the cards service method called createCard()
+      // This will create a new card in the database and return it
+      const createdCard : PokemonCard = await this.card.createCard(cardData); 
+
+      // Send response back to user with HTTP status code 201 and 
+      // created card obj in JSON form
+      res.status(201).json({ data: createdCard, message: 'created' }); 
+    }
+    catch(error) {
+
+      // TODO: look into what to do if post request fails 
+      next(error); 
+      res.status(500).json({ error: 'Internal Server Error' });
+
+    }
+  }
+
   /*
   public createUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
