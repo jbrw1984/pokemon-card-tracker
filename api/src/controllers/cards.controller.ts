@@ -33,9 +33,8 @@ export class CardsController {
   };
 
   public getCardById = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      // The url is naturally a string so convert to Int. 
-      const cardId: number = parseInt(req.params.id);
+    try { 
+      const cardId: string = req.params.id;
       const findOneCardData: PokemonCard = await this.card.findCardById(cardId);
 
       res.status(200).json({ data: findOneCardData, message: 'findOne' });
