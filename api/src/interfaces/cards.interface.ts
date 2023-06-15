@@ -1,8 +1,7 @@
 import { PriceHistoryData } from '@interfaces/priceHistory.interface';
-import { Document } from 'mongoose';
 
-export interface PokemonCard extends Document {
-  id: number;
+export interface PokemonCard {
+  _id?: string;
   name: string;
   description: string;
   salePrice: number;

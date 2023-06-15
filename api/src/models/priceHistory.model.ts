@@ -5,11 +5,11 @@ import { PokemonCardModel } from './cards.model';
 const PriceHistorySchema: Schema = new Schema({
   // Not sure if id is required 
   // I think it is because the cards references PriceHistorySchema
-  id: {
-    type: Number,
-    required: true,
-    unique: true,
-  },
+  // id: {
+  //   type: Number,
+  //   required: true,
+  //   unique: true,
+  // },
   date: {
     type: Date,
     required: true,

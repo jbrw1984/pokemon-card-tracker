@@ -18,11 +18,11 @@ const PokemonCardSchema: Schema = new Schema({
     type: String, 
     required: true, 
   },
-  SalePrice: {
+  salePrice: {
     type: Number, 
     required: true, 
   },
-  MarketPrice: {
+  marketPrice: {
     type: Number, 
     required: true, 
   },
@@ -44,4 +44,4 @@ const PokemonCardSchema: Schema = new Schema({
 })
 
 
-export const PokemonCardModel = model<PokemonCard>('PokemonCard', PokemonCardSchema); 
+export const PokemonCardModel = model<PokemonCard & Document>('PokemonCard', PokemonCardSchema); 
