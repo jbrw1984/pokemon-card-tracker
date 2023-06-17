@@ -2,65 +2,17 @@ import request from 'supertest';
 import { App } from '@/app'; 
 import { CardsRoute } from '@routes/cards.route'; 
 import { PokemonCard } from '@/interfaces/cards.interface';
-import { ClientSession } from 'mongodb';
-import { Document, Model, DocumentSetOptions, QueryOptions, Callback, UpdateQuery, AnyObject, PopulateOptions, MergeType, Query, SaveOptions, LeanDocument, ToObjectOptions, FlattenMaps, Require_id, UpdateWithAggregationPipeline, PathsToValidate, CallbackWithoutResult, pathsToSkip, Error, Connection } from 'mongoose';
-import { PriceHistoryData } from '@/interfaces/priceHistory.interface';
+import { PokemonCardModel } from '@/models/cards.model';
 import { CreateCardDto } from '@/dtos/cards.dto';
 import { CreatePriceHistoryDto } from '@/dtos/priceHistory.dto';
 import { PriceHistoryModel } from '@/models/priceHistory.model';
 
-/* Test Card
-  {
-    "_id": {
-      "$oid": "6482376994a5ef427d02e71e"
-    },
-    "name": "Card 1",
-    "description": "Description 1",
-    "SalePrice": 1,
-    "MarketPrice": 1,
-    "rating": [],
-    "image": "linktoImage",
-    "priceHistory": []
-  }
-*/
 
 afterAll(async () => {
     await new Promise<void>(resolve => setTimeout(() => resolve(), 500)); 
 }); 
 
 describe('Testing Cards', () => {
-  // GET all cards. 
-  describe('[GET] /card', () => {
-    it('response statusCode 200', async () => {
-      const cardsRoute = new CardsRoute();
-      const app = new App([cardsRoute]);
-
-      const result = await request(app.getServer()).get(`${cardsRoute.path}`);
-      expect(result.status).toEqual(200);
-      // Check to see that the there is at least one value.
-      expect(result.body.data.length).toBeGreaterThanOrEqual(1);
-      // Check if the first items id is a length of 24.
-      // Mongo Object ID data types are a 24 character hexadecimal code.
-      expect(result.body.data[0]._id).toHaveLength(24);
-    });
-  });
-
-  // GET card by ID
-  describe('[GET] /card/:id', () => {
-    it('response with card and ID matches', async () => {
-      const cardsRoute = new CardsRoute();
-      const app = new App([cardsRoute]);
-
-      // GET the cardId from the test card.
-      const cardId = "6482376994a5ef427d02e71e";
-
-      const result = await request(app.getServer()).get(`${cardsRoute.path}/${cardId}`);
-      // Expect good status code and cardId to match the route
-      expect(result.status).toEqual(200);
-      expect(result.body.data._id).toEqual(cardId);
-    });
-  });
-
   // We might be able to delete this now.
   describe('[POST] /', () => {
     it('response statusCode 200, and creates new card', async () => {
@@ -169,6 +121,53 @@ describe('Testing Cards', () => {
       expect(response.body.data.marketPrice).toBe(cardData2.marketPrice);
       expect(response.body.data.rating).toStrictEqual(cardData2.rating);
       expect(response.body.data.image).toBe(cardData2.image);
+    });
+  });
+
+  // GET all cards. 
+  describe('[GET] /card', () => {
+    it('response statusCode 200', async () => {
+      const cardsRoute = new CardsRoute();
+      const app = new App([cardsRoute]);
+
+      const result = await request(app.getServer()).get(`${cardsRoute.path}`);
+      expect(result.status).toEqual(200);
+      // Check to see that the there is at least one value.
+      expect(result.body.data.length).toBeGreaterThanOrEqual(1);
+      // Check if the first items id is a length of 24.
+      // Mongo Object ID data types are a 24 character hexadecimal code.
+      expect(result.body.data[0]._id).toHaveLength(24);
+    });
+  });
+
+  // GET card by ID
+  describe('[GET] /card/:id', () => {
+    it('response with card and ID matches', async () => {
+      const cardsRoute = new CardsRoute();
+      const app = new App([cardsRoute]);
+
+      // Card Data to look for.
+      const cardData = {
+        "name": "Card 1",
+        "description": "Description 1",
+        "salePrice": 1,
+        "marketPrice": 1,
+        "rating": [],
+        "image": "linktoImage",
+        "priceHistory": []
+      }
+
+      // Manually create a card (this just adds a card to mongo without using an endpoint)
+      const createdCard: PokemonCard = await PokemonCardModel.create(cardData);
+      // Store the newly generated id.
+      const cardId = createdCard._id;
+      
+      // Pass the new ID to the [GET] by ID endpoint
+      const result = await request(app.getServer()).get(`${cardsRoute.path}/${cardId}`);
+      // Expect good status code and cardId to match the route
+      expect(result.status).toEqual(200);
+      // Note had to use toString because of objectId type.
+      expect(result.body.data._id.toString()).toEqual(cardId.toString());
     });
   });
 });
