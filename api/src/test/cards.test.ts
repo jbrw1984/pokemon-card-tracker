@@ -4,10 +4,12 @@ import { CardsRoute } from '@routes/cards.route';
 import { PokemonCard } from '@/interfaces/cards.interface';
 import { ClientSession } from 'mongodb';
 import { Document, Model, DocumentSetOptions, QueryOptions, Callback, UpdateQuery, AnyObject, PopulateOptions, MergeType, Query, SaveOptions, LeanDocument, ToObjectOptions, FlattenMaps, Require_id, UpdateWithAggregationPipeline, PathsToValidate, CallbackWithoutResult, pathsToSkip, Error, Connection } from 'mongoose';
-import { PriceHistoryData } from '@/interfaces/priceHistory.interface';
+import { PriceHistory } from '@/interfaces/priceHistory.interface';
 import { CreateCardDto } from '@/dtos/cards.dto';
 import { CreatePriceHistoryDto } from '@/dtos/priceHistory.dto';
 import { PriceHistoryModel } from '@/models/priceHistory.model';
+import { PokemonCardModel } from '@/models/cards.model';
+import encodings from '../../node_modules/iconv-lite/encodings';
 
 /* Test Card
   {
@@ -79,19 +81,20 @@ describe('Testing Cards', () => {
       const cardsRoute = new CardsRoute(); 
       const app = new App([cardsRoute]); 
 
-      const priceHistoryData1: CreatePriceHistoryDto[] = [{
-        date: new Date(2023, 6, 13), 
-        quantity: 1, 
-        price: 1
-      }]
+      // const priceHistoryData1: CreatePriceHistoryDto = {
+      //   pokemonCardId: '3',
+      //   date: new Date(2023, 6, 13), 
+      //   quantity: 1, 
+      //   price: 1
+      // }
 
-      const priceHistoryPromises1 = priceHistoryData1.map(async (history) => {
-        const priceHistory = new PriceHistoryModel(history);
-          await priceHistory.save();
-          return priceHistory;
-      });
+      // const priceHistoryPromises1 = priceHistoryData1.map(async (history) => {
+      //   const priceHistory = new PriceHistoryModel(history);
+      //     await priceHistory.save();
+      //     return priceHistory;
+      // });
             
-      const priceHistories1 = await Promise.all(priceHistoryPromises1);
+      // const priceHistories1 = await Promise.all(priceHistoryPromises1);
 
       const cardData1: CreateCardDto = {
         name: 'Pikachu',
@@ -100,7 +103,7 @@ describe('Testing Cards', () => {
         marketPrice: 1,
         rating: [],
         image: 'Pikachu.png',
-        priceHistory: priceHistories1,
+        // priceHistory: priceHistories1,
       }
 
       const priceHistory1Id = '648a4d3b3ca4e931fb7af4ab'; 
@@ -130,19 +133,6 @@ describe('Testing Cards', () => {
       const cardsRoute = new CardsRoute(); 
       const app = new App([cardsRoute]); 
 
-      const priceHistoryData2: CreatePriceHistoryDto[] = [{
-        date: new Date(2023, 6, 13), 
-        quantity: 1, 
-        price: 1
-      }]
-
-      const priceHistoryPromises2 = priceHistoryData2.map(async (history) => {
-        const priceHistory = new PriceHistoryModel(history);
-        await priceHistory.save();
-        return priceHistory;
-      });
-        
-      const priceHistories2 = await Promise.all(priceHistoryPromises2);
 
       const cardData2: CreateCardDto = {
         name: 'Charmander',
@@ -151,7 +141,7 @@ describe('Testing Cards', () => {
         marketPrice: 46.20,
         rating: [1, 9, 8, 2, 10],
         image: 'Charmander.png',
-        priceHistory: priceHistories2,
+        // priceHistory: priceHistories2,
       }
 
       /**
@@ -171,4 +161,52 @@ describe('Testing Cards', () => {
       expect(response.body.data.image).toBe(cardData2.image);
     });
   });
+
+
+    // Test [POST] creating price history
+    describe('[POST] /', () => {
+      it('Create Price History Entry', async () => {
+        const cardsRoute = new CardsRoute(); 
+        const app = new App([cardsRoute]); 
+  
+        // Create a sample card for the price history to reference
+        const cardData1: PokemonCard = {
+          name: 'Pikachu',
+          description: 'Electric Type',
+          salePrice: 1,
+          marketPrice: 1,
+          rating: [],
+          image: 'Pikachu.png',
+        }
+        const createdCard1: PokemonCard = await PokemonCardModel.create(cardData1);
+        const createdCard1Id = createdCard1._id; 
+
+
+        const priceHistoryData1: CreatePriceHistoryDto = {
+          pokemonCardId: createdCard1Id, 
+          date: new Date(2023, 6, 13), 
+          quantity: 1, 
+          price: 1
+        }
+  
+        /**
+         * Request method creates new HTTP request that's used to send requests
+         * Post method creates post request to specified path
+         * Send method sends the cardPostData to the post request
+         */
+        const response = await request(app.getServer())
+          .post(`${cardsRoute.path}/priceHistory`)
+          .send(priceHistoryData1); 
+            
+        expect(response.body.data.pokemonCardId).toBe(priceHistoryData1.pokemonCardId);
+        expect(response.body.data.date).toBe(priceHistoryData1.date);
+        expect(response.body.data.quantity).toBe(priceHistoryData1.quantity);
+        expect(response.body.data.price).toBe(priceHistoryData1.price);
+
+
+  
+        // TODO: Test priceHistory field of response
+        // expect(response.body.data.priceHistory[0]).toBe(cardData1.priceHistory._id);
+      });
+    });
 });

@@ -4,6 +4,7 @@ import { User } from '@interfaces/users.interface';
 import { UserService } from '@services/users.service';
 import { PokemonCard } from '@interfaces/cards.interface';
 import { CardService } from '@/services/cards.service';
+import { PriceHistory } from '@/interfaces/priceHistory.interface';
 
 // All routes that will need controllers
 // Create new card: POST /cards
@@ -65,6 +66,29 @@ export class CardsController {
 
     }
   }
+
+  public createPriceHistory = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      // priceHistoryData is the price history into that is sent by the user 
+      // in the post request
+      const priceHistoryData : PriceHistory = req.body; 
+
+      // Pass in priceHistoryData into the cards service method called createPriceHistory()
+      // This will create a new card in the database and return it
+      const createdPriceHistory : PriceHistory = await this.card.createPriceHistory(priceHistoryData); 
+
+      // Send response back to user with HTTP status code 201 and 
+      // created price history obj in JSON form
+      res.status(201).json({ data: createdPriceHistory, message: 'created' }); 
+    }
+    catch(error) {
+
+      // TODO: look into what to do if post request fails 
+      next(error); 
+      res.status(500).json({ error: 'Internal Server Error' });
+
+    }
+  } 
 
   /*
   public createUser = async (req: Request, res: Response, next: NextFunction) => {

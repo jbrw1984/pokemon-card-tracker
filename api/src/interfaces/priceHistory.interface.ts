@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export interface PriceHistoryData {
+export interface PriceHistory {
     //Reference to pokemon card
     pokemonCardId: mongoose.Types.ObjectId | string;
     date: Date; 

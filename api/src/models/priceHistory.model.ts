@@ -1,5 +1,5 @@
 import { model, Schema, Document } from 'mongoose';
-import { PriceHistoryData } from '@interfaces/priceHistory.interface'; 
+import { PriceHistory } from '@interfaces/priceHistory.interface'; 
 import { PokemonCardModel } from './cards.model';
 
 const PriceHistorySchema: Schema = new Schema({
@@ -39,4 +39,4 @@ const PriceHistorySchema: Schema = new Schema({
   // https://medium.com/@brandon.lau86/one-to-many-relationships-with-mongodb-and-mongoose-in-node-express-d5c9d23d93c2
 })
 
-export const PriceHistoryModel = model<PriceHistoryData>('PriceHistoryData', PriceHistorySchema); 
+export const PriceHistoryModel = model<PriceHistory>('PriceHistoryData', PriceHistorySchema); 

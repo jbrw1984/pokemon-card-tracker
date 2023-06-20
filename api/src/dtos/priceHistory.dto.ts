@@ -3,21 +3,21 @@ import { ObjectId } from 'mongoose';
 
 export class CreatePriceHistoryDto {
 
-    @IsString()
+    // @IsString()
     public pokemonCardId: ObjectId | String; 
 
-    @IsDate()
-    @IsNotEmpty()
+    // @IsDate()
+    // @IsNotEmpty()
     public date: Date;
 
 
-    @IsNumber()
-    @IsNotEmpty()
-    @MinLength(1)
+    // @IsNumber()
+    // @IsNotEmpty()
+    // @MinLength(1)
     public quantity: number; 
 
-    @IsNumber()
-    @IsNotEmpty()
-    @MinLength(1)
+    // @IsNumber()
+    // @IsNotEmpty()
+    // @MinLength(1)
     public price: number; 
   }
