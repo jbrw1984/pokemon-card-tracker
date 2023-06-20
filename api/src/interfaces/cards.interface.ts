@@ -8,7 +8,8 @@ export interface PokemonCard {
   marketPrice: number;
   rating: number[]; 
   image: string;
-  // Referencing the PriceHistoryData interface. 
-  // Will be used in mongoose schema
-  priceHistory: PriceHistoryData['_id'][];
+
+  // // Referencing the PriceHistoryData interface. 
+  // // Will be used in mongoose schema
+  // priceHistory: PriceHistoryData['_id'][];
 }

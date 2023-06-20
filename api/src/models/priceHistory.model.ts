@@ -10,6 +10,11 @@ const PriceHistorySchema: Schema = new Schema({
   //   required: true,
   //   unique: true,
   // },
+  pokemonCardId: {
+    type: Schema.Types.ObjectId, 
+    ref: PokemonCardModel, 
+    required: true
+  },
   date: {
     type: Date,
     required: true,

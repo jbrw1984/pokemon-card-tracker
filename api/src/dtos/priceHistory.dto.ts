@@ -1,10 +1,14 @@
-import { IsEmail, IsString, IsNotEmpty, MinLength, MaxLength, IsNumber, IsArray, IsDate } from 'class-validator';
+import { IsString, IsNotEmpty, MinLength, IsNumber, IsDate } from 'class-validator';
+import { ObjectId } from 'mongoose';
 
 export class CreatePriceHistoryDto {
 
+    @IsString()
+    public pokemonCardId: ObjectId | String; 
+
     @IsDate()
     @IsNotEmpty()
-    public date: Date
+    public date: Date;
 
 
     @IsNumber()

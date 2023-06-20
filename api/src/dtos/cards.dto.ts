@@ -35,7 +35,7 @@ export class CreateCardDto {
   // @Type(() => CreatePriceHistoryDto)
   // priceHistory: CreatePriceHistoryDto;
 
-  @IsArray()
-  public priceHistory: CreatePriceHistoryDto[]; 
+  // @IsArray()
+  // public priceHistory: CreatePriceHistoryDto[]; 
 
 }
