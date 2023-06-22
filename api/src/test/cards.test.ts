@@ -195,18 +195,21 @@ describe('Testing Cards', () => {
          * Send method sends the cardPostData to the post request
          */
         const response = await request(app.getServer())
-          .post(`${cardsRoute.path}/priceHistory`)
+          .post(`${cardsRoute.path}/price-history`)
           .send(priceHistoryData1); 
             
-        expect(response.body.data.pokemonCardId).toBe(priceHistoryData1.pokemonCardId);
-        expect(response.body.data.date).toBe(priceHistoryData1.date);
+        // Need to create a date object from the string date given in the response object
+        const dateAndTimePriceHistory : string[] = response.body.data.date.split("T"); 
+        const dateOfPriceHistory : string = dateAndTimePriceHistory[0]; 
+        const [year, month, day] : string[] = dateOfPriceHistory.split('-');
+        const responseDateObject = new Date(+year, +month - 1, +day);        
+
+        expect(response.body.data.pokemonCardId).toBe(priceHistoryData1.pokemonCardId.toString());
+        expect(responseDateObject.toString()).toBe(priceHistoryData1.date.toString());
         expect(response.body.data.quantity).toBe(priceHistoryData1.quantity);
         expect(response.body.data.price).toBe(priceHistoryData1.price);
-
-
-  
-        // TODO: Test priceHistory field of response
-        // expect(response.body.data.priceHistory[0]).toBe(cardData1.priceHistory._id);
       });
     });
+
+
 });
