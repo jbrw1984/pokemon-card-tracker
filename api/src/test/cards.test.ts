@@ -210,6 +210,4 @@ describe('Testing Cards', () => {
         expect(response.body.data.price).toBe(priceHistoryData1.price);
       });
     });
-
-
 });
