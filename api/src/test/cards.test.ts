@@ -6,6 +6,7 @@ import { PokemonCardModel } from '@/models/cards.model';
 import { CreateCardDto } from '@/dtos/cards.dto';
 import { CreatePriceHistoryDto } from '@/dtos/priceHistory.dto';
 import { PriceHistoryModel } from '@/models/priceHistory.model';
+import { cardData } from './arrayOfCards';
 
 
 afterAll(async () => {
@@ -146,21 +147,17 @@ describe('Testing Cards', () => {
       const cardsRoute = new CardsRoute();
       const app = new App([cardsRoute]);
 
-      // Card Data to look for.
-      const cardData = {
-        "name": "Card 1",
-        "description": "Description 1",
-        "salePrice": 1,
-        "marketPrice": 1,
-        "rating": [],
-        "image": "linktoImage",
-        "priceHistory": []
-      }
+      // Create an array of newly created cards
+      let createdCards: PokemonCard[] = [];
 
-      // Manually create a card (this just adds a card to mongo without using an endpoint)
-      const createdCard: PokemonCard = await PokemonCardModel.create(cardData);
-      // Store the newly generated id.
-      const cardId = createdCard._id;
+      // Loop through card data adding each card to the db
+      for (let i: number = 0; i < cardData.length; i++) {
+        // Manually create a card (this just adds a card to mongo without using an endpoint)
+        createdCards[i] = await PokemonCardModel.create(cardData[i]);
+      }
+      
+      // Store the first created card's id
+      const cardId = createdCards[0]._id;
       
       // Pass the new ID to the [GET] by ID endpoint
       const result = await request(app.getServer()).get(`${cardsRoute.path}/${cardId}`);
