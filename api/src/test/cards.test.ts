@@ -12,42 +12,43 @@ import { PokemonCardModel } from '@/models/cards.model';
 import encodings from '../../node_modules/iconv-lite/encodings';
 import { cardData } from './arrayOfCards';
 
+// Global variables 
+const cardsRoute = new CardsRoute();
+const app = new App([cardsRoute]);
+// Create an array of newly created cards
+let createdCards: PokemonCard[] = [];
+
+// Before running tests add 22 cards to DB
+beforeAll(async () => {
+  // Loop through card data adding each card to the db
+  for (let i: number = 0; i < cardData.length; i++) {
+    // Manually create a card (this just adds a card to mongo without using an endpoint)
+    createdCards[i] = await PokemonCardModel.create(cardData[i]);
+  }
+});
 
 afterAll(async () => {
     await new Promise<void>(resolve => setTimeout(() => resolve(), 500)); 
 }); 
 
+// Tests begin here
 describe('Testing Cards', () => {
-  // We might be able to delete this now.
-  describe('[POST] /', () => {
-    it('response statusCode 200, and creates new card', async () => {
-      const cardsRoute = new CardsRoute(); 
-      const app = new App([cardsRoute]); 
-
-      const result = await request(app.getServer()).get(`${cardsRoute.path}`); 
-      console.log(result); 
-    });
-  });
-
   // Test [POST] creating cards
   describe('[POST] /', () => {
     // First create card  
     it('Create Pikachu Card', async () => {
-      const cardsRoute = new CardsRoute(); 
-      const app = new App([cardsRoute]); 
 
-      // const priceHistoryData1: CreatePriceHistoryDto = {
-      //   pokemonCardId: '3',
-      //   date: new Date(2023, 6, 13), 
-      //   quantity: 1, 
-      //   price: 1
-      // }
+      const priceHistoryData1: CreatePriceHistoryDto[] = [{
+        date: new Date(2023, 6, 13), 
+        quantity: 1, 
+        price: 1
+      }]
 
-      // const priceHistoryPromises1 = priceHistoryData1.map(async (history) => {
-      //   const priceHistory = new PriceHistoryModel(history);
-      //     await priceHistory.save();
-      //     return priceHistory;
-      // });
+      const priceHistoryPromises1 = priceHistoryData1.map(async (history) => {
+        const priceHistory = new PriceHistoryModel(history);
+          await priceHistory.save();
+          return priceHistory;
+      });
             
       // const priceHistories1 = await Promise.all(priceHistoryPromises1);
 
@@ -85,9 +86,20 @@ describe('Testing Cards', () => {
 
     // Second create card
     it('Create Charmander Card', async () => {
-      const cardsRoute = new CardsRoute(); 
-      const app = new App([cardsRoute]); 
 
+      const priceHistoryData2: CreatePriceHistoryDto[] = [{
+        date: new Date(2023, 6, 13), 
+        quantity: 1, 
+        price: 1
+      }]
+
+      const priceHistoryPromises2 = priceHistoryData2.map(async (history) => {
+        const priceHistory = new PriceHistoryModel(history);
+        await priceHistory.save();
+        return priceHistory;
+      });
+        
+      const priceHistories2 = await Promise.all(priceHistoryPromises2);
 
       const cardData2: CreateCardDto = {
         name: 'Charmander',
@@ -166,9 +178,6 @@ describe('Testing Cards', () => {
   // GET all cards. 
   describe('[GET] /card', () => {
     it('response statusCode 200', async () => {
-      const cardsRoute = new CardsRoute();
-      const app = new App([cardsRoute]);
-
       const result = await request(app.getServer()).get(`${cardsRoute.path}`);
       expect(result.status).toEqual(200);
       // Check to see that the there is at least one value.
@@ -182,18 +191,6 @@ describe('Testing Cards', () => {
   // GET card by ID
   describe('[GET] /card/:id', () => {
     it('response with card and ID matches', async () => {
-      const cardsRoute = new CardsRoute();
-      const app = new App([cardsRoute]);
-
-      // Create an array of newly created cards
-      let createdCards: PokemonCard[] = [];
-
-      // Loop through card data adding each card to the db
-      for (let i: number = 0; i < cardData.length; i++) {
-        // Manually create a card (this just adds a card to mongo without using an endpoint)
-        createdCards[i] = await PokemonCardModel.create(cardData[i]);
-      }
-      
       // Store the first created card's id
       const cardId = createdCards[0]._id;
       
