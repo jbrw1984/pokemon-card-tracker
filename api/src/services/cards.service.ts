@@ -8,9 +8,14 @@ import { PokemonCardModel } from '@/models/cards.model';
 
 @Service()
 export class CardService {
-  public async findAllCards(): Promise<PokemonCard[]> {
+  public async findAllCards(page: any, limit: any): Promise<PokemonCard[]> {
     // Still need PokemonCardModel
-    const cards: PokemonCard[] = await PokemonCardModel.find();
+    const cards: PokemonCard[] = await PokemonCardModel.find()
+    // Ensure the limit is a number by multipling by 1
+    .limit(limit * 1)
+    // Skip the correct number of pages based on current page
+    // ie page 1 skip 0 cards
+    .skip((page - 1) * limit);
     return cards;
   }
 

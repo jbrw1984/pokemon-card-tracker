@@ -24,7 +24,11 @@ export class CardsController {
   // Controller to get all cards this will be used for the main page.
   public getCards = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const findAllCardsData: PokemonCard[] = await this.card.findAllCards();
+      // Initialize our page to 1 and our limit to 12 (12 cards per page)
+      const page = req.query.page || 1;
+      const limit = 12;
+
+      const findAllCardsData: PokemonCard[] = await this.card.findAllCards(page, limit);
 
       res.status(200).json({ data: findAllCardsData, message: 'findAll' });
     } catch (error) {

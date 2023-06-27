@@ -125,11 +125,26 @@ describe('Testing Cards', () => {
 
   // GET all cards. 
   describe('[GET] /card', () => {
-    it('response statusCode 200', async () => {
+    // Test no query passed
+    it('Default page', async () => {
       const result = await request(app.getServer()).get(`${cardsRoute.path}`);
       expect(result.status).toEqual(200);
-      // Check to see that the there is at least one value.
-      expect(result.body.data.length).toBeGreaterThanOrEqual(1);
+      // Check to see that the there is 12 cards 
+      expect(result.body.data.length).toBe(12);
+      // First card on default page (page 1) should be Card 1
+      expect(result.body.data[0].name).toBe("Card 1");
+      // Check if the first items id is a length of 24.
+      // Mongo Object ID data types are a 24 character hexadecimal code.
+      expect(result.body.data[0]._id).toHaveLength(24);
+    });
+    // Test page=2 passed as query
+    it('Page 2', async () => {
+      const result = await request(app.getServer()).get(`${cardsRoute.path}?page=2`);
+      expect(result.status).toEqual(200);
+      // Check to see that the there is 12 cards 
+      expect(result.body.data.length).toBe(12);
+      // First card on page 2 should be card 13
+      expect(result.body.data[0].name).toBe("Card 13");
       // Check if the first items id is a length of 24.
       // Mongo Object ID data types are a 24 character hexadecimal code.
       expect(result.body.data[0]._id).toHaveLength(24);
