@@ -1,23 +1,22 @@
-import { IsString, IsNotEmpty, MinLength, IsNumber, IsDate } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsDateString } from 'class-validator';
 import { ObjectId } from 'mongoose';
 
 export class CreatePriceHistoryDto {
 
-    // @IsString()
-    public pokemonCardId: ObjectId | String; 
+    @IsString()
+    public pokemonCardId: ObjectId | string; 
 
-    // @IsDate()
-    // @IsNotEmpty()
+    @IsDateString()
+    @IsNotEmpty()
     public date: Date;
 
 
-    // @IsNumber()
-    // @IsNotEmpty()
-    // @MinLength(1)
+    @IsNumber()
+    @IsNotEmpty()
     public quantity: number; 
 
-    // @IsNumber()
-    // @IsNotEmpty()
-    // @MinLength(1)
+    @IsNumber()
+    @IsNotEmpty()
     public price: number; 
-  }
+
+}

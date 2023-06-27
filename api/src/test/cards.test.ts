@@ -164,7 +164,7 @@ describe('Testing Cards', () => {
 
 
     // Test [POST] creating price history
-    describe('[POST] /', () => {
+    describe('[POST] /cards/:id/price-history', () => {
       it('Create Price History Entry', async () => {
         const cardsRoute = new CardsRoute(); 
         const app = new App([cardsRoute]); 
@@ -181,21 +181,21 @@ describe('Testing Cards', () => {
         const createdCard1: PokemonCard = await PokemonCardModel.create(cardData1);
         const createdCard1Id = createdCard1._id; 
 
+        const examplePriceHistoryDate = new Date(2023, 6, 13); 
 
         const priceHistoryData1: CreatePriceHistoryDto = {
-          pokemonCardId: createdCard1Id, 
-          date: new Date(2023, 6, 13), 
-          quantity: 1, 
-          price: 1
+          pokemonCardId: '', 
+          date: examplePriceHistoryDate, 
+          quantity: 234, 
+          price: 568
         }
   
         /**
          * Request method creates new HTTP request that's used to send requests
          * Post method creates post request to specified path
-         * Send method sends the cardPostData to the post request
          */
         const response = await request(app.getServer())
-          .post(`${cardsRoute.path}/price-history`)
+          .post(`${cardsRoute.path}/${createdCard1Id}/price-history`)
           .send(priceHistoryData1); 
             
         // Need to create a date object from the string date given in the response object
@@ -204,7 +204,7 @@ describe('Testing Cards', () => {
         const [year, month, day] : string[] = dateOfPriceHistory.split('-');
         const responseDateObject = new Date(+year, +month - 1, +day);        
 
-        expect(response.body.data.pokemonCardId).toBe(priceHistoryData1.pokemonCardId.toString());
+        expect(response.body.data.pokemonCardId).toBe(createdCard1Id.toString());
         expect(responseDateObject.toString()).toBe(priceHistoryData1.date.toString());
         expect(response.body.data.quantity).toBe(priceHistoryData1.quantity);
         expect(response.body.data.price).toBe(priceHistoryData1.price);

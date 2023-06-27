@@ -1,5 +1,4 @@
 import { IsString, IsNotEmpty, MinLength, MaxLength, IsNumber, IsArray } from 'class-validator';
-import { CreatePriceHistoryDto } from './priceHistory.dto';
 
 
 export class CreateCardDto {
