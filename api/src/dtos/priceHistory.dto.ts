@@ -3,9 +3,6 @@ import { ObjectId } from 'mongoose';
 
 export class CreatePriceHistoryDto {
 
-    @IsString()
-    public pokemonCardId: ObjectId | string; 
-
     @IsDateString()
     @IsNotEmpty()
     public date: Date;

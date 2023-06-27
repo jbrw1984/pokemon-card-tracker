@@ -136,11 +136,8 @@ describe('Testing Cards', () => {
         const createdCard1: PokemonCard = await PokemonCardModel.create(cardData1);
         const createdCard1Id = createdCard1._id; 
 
-        const examplePriceHistoryDate = new Date(2023, 6, 13); 
-
         const priceHistoryData1: CreatePriceHistoryDto = {
-          pokemonCardId: '', 
-          date: examplePriceHistoryDate, 
+          date: new Date(2023, 6, 13), 
           quantity: 234, 
           price: 568
         }
