@@ -8,7 +8,7 @@ import { PokemonCardModel } from '@/models/cards.model';
 
 @Service()
 export class CardService {
-  public async findAllCards(page: any, limit: any): Promise<PokemonCard[]> {
+  public async findAllCards(page: number, limit: number): Promise<PokemonCard[]> {
     // Still need PokemonCardModel
     const cards: PokemonCard[] = await PokemonCardModel.find()
     // Ensure the limit is a number by multipling by 1

@@ -4,6 +4,7 @@ import { User } from '@interfaces/users.interface';
 import { UserService } from '@services/users.service';
 import { PokemonCard } from '@interfaces/cards.interface';
 import { CardService } from '@/services/cards.service';
+import { PokemonCardModel } from '@/models/cards.model';
 
 // All routes that will need controllers
 // Create new card: POST /cards
@@ -25,8 +26,14 @@ export class CardsController {
   public getCards = async (req: Request, res: Response, next: NextFunction) => {
     try {
       // Initialize our page to 1 and our limit to 12 (12 cards per page)
-      const page = req.query.page || 1;
-      const limit = 12;
+      let page: number = Number(req.query.page) || 1;
+      const limit: number = 12;
+
+      // Store total number of pages and if page goes past the number of pages then set page to the last page
+      const totalNumberOfPages: number = Math.ceil((await PokemonCardModel.find()).length / limit);
+      if (page > totalNumberOfPages) {
+        page = totalNumberOfPages;
+      }
 
       const findAllCardsData: PokemonCard[] = await this.card.findAllCards(page, limit);
 
