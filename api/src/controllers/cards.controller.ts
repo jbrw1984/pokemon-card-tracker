@@ -4,6 +4,7 @@ import { User } from '@interfaces/users.interface';
 import { UserService } from '@services/users.service';
 import { PokemonCard } from '@interfaces/cards.interface';
 import { CardService } from '@/services/cards.service';
+import { PokemonCardModel } from '@/models/cards.model';
 import { PriceHistory } from '@/interfaces/priceHistory.interface';
 import { ObjectId } from 'mongoose';
 import { CreatePriceHistoryDto } from '@/dtos/priceHistory.dto';
@@ -27,7 +28,17 @@ export class CardsController {
   // Controller to get all cards this will be used for the main page.
   public getCards = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const findAllCardsData: PokemonCard[] = await this.card.findAllCards();
+      // Initialize our page to 1 and our limit to 12 (12 cards per page)
+      let page: number = Number(req.query.page) || 1;
+      const limit: number = 12;
+
+      // Store total number of pages and if page goes past the number of pages then set page to the last page
+      const totalNumberOfPages: number = Math.ceil((await PokemonCardModel.find()).length / limit);
+      if (page > totalNumberOfPages) {
+        page = totalNumberOfPages;
+      }
+
+      const findAllCardsData: PokemonCard[] = await this.card.findAllCards(page, limit);
 
       res.status(200).json({ data: findAllCardsData, message: 'findAll' });
     } catch (error) {
