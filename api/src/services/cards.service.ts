@@ -5,6 +5,9 @@ import { HttpException } from '@exceptions/httpException';
 // import { UserModel } from '@models/users.model';
 import { PokemonCard } from '@/interfaces/cards.interface';
 import { PokemonCardModel } from '@/models/cards.model';
+import { PriceHistory } from '@/interfaces/priceHistory.interface';
+import { PriceHistoryModel } from '@/models/priceHistory.model';
+import { ObjectId } from 'mongoose';
 
 @Service()
 export class CardService {
@@ -33,6 +36,15 @@ export class CardService {
     // if (!createdCard) throw new HttpException(409, "Card doesn't exist");
 
     return createdCard;
+  }
+  
+  public async createPriceHistory(cardId : ObjectId | string , priceHistoryData: PriceHistory): Promise<PriceHistory> {
+    const createdPriceHistory: PriceHistory = await PriceHistoryModel.create(priceHistoryData);
+    
+    //TODO: add some kind of catch for catching errors
+    // if (!createdPriceHistory) throw new HttpException(409, "Price History doesn't exist");
+
+    return createdPriceHistory;
   }
   
 }

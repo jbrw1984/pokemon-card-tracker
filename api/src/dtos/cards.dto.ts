@@ -1,5 +1,4 @@
 import { IsString, IsNotEmpty, MinLength, MaxLength, IsNumber, IsArray } from 'class-validator';
-import { CreatePriceHistoryDto } from './priceHistory.dto';
 
 
 export class CreateCardDto {
@@ -35,7 +34,7 @@ export class CreateCardDto {
   // @Type(() => CreatePriceHistoryDto)
   // priceHistory: CreatePriceHistoryDto;
 
-  @IsArray()
-  public priceHistory: CreatePriceHistoryDto[]; 
+  // @IsArray()
+  // public priceHistory: CreatePriceHistoryDto[]; 
 
 }
