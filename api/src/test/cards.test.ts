@@ -51,20 +51,6 @@ describe('Testing Cards', () => {
     // First create card  
     it('Create Pikachu Card', async () => {
 
-      const priceHistoryData1: CreatePriceHistoryDto[] = [{
-        date: new Date(2023, 6, 13), 
-        quantity: 1, 
-        price: 1
-      }]
-
-      const priceHistoryPromises1 = priceHistoryData1.map(async (history) => {
-        const priceHistory = new PriceHistoryModel(history);
-          await priceHistory.save();
-          return priceHistory;
-      });
-            
-      // const priceHistories1 = await Promise.all(priceHistoryPromises1);
-
       const cardData1: CreateCardDto = {
         name: 'Pikachu',
         description: 'Electric Type',
@@ -72,10 +58,7 @@ describe('Testing Cards', () => {
         marketPrice: 1,
         rating: [],
         image: 'Pikachu.png',
-        // priceHistory: priceHistories1,
       }
-
-      const priceHistory1Id = '648a4d3b3ca4e931fb7af4ab'; 
 
       /**
        * Request method creates new HTTP request that's used to send requests
@@ -93,26 +76,10 @@ describe('Testing Cards', () => {
       expect(response.body.data.rating).toStrictEqual(cardData1.rating);
       expect(response.body.data.image).toBe(cardData1.image);
 
-      // TODO: Test priceHistory field of response
-      // expect(response.body.data.priceHistory[0]).toBe(cardData1.priceHistory._id);
     });
 
     // Second create card
     it('Create Charmander Card', async () => {
-
-      const priceHistoryData2: CreatePriceHistoryDto[] = [{
-        date: new Date(2023, 6, 13), 
-        quantity: 1, 
-        price: 1
-      }]
-
-      const priceHistoryPromises2 = priceHistoryData2.map(async (history) => {
-        const priceHistory = new PriceHistoryModel(history);
-        await priceHistory.save();
-        return priceHistory;
-      });
-        
-      const priceHistories2 = await Promise.all(priceHistoryPromises2);
 
       const cardData2: CreateCardDto = {
         name: 'Charmander',
@@ -121,7 +88,6 @@ describe('Testing Cards', () => {
         marketPrice: 46.20,
         rating: [1, 9, 8, 2, 10],
         image: 'Charmander.png',
-        // priceHistory: priceHistories2,
       }
 
       /**
