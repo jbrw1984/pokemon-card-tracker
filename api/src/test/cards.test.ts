@@ -16,6 +16,19 @@ let createdCards: PokemonCard[] = [];
 
 // Before running tests add 22 cards to DB
 beforeAll(async () => {
+  // Check how many entries in collections
+  const cardCount = await PokemonCardModel.countDocuments({});
+  const priceHistoryCount = await PriceHistoryModel.countDocuments({});
+  // Drop collections to have a clean database each test run.
+  // Note there is a bug if the collection is empty
+  if (cardCount !== 0) {
+    await PokemonCardModel.collection.drop();
+  }
+  if (priceHistoryCount !== 0) {
+    await PriceHistoryModel.collection.drop();
+  }
+  
+  // Now repopulate collection with cards.
   // Loop through card data adding each card to the db
   for (let i: number = 0; i < cardData.length; i++) {
     // Manually create a card (this just adds a card to mongo without using an endpoint)
