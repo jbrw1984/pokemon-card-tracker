@@ -3,13 +3,7 @@ import { PokemonCard } from '@interfaces/cards.interface';
 import { PriceHistoryModel } from '@models/priceHistory.model'
 
 const PokemonCardSchema: Schema = new Schema({
-  /*
-  id: {
-    type: Number, 
-    required: true, 
-    unique: true,
-  }, 
-  */
+
   name: {
     type: String, 
     required: true, 
@@ -36,11 +30,11 @@ const PokemonCardSchema: Schema = new Schema({
   },
   // Square brackets used because priceHistory will be array 
   // Not required because a card will have no priceHistory when created
-  priceHistory: [{
-    type: Schema.Types.ObjectId, 
-    ref: PriceHistoryModel, 
-    required: false, 
-  }]
+  // priceHistory: [{
+  //   type: Schema.Types.ObjectId, 
+  //   ref: PriceHistoryModel, 
+  //   required: false, 
+  // }]
 })
 
 

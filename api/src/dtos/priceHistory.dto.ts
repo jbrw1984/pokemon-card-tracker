@@ -1,19 +1,19 @@
-import { IsEmail, IsString, IsNotEmpty, MinLength, MaxLength, IsNumber, IsArray, IsDate } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsDateString } from 'class-validator';
+import { ObjectId } from 'mongoose';
 
 export class CreatePriceHistoryDto {
 
-    @IsDate()
+    @IsDateString()
     @IsNotEmpty()
-    public date: Date
+    public date: Date;
 
 
     @IsNumber()
     @IsNotEmpty()
-    @MinLength(1)
     public quantity: number; 
 
     @IsNumber()
     @IsNotEmpty()
-    @MinLength(1)
     public price: number; 
-  }
+
+}
