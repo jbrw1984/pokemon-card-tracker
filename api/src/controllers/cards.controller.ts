@@ -49,7 +49,8 @@ export class CardsController {
   public getCardById = async (req: Request, res: Response, next: NextFunction) => {
     try { 
       const cardId: string = req.params.id;
-      const findOneCardData: PokemonCard = await this.card.findCardById(cardId);
+      const includePriceHistory : boolean = req.query.include === 'price-history';
+      const findOneCardData: PokemonCard = await this.card.findCardById(cardId, includePriceHistory);
 
       res.status(200).json({ data: findOneCardData, message: 'findOne' });
     } catch (error) {

@@ -22,11 +22,20 @@ export class CardService {
     return cards;
   }
 
-  public async findCardById(cardId: string): Promise<PokemonCard> {
-    const findCard: PokemonCard = await PokemonCardModel.findOne({ _id: cardId });
-    if (!findCard) throw new HttpException(409, "Card doesn't exist");
+  public async findCardById(cardId: string, includePriceHistory: boolean): Promise<PokemonCard> {
 
-    return findCard;
+    // Include price history
+    if(includePriceHistory) {
+      const findCard: PokemonCard = await (await PokemonCardModel.findOne({ _id: cardId })).populate('priceHistoryEntries'); 
+      if (!findCard) throw new HttpException(409, "Card doesn't exist");
+      return findCard;
+    }
+    // Don't include price history
+    else {
+      const findCard: PokemonCard = await PokemonCardModel.findOne({ _id: cardId });
+      if (!findCard) throw new HttpException(409, "Card doesn't exist");
+      return findCard;
+    }
   }
 
   public async createCard(cardData: PokemonCard): Promise<PokemonCard> {

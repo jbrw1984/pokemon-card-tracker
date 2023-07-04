@@ -1,15 +1,14 @@
 import request from 'supertest'; 
-import { App } from '@/app'; 
-import { CardsRoute } from '@routes/cards.route'; 
-import { PokemonCard } from '@/interfaces/cards.interface';
-import { ClientSession } from 'mongodb';
-import { Document, Model, DocumentSetOptions, QueryOptions, Callback, UpdateQuery, AnyObject, PopulateOptions, MergeType, Query, SaveOptions, LeanDocument, ToObjectOptions, FlattenMaps, Require_id, UpdateWithAggregationPipeline, PathsToValidate, CallbackWithoutResult, pathsToSkip, Error, Connection } from 'mongoose';
 import { PriceHistory } from '@/interfaces/priceHistory.interface';
 import { CreateCardDto } from '@/dtos/cards.dto';
 import { CreatePriceHistoryDto } from '@/dtos/priceHistory.dto';
 import { PriceHistoryModel } from '@/models/priceHistory.model';
 import { PokemonCardModel } from '@/models/cards.model';
-import encodings from '../../node_modules/iconv-lite/encodings';
+import { App } from '@/app'; 
+import { CardsRoute } from '@routes/cards.route'; 
+import { PokemonCard } from '@/interfaces/cards.interface';
+import { ClientSession } from 'mongodb';
+import { Document, Model, DocumentSetOptions, QueryOptions, Callback, UpdateQuery, AnyObject, PopulateOptions, MergeType, Query, SaveOptions, LeanDocument, ToObjectOptions, FlattenMaps, Require_id, UpdateWithAggregationPipeline, PathsToValidate, CallbackWithoutResult, pathsToSkip, Error, Connection } from 'mongoose';
 import { cardData } from './arrayOfCards';
 
 // Global variables 
@@ -195,5 +194,68 @@ describe('Testing Cards', () => {
       // Note had to use toString because of objectId type.
       expect(result.body.data._id.toString()).toEqual(cardId.toString());
     });
+
+    it('Get price history with include param', async () => {
+      // Create multiple price history entries
+      const cardId = createdCards[0]._id;
+      const priceHistoryData0: PriceHistory = {
+        pokemonCardId: cardId, 
+        date: new Date(2023, 6, 13), 
+        quantity: 234, 
+        price: 568
+      }
+      const priceHistoryData1: PriceHistory = {
+        pokemonCardId: cardId, 
+        date: new Date(1999, 12, 31), 
+        quantity: 1, 
+        price: 100
+      }
+      const createdPriceHistory0: PriceHistory = await PriceHistoryModel.create(priceHistoryData0);
+      const createdPriceHistory1: PriceHistory = await PriceHistoryModel.create(priceHistoryData1);
+
+
+      // Pass the new ID to the [GET] by ID endpoint
+      const result = await request(app.getServer()).get(`${cardsRoute.path}/${cardId}?include=price-history`);
+
+
+      // Expect good status code and cardId to match the route
+      expect(result.status).toEqual(200);
+      // Note had to use toString because of objectId type.
+      expect(result.body.data._id.toString()).toEqual(cardId.toString());
+
+      // Check pokemon card fields 
+      expect(result.body.data.name).toEqual(createdCards[0].name);
+      expect(result.body.data.description).toEqual(createdCards[0].description);
+      expect(result.body.data.salePrice).toEqual(createdCards[0].salePrice);
+      expect(result.body.data.marketPrice).toEqual(createdCards[0].marketPrice);
+      expect(result.body.data.rating).toEqual(createdCards[0].rating);
+      expect(result.body.data.image).toEqual(createdCards[0].image);
+
+      // Check first price history entry
+      const dateAndTimePriceHistory0 : string[] = result.body.data.priceHistoryEntries[0].date.split("T"); 
+      const dateOfPriceHistory0 : string = dateAndTimePriceHistory0[0]; 
+      const [year0, month0, day0] : string[] = dateOfPriceHistory0.split('-');
+      const responseDateObject0 = new Date(+year0, +month0 - 1, +day0);
+
+      expect(responseDateObject0.toString()).toBe(priceHistoryData0.date.toString());
+      // expect(result.body.data.priceHistoryEntries[0]._id.toString()).toEqual(createdPriceHistory1._id.toString());
+      expect(result.body.data.priceHistoryEntries[0].pokemonCardId.toString()).toEqual(priceHistoryData0.pokemonCardId.toString());
+      expect(result.body.data.priceHistoryEntries[0].price).toEqual(priceHistoryData0.price);
+      expect(result.body.data.priceHistoryEntries[0].quantity).toEqual(priceHistoryData0.quantity);
+
+
+      // Check second price history entry
+      const dateAndTimePriceHistory1 : string[] = result.body.data.priceHistoryEntries[1].date.split("T"); 
+      const dateOfPriceHistory1 : string = dateAndTimePriceHistory1[0]; 
+      const [year1, month1, day1] : string[] = dateOfPriceHistory1.split('-');
+      const responseDateObject1 = new Date(+year1, +month1 - 1, +day1);
+
+      expect(responseDateObject1.toString()).toBe(priceHistoryData1.date.toString());
+      // expect(result.body.data.priceHistoryEntries[0]._id.toString()).toEqual(createdPriceHistory1._id.toString());
+      expect(result.body.data.priceHistoryEntries[1].pokemonCardId.toString()).toEqual(priceHistoryData1.pokemonCardId.toString());
+      expect(result.body.data.priceHistoryEntries[1].price).toEqual(priceHistoryData1.price);
+      expect(result.body.data.priceHistoryEntries[1].quantity).toEqual(priceHistoryData1.quantity);
+    });
+
   });
 });
