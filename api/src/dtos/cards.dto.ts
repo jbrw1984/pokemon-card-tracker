@@ -29,12 +29,4 @@ export class CreateCardDto {
   @IsString()
   public image: string; 
 
-  // Reference to CreatePriceHistoryDto
-  // @IsArray()
-  // @Type(() => CreatePriceHistoryDto)
-  // priceHistory: CreatePriceHistoryDto;
-
-  // @IsArray()
-  // public priceHistory: CreatePriceHistoryDto[]; 
-
 }
