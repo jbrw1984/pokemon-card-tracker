@@ -6,10 +6,12 @@ import ReactPaginate from "react-paginate";
 import { CardsRoute } from '../../../../api/src/routes/cards.route'; 
 import { App } from '../../../../api/src/app';
 // Global variables 
+/*
 const cardsRoute = new CardsRoute();
 const app = new App([cardsRoute]);
 
 const result = await app.getServer()).get(`${cardsRoute.path}?page=2`;
+*/
 function DisplayCards () {
   const [pageNumber, setPageNumber] = useState(0);
   

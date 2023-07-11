@@ -30,7 +30,7 @@ export class CardsController {
     try {
       // Initialize our page to 1 and our limit to 12 (12 cards per page)
       let page: number = Number(req.query.page) || 1;
-      const limit: number = 12;
+      const limit: number = Number(req.query.limit) || 12;
 
       // Store total number of pages and if page goes past the number of pages then set page to the last page
       const totalNumberOfPages: number = Math.ceil((await PokemonCardModel.find()).length / limit);
