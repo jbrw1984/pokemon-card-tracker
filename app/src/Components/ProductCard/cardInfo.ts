@@ -392,7 +392,7 @@ const cardInfo: PokemonCard[] = [
       {date: new Date("2023-05-01"), quantity: 1, price: 3.99}, 
       {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
-  },
+  }/*,
   {
     id: 321,
     name: "Pikachu",
@@ -649,6 +649,7 @@ const cardInfo: PokemonCard[] = [
       {date: new Date("2023-05-01"), quantity: 1, price: 3.99}
     ]
   }
+  */
 ];
 
 export default cardInfo;
