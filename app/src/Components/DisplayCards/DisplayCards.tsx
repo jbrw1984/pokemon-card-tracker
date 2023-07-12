@@ -1,42 +1,61 @@
 import { useState, useEffect } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import cardInfo from "../ProductCard/cardInfo";
 import './DisplayCards.css';
 import ReactPaginate from "react-paginate";
+import { PokemonCard } from "../../../../api/src/interfaces/cards.interface";
 
 function DisplayCards () {
   const [pageNumber, setPageNumber] = useState(0);
-  const [cards, setCards] = useState();
+  const [cards, setCards] = useState<PokemonCard[]>([]);
+  const [allCards, setAllCards] = useState<PokemonCard[]>([]);
   
+  // 12 Cards per page
   const limit: number = 12;
-  const pagesVisited: number = pageNumber * limit;
 
-  const fetchData = async () => {
-    const res = await fetch(`http://localhost:3000/cards/?page=${pageNumber + 1}&limit=${limit}`)
-    const data = await res.json();
-    setCards(data);
-    console.log(cards);
-  }
-
+  // Get allCards and save the total number of cards (this determines number of pages)
   useEffect(() => {
-    fetchData();
+    const fetchAllCards = () => {
+      try {
+        fetch(`http://localhost:3000/cards/?page=1&limit=100000000000000000000`)
+        .then(res => res.json())
+        .then(data => setAllCards(data.data));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchAllCards();
+  }, [])
+  const numOfCards: number = allCards.length;
+  
+  // Update the cards each time the user changes the page
+  useEffect(() => {
+    const fetchCurrentCards = () => {
+      try {
+        fetch(`http://localhost:3000/cards/?page=${pageNumber + 1}&limit=${limit}`)
+        .then(res => res.json())
+        .then(data => setCards(data.data));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchCurrentCards();
   }, [pageNumber]);
 
-  const displaySetOfCards = cardInfo
-    .slice(pagesVisited, pagesVisited + limit)
-    .map((card) => {
-      return (
-        <ProductCard 
-          name={card.name}
-          image={card.image}
-          salePrice={card.salePrice}
-          marketPrice={card.marketPrice}
-          description={card.description}
-        />
-      );
-    });
+  // Map all of the current cards
+  const displaySetOfCards = cards
+  .map((card) => {
+    return (
+      <ProductCard 
+        name={card.name}
+        image={card.image}
+        salePrice={card.salePrice}
+        marketPrice={card.marketPrice}
+        description={card.description}
+      />
+    );
+  });
 
-  const pageCount: number = Math.ceil(cardInfo.length / limit);
+  const pageCount: number = Math.ceil(numOfCards / limit);
 
   const changePage = ({ selected }: any) => {
     setPageNumber(selected);
