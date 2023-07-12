@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-//import cardInfo from "../ProductCard/cardInfo";
+import cardInfo from "../ProductCard/cardInfo";
 import './DisplayCards.css';
 import ReactPaginate from "react-paginate";
-import { CardsRoute } from '../../../../api/src/routes/cards.route'; 
-import { App } from '../../../../api/src/app';
+//import { CardsRoute } from '../../../../api/src/routes/cards.route'; 
+//import { App } from '../../../../api/src/app';
 // Global variables 
 /*
 const cardsRoute = new CardsRoute();
@@ -14,12 +14,24 @@ const result = await app.getServer()).get(`${cardsRoute.path}?page=2`;
 */
 function DisplayCards () {
   const [pageNumber, setPageNumber] = useState(0);
+  const [cards, setCards] = useState();
   
-  const cardsPerPage: number = 12;
-  const pagesVisited: number = pageNumber * cardsPerPage;
+  const limit: number = 12;
+  const pagesVisited: number = pageNumber * limit;
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/cards/?page=${pageNumber}&limit=${limit}`)
+    .then(res => res.json())
+    .then(data => setCards(data));
+    if (cards) {
+      console.log(cards);
+    }
+    
+      
+  }, [pageNumber]);
 
   const displaySetOfCards = cardInfo
-    .slice(pagesVisited, pagesVisited + cardsPerPage)
+    .slice(pagesVisited, pagesVisited + limit)
     .map((card) => {
       return (
         <ProductCard 
@@ -32,7 +44,7 @@ function DisplayCards () {
       );
     });
 
-  const pageCount: number = Math.ceil(cardInfo.length / cardsPerPage);
+  const pageCount: number = Math.ceil(cardInfo.length / limit);
 
   const changePage = ({ selected }: any) => {
     setPageNumber(selected);
