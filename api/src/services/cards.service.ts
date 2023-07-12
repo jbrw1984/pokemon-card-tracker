@@ -31,7 +31,6 @@ export class CardService {
       .skip((page - 1) * limit);
       return cards;
     }
-    
   }
 
   public async findCardById(cardId: string, includePriceHistory: boolean): Promise<PokemonCard> {

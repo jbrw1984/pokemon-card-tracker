@@ -30,7 +30,7 @@ export class CardsController {
     try {
       // Initialize our page to 1 and our limit to 12 (12 cards per page)
       let page: number = Number(req.query.page) || 1;
-      if(page < 0) {
+      if(page < 1) {
         page = 1; 
       }
       const limit: number = 12;
