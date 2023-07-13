@@ -40,7 +40,7 @@ export class CardsController {
 
       const findAllCardsData: PokemonCard[] = await this.card.findAllCards(page, limit);
 
-      res.status(200).json({ data: findAllCardsData, message: 'findAll' });
+      res.status(200).json({ data: findAllCardsData, message: 'findAll', totalPages: totalNumberOfPages });
     } catch (error) {
       next(error);
     }

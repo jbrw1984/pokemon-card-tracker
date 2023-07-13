@@ -7,33 +7,19 @@ import { PokemonCard } from "../../../../api/src/interfaces/cards.interface";
 function DisplayCards () {
   const [pageNumber, setPageNumber] = useState(0);
   const [cards, setCards] = useState<PokemonCard[]>([]);
-  const [allCards, setAllCards] = useState<PokemonCard[]>([]);
+  const [totalPages, setTotalPages] = useState(0);
   
   // 12 Cards per page
   const limit: number = 12;
-
-  // Get allCards and save the total number of cards (this determines number of pages)
-  useEffect(() => {
-    const fetchAllCards = () => {
-      try {
-        fetch(`http://localhost:3000/cards/?page=1&limit=100000000000000000000`)
-        .then(res => res.json())
-        .then(data => setAllCards(data.data));
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchAllCards();
-  }, [])
-  const numOfCards: number = allCards.length;
   
   // Update the cards each time the user changes the page
   useEffect(() => {
-    const fetchCurrentCards = () => {
+    const fetchCurrentCards = async() => {
       try {
-        fetch(`http://localhost:3000/cards/?page=${pageNumber + 1}&limit=${limit}`)
-        .then(res => res.json())
-        .then(data => setCards(data.data));
+        const result = await fetch(`http://localhost:3000/cards/?page=${pageNumber + 1}&limit=${limit}`);
+        const data = await result.json();
+        setCards(data.data);
+        setTotalPages(data.totalPages);
       } catch (error) {
         console.error(error);
       }
@@ -55,8 +41,6 @@ function DisplayCards () {
     );
   });
 
-  const pageCount: number = Math.ceil(numOfCards / limit);
-
   const changePage = ({ selected }: any) => {
     setPageNumber(selected);
   };
@@ -64,9 +48,9 @@ function DisplayCards () {
   return (
     <div className="page-container">
       <div className="pagination-container">
-        <h4>Page {pageNumber + 1} of {pageCount}</h4>
+        <h4>Page {pageNumber + 1} of {totalPages}</h4>
         <ReactPaginate 
-          pageCount={pageCount}
+          pageCount={totalPages}
           previousLabel={"<"}
           nextLabel={">"}
           onPageChange={changePage}
