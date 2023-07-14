@@ -16,13 +16,14 @@ export class CardsRoute implements Routes {
   }
 
   private initializeRoutes() {
+    this.router.get(`${this.path}`, this.card.getCards);
+
     // Route for post request for creating a new card
     this.router.post(`${this.path}`, ValidationMiddleware(CreateCardDto), this.card.createCard);
 
     // Route for post request for creating a new price history entry
     this.router.post(`${this.path}/:id/price-history`, ValidationMiddleware(CreatePriceHistoryDto), this.card.createPriceHistory)
 
-    this.router.get(`${this.path}`, this.card.getCards);
     this.router.get(`${this.path}/:id`, this.card.getCardById);
   }
 }
