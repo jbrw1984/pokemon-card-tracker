@@ -179,6 +179,50 @@ describe('Testing Cards', () => {
       // Mongo Object ID data types are a 24 character hexadecimal code.
       expect(result.body.data[0]._id).toHaveLength(24);
     });
+    // Test limit query
+    it('Get cards and limit', async () => {
+      const result = await request(app.getServer()).get(`${cardsRoute.path}?page=1&limit=12`);
+
+      expect(result.status).toEqual(200);
+      expect(result.body.data.length).toEqual(12);
+    });
+
+    // GET card by name
+    it('Query name of card', async () => {
+      const cardName1 : string = createdCards[0].name;
+      const result = await request(app.getServer()).get(`${cardsRoute.path}?name=${cardName1}`);
+    
+      expect(result.status).toEqual(200);
+      expect(result.body.data.length).toBeGreaterThanOrEqual(1);
+      expect(result.body.data[0].name).toBe("Card 1");
+      expect(result.body.data[0]._id).toHaveLength(24);
+    });
+
+    // GET card by name and page
+    it('Query name of card and page number', async () => {
+
+      const testCard1 : PokemonCard = {
+        name: 'SearchCardQuery', 
+        description: 'Search', 
+        salePrice: 1, 
+        marketPrice: 2, 
+        rating: [], 
+        image: 'img',
+      }
+      let createdSameNameCards: PokemonCard[] = [];
+      // Create multiple cards with same name
+      for (let i: number = 0; i < 15; i++) {
+        createdSameNameCards[i] = await PokemonCardModel.create(testCard1);
+      }
+
+      const result = await request(app.getServer()).get(`${cardsRoute.path}?name=${testCard1.name}&page=2`);
+    
+      expect(result.status).toEqual(200);
+      // Expect 3 cards on second page (15 cards total - 12 card limit)
+      expect(result.body.data.length).toEqual(3);
+      expect(result.body.data[0].name).toBe("SearchCardQuery");
+      expect(result.body.data[0]._id).toHaveLength(24);
+    });
   });
 
   // GET card by ID
