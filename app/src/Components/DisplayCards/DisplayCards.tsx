@@ -28,8 +28,7 @@ function DisplayCards () {
   }, [pageNumber]);
 
   // Map all of the current cards
-  const displaySetOfCards = cards
-  .map((card) => {
+  const displaySetOfCards = cards && cards.map((card) => {
     return (
       <ProductCard 
         name={card.name}
