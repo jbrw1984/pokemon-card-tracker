@@ -14,6 +14,7 @@ import { dbConnection } from '@database';
 import { Routes } from '@interfaces/routes.interface';
 import { ErrorMiddleware } from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
+//const cors = require('cors');
 
 export class App {
   public app: express.Application;
@@ -23,7 +24,7 @@ export class App {
   constructor(routes: Routes[]) {
     this.app = express();
     this.env = NODE_ENV || 'development';
-    this.port = PORT || 3000;
+    this.port = PORT || 3001;
 
     this.connectToDatabase();
     this.initializeMiddlewares();
@@ -62,6 +63,7 @@ export class App {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cookieParser());
+    this.app.use(cors());
   }
   
   private initializeRoutes(routes: Routes[]) {

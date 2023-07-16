@@ -179,6 +179,13 @@ describe('Testing Cards', () => {
       // Mongo Object ID data types are a 24 character hexadecimal code.
       expect(result.body.data[0]._id).toHaveLength(24);
     });
+    // Test limit query
+    it('Get cards and limit', async () => {
+      const result = await request(app.getServer()).get(`${cardsRoute.path}?page=1&limit=12`);
+
+      expect(result.status).toEqual(200);
+      expect(result.body.data.length).toEqual(12);
+    });
 
     // GET card by name
     it('Query name of card', async () => {
