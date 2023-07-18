@@ -4,16 +4,10 @@ import {PokemonCard, priceHistoryData} from '../ProductCard/cardInfo';
 import { PriceHistory } from '../../../../api/src/interfaces/priceHistory.interface';
 import './PriceHistory.css';
 
-
-// interface PriceHistoryProps{
-//     cardInfo: PokemonCard; 
-// }
-
 interface PriceHistoryProps{
     priceHistoryArray: PriceHistory[]; 
 }
 
-// const PriceHistoryComponent: FC<PriceHistoryProps > = ({ cardInfo}): JSX.Element => {
 const PriceHistoryComponent: FC<PriceHistoryProps > = ({ priceHistoryArray }): JSX.Element => {
     {/** 
         This React component is called PriceHistory. 
@@ -30,7 +24,6 @@ const PriceHistoryComponent: FC<PriceHistoryProps > = ({ priceHistoryArray }): J
 
         return (
         <tr /*key={index}*/>
-            {/* <th>{priceHistory.date.getMonth()}/{priceHistory.date.getDate()}/{priceHistory.date.getFullYear()}</th> */}
             <th>{dateObj.getMonth() + 1}/{dateObj.getDate()}/{dateObj.getFullYear()}</th>
             <th>{priceHistory.quantity}</th>
             <th>{priceHistory.price}</th>

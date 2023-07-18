@@ -6,25 +6,39 @@ import InputGroup from 'react-bootstrap/InputGroup';
 // import {PokemonCard, priceHistoryData} from '../ProductCard/cardInfo'; 
 import { PokemonCard } from "../../../../api/src/interfaces/cards.interface";
 import './CardDescription.css';
+import '../ProductCard/274465 1.png'
 
 interface CardDescriptionProps {
     cardInfo: PokemonCard; 
 }
 
 const CardDescription: FC<CardDescriptionProps> = ({ cardInfo}): JSX.Element => {
+    const DEFAULT_NAME : string = 'Pokemon'
+    const DEFAULT_IMAGE : string = './274465 1.png'
+    const DEFAULT_SALE_PRICE : number = NaN
+    const DEFAULT_MARKET_PRICE : number = NaN
+    const DEFAULT_RATING: number = NaN
+    const DEFAULT_DESCRIPTION : string = 'Pokemon'
+
     return (
         <Card className="card-desc-comp">
-            <Card.Img className="card-desc-img" src={cardInfo.image}></Card.Img>
+            <Card.Img className="card-desc-img" src={cardInfo && cardInfo.image ? cardInfo.image : DEFAULT_IMAGE}></Card.Img>
             <Card.Body className="card-desc-body">
-                <Card.Title className="card-desc-name">{cardInfo.name}</Card.Title>
-                <Card.Subtitle className="card-desc-sale-price">${cardInfo.salePrice}</Card.Subtitle>
+                <Card.Title className="card-desc-name">{cardInfo && cardInfo.name ? cardInfo.name : DEFAULT_NAME}</Card.Title>
+                <Card.Subtitle className="card-desc-sale-price">${cardInfo && cardInfo.salePrice ? cardInfo.salePrice : DEFAULT_SALE_PRICE}</Card.Subtitle>
 
                 <Card.Text className="card-desc-price-rtn">
-                    Market Price: <span className="card-desc-market-price">${cardInfo.marketPrice}</span>  |  Card Rating: <span className="card-desc-rating">{cardInfo.rating}</span>
+                    Market Price: 
+                    <span className="card-desc-market-price">
+                        ${cardInfo && cardInfo.marketPrice ? cardInfo.marketPrice : DEFAULT_MARKET_PRICE}
+                    </span>  |  Card Rating: 
+                    <span className="card-desc-rating">
+                        {cardInfo && cardInfo.rating ? cardInfo.rating : DEFAULT_RATING}
+                    </span>
                 </Card.Text>
 
                 <Card.Text className="card-desc-info">
-                    {cardInfo.description}
+                    {cardInfo && cardInfo.description ? cardInfo.description : DEFAULT_DESCRIPTION}
                     {/* Attack 1:[L] Energize Attach a L Energy card from your discard pile to this Pokemon.
                     <ul>
                         <li>Card Number / Rarity:049/203 / Common</li>
