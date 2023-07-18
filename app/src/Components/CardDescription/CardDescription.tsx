@@ -3,7 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import InputGroup from 'react-bootstrap/InputGroup';
-import {PokemonCard, priceHistoryData} from '../ProductCard/cardInfo'; 
+// import {PokemonCard, priceHistoryData} from '../ProductCard/cardInfo'; 
+import { PokemonCard } from "../../../../api/src/interfaces/cards.interface";
 import './CardDescription.css';
 
 interface CardDescriptionProps {
@@ -23,13 +24,14 @@ const CardDescription: FC<CardDescriptionProps> = ({ cardInfo}): JSX.Element => 
                 </Card.Text>
 
                 <Card.Text className="card-desc-info">
-                    Attack 1:[L] Energize Attach a L Energy card from your discard pile to this Pokemon.
+                    {cardInfo.description}
+                    {/* Attack 1:[L] Energize Attach a L Energy card from your discard pile to this Pokemon.
                     <ul>
                         <li>Card Number / Rarity:049/203 / Common</li>
                         <li>Card Type / HP / Stage:Lightning / 60 / Basic</li>
                         <li>Attack 2:[2L] Electro Ball (30)</li>
                         <li>Weakness / Resistance / Retreat Cost:Fx2 / None / 1</li>
-                    </ul>
+                    </ul> */}
                 </Card.Text>
 
                 <Form>

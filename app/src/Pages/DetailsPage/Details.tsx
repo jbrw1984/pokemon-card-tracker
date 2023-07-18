@@ -56,7 +56,7 @@ function Details() {
 
       <BackToResult /> 
 
-      <CardDescription cardInfo={cardInfo[0]}/>
+      <CardDescription cardInfo={card as PokemonCard}/>
 
       <div className="info-flexbox">
         <PriceHistoryComponent priceHistoryArray={Array.isArray(priceHistory) ? priceHistory : []}/>
