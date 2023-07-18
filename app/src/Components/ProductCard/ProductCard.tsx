@@ -1,10 +1,17 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './ProductCard.css';
 
 function ProductCard(props: any) {
+
+  const navigate = useNavigate(); 
+
+  function handleClick(path: string) {
+    navigate(path); 
+  }
+
   return (
     <Card className="card-component">
       <Card.Img src={props.image} className="card-img" />
@@ -16,8 +23,13 @@ function ProductCard(props: any) {
         <Card.Text className="card-desc">
           {props.description}
         </Card.Text>
-        <Button variant="dark" className="card-btn">
-          <Link to="/details" className="btn-link">VIEW MORE DETAILS</Link>
+        <Button 
+          variant="dark" 
+          className="card-btn"
+          onClick={() => handleClick("/details")}
+        >
+          {/* <Link to="/details" className="btn-link">VIEW MORE DETAILS</Link> */}
+          VIEW MORE DETAILS
         </Button>
       </Card.Body>
     </Card>
