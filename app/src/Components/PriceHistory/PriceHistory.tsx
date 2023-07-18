@@ -1,18 +1,37 @@
 import React, { FC, useState } from "react";
 import { Col, Table } from "react-bootstrap";
 import {PokemonCard, priceHistoryData} from '../ProductCard/cardInfo'; 
+import { PriceHistory } from '../../../../api/src/interfaces/priceHistory.interface';
 import './PriceHistory.css';
 
+
+// interface PriceHistoryProps{
+//     cardInfo: PokemonCard; 
+// }
+
 interface PriceHistoryProps{
-    cardInfo: PokemonCard; 
+    priceHistoryArray: PriceHistory[]; 
 }
 
-const PriceHistory: FC<PriceHistoryProps > = ({ cardInfo}): JSX.Element => {
+// const PriceHistoryComponent: FC<PriceHistoryProps > = ({ cardInfo}): JSX.Element => {
+const PriceHistoryComponent: FC<PriceHistoryProps > = ({ priceHistoryArray }): JSX.Element => {
+    {/** 
+        This React component is called PriceHistory. 
+        The interface that is passed into the component as a generic
+        is the Price History interface listed in the API interfaces. 
+     */}
 
     const renderPriceData = (priceHistory : priceHistoryData) => { //passes in the priceHistory array within PokemonCard
+        console.log(priceHistory)
+        console.log(priceHistory.date)
+        let dateObj = new Date(priceHistory.date); 
+        console.log(dateObj)
+
+
         return (
         <tr /*key={index}*/>
-            <th>{priceHistory.date.getMonth()}/{priceHistory.date.getDate()}/{priceHistory.date.getFullYear()}</th>
+            {/* <th>{priceHistory.date.getMonth()}/{priceHistory.date.getDate()}/{priceHistory.date.getFullYear()}</th> */}
+            <th>{dateObj.getMonth() + 1}/{dateObj.getDate()}/{dateObj.getFullYear()}</th>
             <th>{priceHistory.quantity}</th>
             <th>{priceHistory.price}</th>
         </tr>
@@ -32,7 +51,7 @@ const PriceHistory: FC<PriceHistoryProps > = ({ cardInfo}): JSX.Element => {
                 </thead>
                 <tbody>
                     {/*Incorporate some kind of use of state here to store the number of items to show as 4*/}
-                    {cardInfo.priceHistory.slice(0, 4).map(renderPriceData)}
+                    {priceHistoryArray.slice(0, 4).map(renderPriceData)}
                 </tbody>
             </Table>
         </div>
@@ -41,4 +60,4 @@ const PriceHistory: FC<PriceHistoryProps > = ({ cardInfo}): JSX.Element => {
 
 }
   
-  export default PriceHistory;
+  export default PriceHistoryComponent;
