@@ -11,7 +11,31 @@ import pokemonLogo from './pokemon-logo-black-transparent.png';
 import cartImg from './cart.png';
 import { Link } from 'react-router-dom';
 
-class TopNav extends React.Component {
+interface TopNavState {
+  searchVal: string
+}
+
+class TopNav extends React.Component<{}, TopNavState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      searchVal: "",
+    };
+  }
+
+  // When the user searches for a card.
+  handleSearchSubmit = (e: any) => {
+    // Void the page refresh
+    e.preventDefault();
+
+    console.log("Searched");
+    const searchValue = e.currentTarget[0].value;
+    this.setState({ searchVal: searchValue }, () => {
+      // Callback to access the updated state value
+      console.log(this.state.searchVal);
+    });
+  }
+
   render () {
     return (
       <Navbar id="top-nav" expand="lg" variant="dark">
@@ -26,7 +50,6 @@ class TopNav extends React.Component {
                 alt="React Bootstrap logo"
               />
             </Link>
-            
           </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav" >
@@ -54,7 +77,7 @@ class TopNav extends React.Component {
                       </Form>
                     </NavDropdown.Item>
                   </NavDropdown>
-                  <Form className="d-flex collapse-btn" id="nav-search">
+                  <Form className="d-flex collapse-btn" id="nav-search" onSubmit={this.handleSearchSubmit}>
                     <Form.Control
                       type="search"
                       placeholder="Search"
