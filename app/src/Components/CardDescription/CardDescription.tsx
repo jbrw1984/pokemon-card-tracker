@@ -6,7 +6,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 // import {PokemonCard, priceHistoryData} from '../ProductCard/cardInfo'; 
 import { PokemonCard } from "../../../../api/src/interfaces/cards.interface";
 import './CardDescription.css';
-import '../ProductCard/274465 1.png'
+import '../ProductCard/Cardback.jpg'
 
 interface CardDescriptionProps {
     cardInfo: PokemonCard; 
@@ -14,7 +14,7 @@ interface CardDescriptionProps {
 
 const CardDescription: FC<CardDescriptionProps> = ({ cardInfo}): JSX.Element => {
     const DEFAULT_NAME : string = 'Pokemon'
-    const DEFAULT_IMAGE : string = './274465 1.png'
+    const DEFAULT_IMAGE : string = './Cardback.jpg'
     const DEFAULT_SALE_PRICE : number = NaN
     const DEFAULT_MARKET_PRICE : number = NaN
     const DEFAULT_RATING: number = NaN

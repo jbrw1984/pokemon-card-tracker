@@ -5,7 +5,7 @@ import CardRater from '../../Components/CardRater/CardRater';
 import PriceHistoryComponent from '../../Components/PriceHistory/PriceHistory';
 import CardDescription from '../../Components/CardDescription/CardDescription'; 
 import BackToResult from '../../Components/BackToResult/BackToResult';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { PokemonCard } from '../../../../api/src/interfaces/cards.interface';
 import { useEffect, useState } from 'react';
 import { PriceHistory } from "../../../../api/src/interfaces/priceHistory.interface";
@@ -13,7 +13,15 @@ import { PriceHistory } from "../../../../api/src/interfaces/priceHistory.interf
 
 
 function Details() {
+  const location = useLocation();
+  const receivedStatePokemonCard = location.state;
+
   const params = useParams(); 
+
+  /*
+  'card' state variable is optional because we are already using the 
+  receivedStatePokemonCard from the ProductCard component. 
+  */
   const [card, setCard] = useState<PokemonCard>(); 
   const [priceHistory, setPriceHistory ] = useState<PriceHistory>(); 
 
@@ -39,8 +47,14 @@ function Details() {
       <TopNav />
 
       <BackToResult /> 
-
-      <CardDescription cardInfo={card as PokemonCard}/>
+      
+      {/** The ProductCard.tsx component used the useNavigate hook to navigate to this Details component
+       * It also passed in the corresponding Pokemon Card info as an object in the state. Now, we can pass 
+       * in that state Pokemon Card into the CardDescription component as a prop. 
+       * Optionally: can also pass in this component's state variable 'card', which is obtained
+       * along with the price history from the fetch statement. 
+      */}
+      <CardDescription cardInfo={receivedStatePokemonCard as PokemonCard}/>
 
       <div className="info-flexbox">
         <PriceHistoryComponent priceHistoryArray={Array.isArray(priceHistory) ? priceHistory : []}/>

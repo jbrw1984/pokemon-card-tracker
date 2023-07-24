@@ -10,6 +10,7 @@ interface PriceHistoryProps{
 
 const PriceHistoryComponent: FC<PriceHistoryProps > = ({ priceHistoryArray }): JSX.Element => {
     {/** 
+        Clarification: 
         This React component is called PriceHistory. 
         The interface that is passed into the component as a generic
         is the Price History interface listed in the API interfaces. 
@@ -26,7 +27,7 @@ const PriceHistoryComponent: FC<PriceHistoryProps > = ({ priceHistoryArray }): J
         <tr /*key={index}*/>
             <th>{dateObj.getMonth() + 1}/{dateObj.getDate()}/{dateObj.getFullYear()}</th>
             <th>{priceHistory.quantity}</th>
-            <th>{priceHistory.price}</th>
+            <th>${priceHistory.price}</th>
         </tr>
         ); 
     }; 

@@ -3,17 +3,21 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useNavigate } from "react-router-dom";
 import './ProductCard.css';
-import './274465 1.png'
+import './Cardback.jpg'
+import { PokemonCard } from "../../../../api/src/interfaces/cards.interface";
+
 
 function ProductCard(props: any) {
 
   const navigate = useNavigate(); 
-  function handleClick(path: string) {
-    navigate(path); 
+
+  function handleClick(currentPokemonCard: PokemonCard) {
+    // Pass in current Pokemon card info as state
+    navigate(`/details/${currentPokemonCard._id}`, {state: currentPokemonCard}); 
   }
 
   const DEFAULT_NAME : string = 'Pokemon'
-  const DEFAULT_IMAGE : string = './274465 1.png'
+  const DEFAULT_IMAGE : string = './Cardback.jpg'
   const DEFAULT_SALE_PRICE : number = NaN
   const DEFAULT_MARKET_PRICE : number = NaN
   const DEFAULT_DESCRIPTION : string = 'Pokemon'
@@ -46,7 +50,10 @@ function ProductCard(props: any) {
         <Button 
           variant="dark" 
           className="card-btn"
-          onClick={() => handleClick(`/details/${props.pokemonCard.id}`)}
+          // onClick={() => handleClick(`/details/${props.pokemonCard.id}`)}
+          // FIND: find way just pass in props.pokemonCard, instead of string of path. 
+          // Then, on details page, only need to call endpoint to include price history
+          onClick={() => handleClick(props.pokemonCard)}
         >
           <div className="btn-link">VIEW MORE DETAILS</div>
         </Button>
