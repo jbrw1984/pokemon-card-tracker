@@ -31,11 +31,12 @@ function DisplayCards () {
   const displaySetOfCards = cards && cards.map((card) => {
     return (
       <ProductCard 
-        name={card.name}
-        image={card.image}
-        salePrice={card.salePrice}
-        marketPrice={card.marketPrice}
-        description={card.description}
+        pokemonCard={card}
+        // name={card.name}
+        // image={card.image}
+        // salePrice={card.salePrice}
+        // marketPrice={card.marketPrice}
+        // description={card.description}
       />
     );
   });
