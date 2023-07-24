@@ -24,7 +24,7 @@ class TopNav extends React.Component<{}, TopNavState> {
   }
 
   // When the user searches for a card.
-  handleSearchSubmit = (e: any) => {
+  handleSearchChange = (e: any) => {
     // Void the page refresh
     e.preventDefault();
 
@@ -77,7 +77,7 @@ class TopNav extends React.Component<{}, TopNavState> {
                       </Form>
                     </NavDropdown.Item>
                   </NavDropdown>
-                  <Form className="d-flex collapse-btn" id="nav-search" onSubmit={this.handleSearchSubmit}>
+                  <Form className="d-flex collapse-btn" id="nav-search" onChange={this.handleSearchChange}>
                     <Form.Control
                       type="search"
                       placeholder="Search"

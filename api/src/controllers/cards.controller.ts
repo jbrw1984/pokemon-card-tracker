@@ -33,7 +33,8 @@ export class CardsController {
       const limit: number = 12;
       let totalNumberOfPages: number;
 
-      const cardName: string | undefined = req.query.name as string | undefined; 
+      //const cardName: string | undefined = req.query.name as string | undefined; 
+      const cardName: string = req.query.name as string | "";
       const searchByName: boolean = cardName && typeof cardName == "string"
       
       if(searchByName) {
