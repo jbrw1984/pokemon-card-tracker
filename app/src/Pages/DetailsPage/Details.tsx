@@ -16,6 +16,7 @@ function Details() {
   const location = useLocation();
   const receivedStatePokemonCard = location.state;
 
+  // Grabs the args/params passed in through useNavigate's URL
   const params = useParams(); 
 
   /*
