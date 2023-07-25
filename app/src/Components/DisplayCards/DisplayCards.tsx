@@ -4,7 +4,12 @@ import './DisplayCards.css';
 import ReactPaginate from "react-paginate";
 import { PokemonCard } from "../../../../api/src/interfaces/cards.interface";
 
-function DisplayCards () {
+interface Props {
+  search?: any
+}
+
+
+function DisplayCards ({ search }: Props) {
   const [pageNumber, setPageNumber] = useState(0);
   const [cards, setCards] = useState<PokemonCard[]>([]);
   const [totalPages, setTotalPages] = useState(0);
@@ -16,16 +21,17 @@ function DisplayCards () {
   useEffect(() => {
     const fetchCurrentCards = async() => {
       try {
-        const result = await fetch(`http://localhost:3000/cards/?page=${pageNumber + 1}&limit=${limit}`);
+        const result = await fetch(`http://localhost:3000/cards/?page=${pageNumber + 1}&limit=${limit}&name=${search.toString()}`);
         const data = await result.json();
         setCards(data.data);
         setTotalPages(data.totalPages);
+        console.log(search);
       } catch (error) {
         console.error(error);
       }
     };
     fetchCurrentCards();
-  }, [pageNumber]);
+  }, [pageNumber, search]);
 
   // Map all of the current cards
   const displaySetOfCards = cards && cards.map((card) => {

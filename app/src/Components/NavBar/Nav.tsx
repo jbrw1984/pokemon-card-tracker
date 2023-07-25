@@ -11,11 +11,11 @@ import pokemonLogo from './pokemon-logo-black-transparent.png';
 import cartImg from './cart.png';
 import { Link } from 'react-router-dom';
 
-interface TopNavState {
-  searchVal: string
+interface Props {
+  onChange?: any
 }
 
-function TopNav () {
+function TopNav ({ onChange }: Props) {
   /*
   constructor(props: any) {
     super(props);
@@ -30,6 +30,7 @@ function TopNav () {
   const handleSearchChange = (e: any) => {
     // Void the page refresh
     e.preventDefault();
+    onChange(e.currentTarget[0].value)
     console.log("Searched");
     setSearch(e.currentTarget[0].value);
   }
