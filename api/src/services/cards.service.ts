@@ -12,7 +12,8 @@ import { ObjectId } from 'mongoose';
 @Service()
 export class CardService {
   public async findAllCards(page: number, limit: number, searchByName: boolean, cardName: string | undefined): Promise<PokemonCard[]> {
-    const filter = cardName ? { name: { $regex: cardName, $options: 'i' } } : {};
+    // Regex is the 'like' match, and i makes the match case insensative. 
+    const filter = cardName ? { name: { $regex: `${cardName}`, $options: 'i' } } : {};
 
     const cards: PokemonCard[] = await PokemonCardModel.find(filter)
       .limit(limit * 1)

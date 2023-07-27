@@ -8,7 +8,6 @@ interface Props {
   search?: any
 }
 
-
 function DisplayCards ({ search }: Props) {
   const [pageNumber, setPageNumber] = useState(0);
   const [cards, setCards] = useState<PokemonCard[]>([]);
@@ -21,7 +20,7 @@ function DisplayCards ({ search }: Props) {
   useEffect(() => {
     const fetchCurrentCards = async() => {
       try {
-        const result = await fetch(`http://localhost:3000/cards/?page=${pageNumber + 1}&limit=${limit}&name=${search.toString()}`);
+        const result = await fetch(`http://localhost:3000/cards/?page=${pageNumber + 1}&limit=${limit}&name=${search}`);
         const data = await result.json();
         setCards(data.data);
         setTotalPages(data.totalPages);

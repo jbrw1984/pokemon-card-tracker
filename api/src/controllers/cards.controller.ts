@@ -32,32 +32,16 @@ export class CardsController {
       let page: number = Number(req.query.page) || 1;
       const limit: number = 12;
       let totalNumberOfPages: number;
-
-      //const cardName: string | undefined = req.query.name as string | undefined; 
+ 
       const cardName: string = req.query.name as string | "";
       const searchByName: boolean = cardName && typeof cardName == "string"
+      const filter = cardName ? { name: { $regex: `${cardName}`, $options: 'i' } } : {};
+      totalNumberOfPages = Math.ceil((await PokemonCardModel.find(filter)).length / limit);
       
-      if(searchByName) {
-        /*  Store total number of pages
-          If page goes past the number of pages, 
-          then set page to the last page
-        */
-        totalNumberOfPages = Math.ceil((await PokemonCardModel.find({name: `${cardName}`})).length / limit);
-        if (page > totalNumberOfPages) {
-          page = totalNumberOfPages;
-        }
+      if (page > totalNumberOfPages) {
+        page = totalNumberOfPages;
       }
-      else {
-        /*  Store total number of pages
-          If page goes past the number of pages, 
-          then set page to the last page
-        */
-        totalNumberOfPages = Math.ceil((await PokemonCardModel.find()).length / limit);
-        if (page > totalNumberOfPages) {
-          page = totalNumberOfPages;
-        }
-      }      
-
+    
       const findAllCardsData: PokemonCard[] = await this.card.findAllCards(page, limit, searchByName, cardName);
 
       res.status(200).json({ data: findAllCardsData, message: 'findAll', totalPages: totalNumberOfPages });

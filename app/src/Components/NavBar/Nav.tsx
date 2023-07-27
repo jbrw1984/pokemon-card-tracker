@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -16,31 +15,13 @@ interface Props {
 }
 
 function TopNav ({ onChange }: Props) {
-  /*
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      searchVal: "",
-    };
-  }
-  */
-  const [search, setSearch] = useState("");
-
   // When the user searches for a card.
   const handleSearchChange = (e: any) => {
-    // Void the page refresh
-    e.preventDefault();
-    onChange(e.currentTarget[0].value)
+    // Change the search value 
+    onChange(e.currentTarget[0].value);
     console.log("Searched");
-    setSearch(e.currentTarget[0].value);
   }
 
-  // New search print that value
-  useEffect(() => {
-    console.log(search);
-  }, [search])
-
-  
   return (
     <Navbar id="top-nav" expand="lg" variant="dark">
       <Container>
@@ -103,7 +84,6 @@ function TopNav ({ onChange }: Props) {
       </Container>
     </Navbar>
   );
-  
 }
 
 export default TopNav;
