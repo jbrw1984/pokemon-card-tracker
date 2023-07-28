@@ -7,40 +7,69 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { PokemonCard } from "../../../../api/src/interfaces/cards.interface";
 import './CardDescription.css';
 import '../ProductCard/Cardback.jpg'
+import { PriceHistory } from "../../../../api/src/interfaces/priceHistory.interface";
 
 interface CardDescriptionProps {
     cardInfo: PokemonCard; 
 }
 
 const CardDescription: FC<CardDescriptionProps> = ({ cardInfo}): JSX.Element => {
-    const [priceText, setPriceText] = useState('');
-    
-    // Import correct price history interface/dto
-    const [priceHistoryObject, setPriceHistoryObject] = useState<CreatePriceHistoryDto>()
-
-    const handleChange = (event: any) => {
-        setPriceText(event.target.value);
-      };
-
-    const handleSubmit = () => {
-        setPriceHistoryObject(
-            {
-                // Nothing passed into date obj, defualts to current date
-                date: new Date(), 
-                quantity: 1, 
-                price: priceText
-            }
-        )
-
-        // Fetch/post request with newly created price hsitory object...
-    }
-
     const DEFAULT_NAME : string = 'Pokemon'
     const DEFAULT_IMAGE : string = './Cardback.jpg'
     const DEFAULT_SALE_PRICE : number = NaN
     const DEFAULT_MARKET_PRICE : number = NaN
     const DEFAULT_RATING: number = NaN
     const DEFAULT_DESCRIPTION : string = 'Pokemon'
+
+    const [priceText, setPriceText] = useState('');
+    console.log("Card ID: " + cardInfo._id)
+    
+    const handleChange = (event: any) => {
+        setPriceText(event.target.value);
+        console.log("Price Text changed: " + event.target.value); 
+      };
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault()
+        console.log("Button Clicked")
+        console.log("Card ID: " + cardInfo._id)
+
+
+        try {
+            const priceHistoryPostData: PriceHistory = {
+                pokemonCardId: String(cardInfo._id), 
+                date: new Date(), 
+                quantity: 1, 
+                price: Number(priceText)
+            }
+
+            // Fetch/post request with newly created price hsitory object...
+            const response = await fetch(`http://localhost:3000/cards/${cardInfo._id}/price-history`, {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json',
+                }, 
+                body: JSON.stringify(priceHistoryPostData),
+            })
+
+            if(!response.ok) {
+                throw new Error('BAD RESPONSE: Failed to save price history'); 
+            }
+        
+        const priceHistoryPostResponse = await response.json(); 
+        console.log("Server response (newly posted Price History): " + JSON.stringify(priceHistoryPostData)); 
+
+        // Reset Price History to initial state
+        setPriceText(''); 
+
+        }
+        catch(error) {
+            throw new Error('OUTSIDE ERRORS: Failed to save price history')
+        }
+
+    }
+
+    const isSubmitDisabled = !priceText
 
     return (
         <Card className="card-desc-comp">
@@ -73,8 +102,25 @@ const CardDescription: FC<CardDescriptionProps> = ({ cardInfo}): JSX.Element => 
                 <Form>
                     <Form.Label className="card-desc-form-label">Edit Card Price</Form.Label>
                     <InputGroup className="price-input-group">
-                        <Form.Control className="price-text-input" type="number" placeholder="$1.00" value={priceText} min={0}></Form.Control>
-                        <Button className="button-addon1" id="button-addon1" variant="dark" onClick={handleSubmit} type="submit" value="Submit">SUBMIT PRICE</Button>
+                        <Form.Control 
+                            className="price-text-input" 
+                            type="number" 
+                            placeholder="$1.00" 
+                            value={priceText} 
+                            onChange={handleChange} 
+                            min={0}
+                            required>
+                        </Form.Control>
+                        <Button 
+                            className="button-addon1" 
+                            id="button-addon1" 
+                            variant="dark"
+                            onClick={handleSubmit} 
+                            disabled={isSubmitDisabled}
+                            type="submit" 
+                            value="Submit">
+                            SUBMIT PRICE
+                        </Button>
                     </InputGroup>
                 </Form>
                 
