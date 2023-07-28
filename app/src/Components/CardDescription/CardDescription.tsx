@@ -69,7 +69,8 @@ const CardDescription: FC<CardDescriptionProps> = ({ cardInfo}): JSX.Element => 
 
     }
 
-    const isSubmitDisabled = !priceText
+    // Only allows price history entry to be submitted if priceText is not empty
+    let isSubmitDisabled = !priceText
 
     return (
         <Card className="card-desc-comp">
