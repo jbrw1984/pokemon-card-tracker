@@ -13,6 +13,28 @@ interface CardDescriptionProps {
 }
 
 const CardDescription: FC<CardDescriptionProps> = ({ cardInfo}): JSX.Element => {
+    const [priceText, setPriceText] = useState('');
+    
+    // Import correct price history interface/dto
+    const [priceHistoryObject, setPriceHistoryObject] = useState<CreatePriceHistoryDto>()
+
+    const handleChange = (event: any) => {
+        setPriceText(event.target.value);
+      };
+
+    const handleSubmit = () => {
+        setPriceHistoryObject(
+            {
+                // Nothing passed into date obj, defualts to current date
+                date: new Date(), 
+                quantity: 1, 
+                price: priceText
+            }
+        )
+
+        // Fetch/post request with newly created price hsitory object...
+    }
+
     const DEFAULT_NAME : string = 'Pokemon'
     const DEFAULT_IMAGE : string = './Cardback.jpg'
     const DEFAULT_SALE_PRICE : number = NaN
@@ -51,8 +73,8 @@ const CardDescription: FC<CardDescriptionProps> = ({ cardInfo}): JSX.Element => 
                 <Form>
                     <Form.Label className="card-desc-form-label">Edit Card Price</Form.Label>
                     <InputGroup className="price-input-group">
-                        <Form.Control className="price-text-input" type="number" placeholder="$1.00" min={0}></Form.Control>
-                        <Button className="button-addon1" id="button-addon1" variant="dark" type="submit" value="Submit">SUBMIT PRICE</Button>
+                        <Form.Control className="price-text-input" type="number" placeholder="$1.00" value={priceText} min={0}></Form.Control>
+                        <Button className="button-addon1" id="button-addon1" variant="dark" onClick={handleSubmit} type="submit" value="Submit">SUBMIT PRICE</Button>
                     </InputGroup>
                 </Form>
                 
