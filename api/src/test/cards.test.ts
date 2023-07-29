@@ -216,7 +216,7 @@ describe('Testing Cards', () => {
       }
 
       const result = await request(app.getServer()).get(`${cardsRoute.path}?name=${testCard1.name}&page=2`);
-    
+      debugger;
       expect(result.status).toEqual(200);
       // Expect 3 cards on second page (15 cards total - 12 card limit)
       expect(result.body.data.length).toEqual(3);

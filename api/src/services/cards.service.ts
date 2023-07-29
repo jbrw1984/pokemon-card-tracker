@@ -12,25 +12,14 @@ import { ObjectId } from 'mongoose';
 @Service()
 export class CardService {
   public async findAllCards(page: number, limit: number, searchByName: boolean, cardName: string | undefined): Promise<PokemonCard[]> {
+    // Regex is the 'like' match, and i makes the match case insensative. 
+    const filter = cardName ? { name: { $regex: `${cardName}`, $options: 'i' } } : {};
 
-    if(searchByName) {
-      const cards: PokemonCard[] = await PokemonCardModel.find({name: `${cardName}`})
-      // Ensure the limit is a number by multipling by 1
+    const cards: PokemonCard[] = await PokemonCardModel.find(filter)
       .limit(limit * 1)
-      // Skip the correct number of pages based on current page
-      // ie page 1 skip 0 cards
       .skip((page - 1) * limit);
-      return cards;
-    }
-    else {
-      const cards: PokemonCard[] = await PokemonCardModel.find()
-      // Ensure the limit is a number by multipling by 1
-      .limit(limit * 1)
-      // Skip the correct number of pages based on current page
-      // ie page 1 skip 0 cards
-      .skip((page - 1) * limit);
-      return cards;
-    }
+
+    return cards;
   }
 
   public async findCardById(cardId: string, includePriceHistory: boolean): Promise<PokemonCard> {
