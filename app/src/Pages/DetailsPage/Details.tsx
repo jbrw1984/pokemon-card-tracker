@@ -27,6 +27,12 @@ function Details() {
   const [priceHistory, setPriceHistory ] = useState<PriceHistory>(); 
   const [fetchNewPriceHistorySubmissions, setFetchNewPriceHistorySubmissions] = useState(false); 
 
+  /*
+  Function to be called when new price history is posted. 
+  Sets state var to true, which will trigger the useEffect hook 
+  to fetch the cards price history again (including newly posted
+  price history)
+  */
   const handleNewPriceHistorySubmission = () => {
     setFetchNewPriceHistorySubmissions(true); 
   }
@@ -45,6 +51,8 @@ function Details() {
       }
     };
     fetchCurrentCard(); 
+
+    // Reset state var for future price history submissions
     setFetchNewPriceHistorySubmissions(false)
   }, [fetchNewPriceHistorySubmissions])
 

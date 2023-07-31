@@ -60,6 +60,7 @@ const CardDescription: FC<CardDescriptionProps> = ({ cardInfo, onNewPriceHistory
             const priceHistoryPostResponse = await response.json(); 
             console.log("Server response (newly posted Price History): " + JSON.stringify(priceHistoryPostData)); 
 
+            // Call function once new price history submission is posted
             onNewPriceHistorySubmission()
 
             // Reset Price History to initial state
