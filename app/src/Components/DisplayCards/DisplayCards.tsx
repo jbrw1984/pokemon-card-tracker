@@ -5,7 +5,7 @@ import ReactPaginate from "react-paginate";
 import { PokemonCard } from "../../../../api/src/interfaces/cards.interface";
 
 interface Props {
-  search?: any
+  search?: string
 }
 
 function DisplayCards ({ search }: Props) {
@@ -37,11 +37,6 @@ function DisplayCards ({ search }: Props) {
     return (
       <ProductCard 
         pokemonCard={card}
-        // name={card.name}
-        // image={card.image}
-        // salePrice={card.salePrice}
-        // marketPrice={card.marketPrice}
-        // description={card.description}
       />
     );
   });
