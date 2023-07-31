@@ -11,9 +11,10 @@ import { PriceHistory } from "../../../../api/src/interfaces/priceHistory.interf
 
 interface CardDescriptionProps {
     cardInfo: PokemonCard; 
+    onNewPriceHistorySubmission: () => void
 }
 
-const CardDescription: FC<CardDescriptionProps> = ({ cardInfo}): JSX.Element => {
+const CardDescription: FC<CardDescriptionProps> = ({ cardInfo, onNewPriceHistorySubmission}): JSX.Element => {
     const DEFAULT_NAME : string = 'Pokemon'
     const DEFAULT_IMAGE : string = './Cardback.jpg'
     const DEFAULT_SALE_PRICE : number = NaN
@@ -56,11 +57,13 @@ const CardDescription: FC<CardDescriptionProps> = ({ cardInfo}): JSX.Element => 
                 throw new Error('BAD RESPONSE: Failed to save price history'); 
             }
         
-        const priceHistoryPostResponse = await response.json(); 
-        console.log("Server response (newly posted Price History): " + JSON.stringify(priceHistoryPostData)); 
+            const priceHistoryPostResponse = await response.json(); 
+            console.log("Server response (newly posted Price History): " + JSON.stringify(priceHistoryPostData)); 
 
-        // Reset Price History to initial state
-        setPriceText(''); 
+            onNewPriceHistorySubmission()
+
+            // Reset Price History to initial state
+            setPriceText(''); 
 
         }
         catch(error) {

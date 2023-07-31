@@ -25,6 +25,11 @@ function Details() {
   */
   const [card, setCard] = useState<PokemonCard>(); 
   const [priceHistory, setPriceHistory ] = useState<PriceHistory>(); 
+  const [fetchNewPriceHistorySubmissions, setFetchNewPriceHistorySubmissions] = useState(false); 
+
+  const handleNewPriceHistorySubmission = () => {
+    setFetchNewPriceHistorySubmissions(true); 
+  }
 
   useEffect(() => {
     const fetchCurrentCard = async() => {
@@ -40,7 +45,8 @@ function Details() {
       }
     };
     fetchCurrentCard(); 
-  }, [])
+    setFetchNewPriceHistorySubmissions(false)
+  }, [fetchNewPriceHistorySubmissions])
 
 
   return (
@@ -55,7 +61,7 @@ function Details() {
        * Optionally: can also pass in this component's state variable 'card', which is obtained
        * along with the price history from the fetch statement. 
       */}
-      <CardDescription cardInfo={receivedStatePokemonCard as PokemonCard}/>
+      <CardDescription cardInfo={receivedStatePokemonCard as PokemonCard} onNewPriceHistorySubmission={handleNewPriceHistorySubmission}/>
 
       <div className="info-flexbox">
         <PriceHistoryComponent priceHistoryArray={Array.isArray(priceHistory) ? priceHistory : []}/>
