@@ -11,15 +11,25 @@ import cartImg from './cart.png';
 import { Link } from 'react-router-dom';
 
 interface Props {
-  onChange?: any
+  onChange?: any,
+  onSortClick?: any,
+  onOrderClick?: any
 }
 
-function TopNav ({ onChange }: Props) {
+function TopNav ({ onChange, onSortClick, onOrderClick }: Props) {
+  // When the user sorts the cards
+  const handleSortClick = (e: any) => {
+    // Change the sort value (Classes correspond to the sort type)
+    onSortClick(e.target.classList[0]);
+    onOrderClick(e.target.classList[1]);
+    console.log(`Sorted: ${e.target.classList[0]} in ${e.target.classList[1]} order`);
+  }
+
   // When the user searches for a card.
   const handleSearchChange = (e: any) => {
     // Change the search value 
     onChange(e.currentTarget[0].value);
-    console.log("Searched");
+    console.log(`Searched: ${e.currentTarget[0].value}`);
   }
 
   return (
@@ -43,11 +53,11 @@ function TopNav ({ onChange }: Props) {
               </Nav>
               <Nav>
                 <NavDropdown title="Sort By" id="basic-nav-dropdown" className="sort-filter collapse-btn">
-                  <NavDropdown.Item href="#action/3.2">Price High to Low</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Price Low to High</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleSortClick} className="salePrice desc">Price High to Low</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleSortClick} className="salePrice asc">Price Low to High</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">Rating High to Low</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.5">Rating Low to High</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleSortClick} className="rating desc">Rating High to Low</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleSortClick} className="rating asc">Rating Low to High</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Filter" id="basic-nav-dropdown" className="sort-filter collapse-btn">
                   <NavDropdown.Item href="#action/3.6">

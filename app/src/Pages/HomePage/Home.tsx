@@ -6,12 +6,22 @@ import { useState } from 'react';
 
 function Home() {
   const [search, setSearch] = useState("");
+  const [sortBy, setSortBy] = useState("");
+  const [order, setOrder] =  useState("");
 
   return (
     <div className="App">
-      <TopNav onChange={setSearch}/>
+      <TopNav 
+        onChange={setSearch} 
+        onSortClick={setSortBy} 
+        onOrderClick={setOrder}
+      />
 
-      <DisplayCards search={search}/>
+      <DisplayCards 
+        search={search} 
+        sortBy={sortBy} 
+        order={order}
+      />
 
       <Footer />
       
