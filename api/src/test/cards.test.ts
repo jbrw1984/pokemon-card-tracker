@@ -251,11 +251,26 @@ describe('Testing Cards', () => {
       const priceHistoryData1: PriceHistory = {
         pokemonCardId: cardId, 
         date: new Date(1999, 12, 31), 
-        quantity: 1, 
-        price: 100
+        quantity: 2, 
+        price: 200
+      }
+      const priceHistoryData2: PriceHistory = {
+        pokemonCardId: cardId, 
+        date: new Date(2004, 1, 16), 
+        quantity: 90, 
+        price: 16
+      }
+      const priceHistoryData3: PriceHistory = {
+        pokemonCardId: cardId, 
+        date: new Date(2016, 5, 8), 
+        quantity: 1200, 
+        price: 0.92
       }
       const createdPriceHistory0: PriceHistory = await PriceHistoryModel.create(priceHistoryData0);
       const createdPriceHistory1: PriceHistory = await PriceHistoryModel.create(priceHistoryData1);
+      const createdPriceHistory2: PriceHistory = await PriceHistoryModel.create(priceHistoryData2);
+      const createdPriceHistory3: PriceHistory = await PriceHistoryModel.create(priceHistoryData3);
+
 
 
       // Pass the new ID to the [GET] by ID endpoint
@@ -289,16 +304,16 @@ describe('Testing Cards', () => {
 
 
       // Check second price history entry
-      const dateAndTimePriceHistory1 : string[] = result.body.data.priceHistoryEntries[1].date.split("T"); 
-      const dateOfPriceHistory1 : string = dateAndTimePriceHistory1[0]; 
-      const [year1, month1, day1] : string[] = dateOfPriceHistory1.split('-');
-      const responseDateObject1 = new Date(+year1, +month1 - 1, +day1);
+      const dateAndTimePriceHistory3 : string[] = result.body.data.priceHistoryEntries[1].date.split("T"); 
+      const dateOfPriceHistory3 : string = dateAndTimePriceHistory3[0]; 
+      const [year3, month3, day3] : string[] = dateOfPriceHistory3.split('-');
+      const responseDateObject3 = new Date(+year3, +month3 - 1, +day3);
 
-      expect(responseDateObject1.toString()).toBe(priceHistoryData1.date.toString());
+      expect(responseDateObject3.toString()).toBe(priceHistoryData3.date.toString());
       // expect(result.body.data.priceHistoryEntries[0]._id.toString()).toEqual(createdPriceHistory1._id.toString());
-      expect(result.body.data.priceHistoryEntries[1].pokemonCardId.toString()).toEqual(priceHistoryData1.pokemonCardId.toString());
-      expect(result.body.data.priceHistoryEntries[1].price).toEqual(priceHistoryData1.price);
-      expect(result.body.data.priceHistoryEntries[1].quantity).toEqual(priceHistoryData1.quantity);
+      expect(result.body.data.priceHistoryEntries[1].pokemonCardId.toString()).toEqual(priceHistoryData3.pokemonCardId.toString());
+      expect(result.body.data.priceHistoryEntries[1].price).toEqual(priceHistoryData3.price);
+      expect(result.body.data.priceHistoryEntries[1].quantity).toEqual(priceHistoryData3.quantity);
     });
 
   });
