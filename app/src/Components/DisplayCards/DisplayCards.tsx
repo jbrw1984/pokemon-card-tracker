@@ -5,10 +5,12 @@ import ReactPaginate from "react-paginate";
 import { PokemonCard } from "../../../../api/src/interfaces/cards.interface";
 
 interface Props {
-  search?: any
+  search?: string,
+  sortBy?: string,
+  order?: string
 }
 
-function DisplayCards ({ search }: Props) {
+function DisplayCards ({ search, sortBy, order }: Props) {
   const [pageNumber, setPageNumber] = useState(0);
   const [cards, setCards] = useState<PokemonCard[]>([]);
   const [totalPages, setTotalPages] = useState(0);
@@ -20,7 +22,7 @@ function DisplayCards ({ search }: Props) {
   useEffect(() => {
     const fetchCurrentCards = async() => {
       try {
-        const result = await fetch(`http://localhost:3000/cards/?page=${pageNumber + 1}&limit=${limit}&name=${search}`);
+        const result = await fetch(`http://localhost:3000/cards/?page=${pageNumber + 1}&limit=${limit}&name=${search}&sort=${sortBy}&order=${order}`);
         const data = await result.json();
         setCards(data.data);
         setTotalPages(data.totalPages);
@@ -30,18 +32,13 @@ function DisplayCards ({ search }: Props) {
       }
     };
     fetchCurrentCards();
-  }, [pageNumber, search]);
+  }, [pageNumber, search, sortBy, order]);
 
   // Map all of the current cards
   const displaySetOfCards = cards && cards.map((card) => {
     return (
       <ProductCard 
         pokemonCard={card}
-        // name={card.name}
-        // image={card.image}
-        // salePrice={card.salePrice}
-        // marketPrice={card.marketPrice}
-        // description={card.description}
       />
     );
   });
