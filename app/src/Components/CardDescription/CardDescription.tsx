@@ -11,7 +11,7 @@ import { PriceHistory } from "../../../../api/src/interfaces/priceHistory.interf
 
 interface CardDescriptionProps {
     cardInfo: PokemonCard; 
-    onNewPriceHistorySubmission: () => void
+    onNewPriceHistorySubmission: (priceHistoryPostData: PriceHistory) => void
 }
 
 const CardDescription: FC<CardDescriptionProps> = ({ cardInfo, onNewPriceHistorySubmission}): JSX.Element => {
@@ -61,7 +61,7 @@ const CardDescription: FC<CardDescriptionProps> = ({ cardInfo, onNewPriceHistory
             console.log("Server response (newly posted Price History): " + JSON.stringify(priceHistoryPostData)); 
 
             // Call function once new price history submission is posted
-            onNewPriceHistorySubmission()
+            onNewPriceHistorySubmission(priceHistoryPostData)
 
             // Reset Price History to initial state
             setPriceText(''); 

@@ -24,17 +24,18 @@ function Details() {
   receivedStatePokemonCard from the ProductCard component. 
   */
   const [card, setCard] = useState<PokemonCard>(); 
-  const [priceHistory, setPriceHistory ] = useState<PriceHistory>(); 
-  const [fetchNewPriceHistorySubmissions, setFetchNewPriceHistorySubmissions] = useState(false); 
+  const [priceHistory, setPriceHistory ] = useState<PriceHistory[]>([]); 
 
   /*
   Function to be called when new price history is posted. 
-  Sets state var to true, which will trigger the useEffect hook 
-  to fetch the cards price history again (including newly posted
-  price history)
+  Appends new price history entry to the price history array. 
+  Then, React will automatically re-render the PriceHistoryComponent
+  to include the new price history entry.
   */
-  const handleNewPriceHistorySubmission = () => {
-    setFetchNewPriceHistorySubmissions(true); 
+  const handleNewPriceHistorySubmission = (newPriceHistorySubmission: PriceHistory) => {
+    console.log("price history state before adding stuff in: ", priceHistory); 
+    setPriceHistory(priceHistory => [newPriceHistorySubmission, ...priceHistory])
+    console.log("price history state after adding stuff in: ", priceHistory); 
   }
 
   useEffect(() => {
@@ -52,9 +53,7 @@ function Details() {
     };
     fetchCurrentCard(); 
 
-    // Reset state var for future price history submissions
-    setFetchNewPriceHistorySubmissions(false)
-  }, [fetchNewPriceHistorySubmissions])
+  }, [])
 
 
   return (
