@@ -15,7 +15,7 @@ export class CardService {
     // Regex is the 'like' match, and i makes the match case insensative. 
     const filter: {} = cardName ? { name: { $regex: `${cardName}`, $options: 'i' } } : {};
     const sortFilter: {} = sortBy ? { [sortBy]: order } : {};
-
+    
     const cards: PokemonCard[] = await PokemonCardModel.find(filter)
       .sort(sortFilter)
       .limit(limit * 1)
