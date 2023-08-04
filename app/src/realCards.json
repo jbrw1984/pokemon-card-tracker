@@ -1,200 +1,111 @@
 [
-{
-  "name": "Charmander",
-  "description": "",
-  "salePrice": 1,
-  "marketPrice": 1,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 2",
-  "description": "Description 2",
-  "salePrice": 2,
-  "marketPrice": 2,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 3",
-  "description": "Description 3",
-  "salePrice": 3,
-  "marketPrice": 3,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 4",
-  "description": "Description 4",
-  "salePrice": 4,
-  "marketPrice": 4,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 5",
-  "description": "Description 5",
-  "salePrice": 5,
-  "marketPrice": 5,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 6",
-  "description": "Description 6",
-  "salePrice": 6,
-  "marketPrice": 6,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 7",
-  "description": "Description 7",
-  "salePrice": 7,
-  "marketPrice": 7,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 8",
-  "description": "Description 8",
-  "salePrice": 8,
-  "marketPrice": 8,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 9",
-  "description": "Description 9",
-  "salePrice": 9,
-  "marketPrice": 9,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 10",
-  "description": "Description 10",
-  "salePrice": 10,
-  "marketPrice": 10,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 11",
-  "description": "Description 11",
-  "salePrice": 11,
-  "marketPrice": 11,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 12",
-  "description": "Description 12",
-  "salePrice": 12,
-  "marketPrice": 12,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 13",
-  "description": "Description 13",
-  "salePrice": 13,
-  "marketPrice": 13,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 14",
-  "description": "Description 14",
-  "salePrice": 14,
-  "marketPrice": 14,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 15",
-  "description": "Description 15",
-  "salePrice": 15,
-  "marketPrice": 15,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 16",
-  "description": "Description 16",
-  "salePrice": 16,
-  "marketPrice": 16,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 17",
-  "description": "Description 17",
-  "salePrice": 17,
-  "marketPrice": 17,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 18",
-  "description": "Description 18",
-  "salePrice": 18,
-  "marketPrice": 18,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 19",
-  "description": "Description 19",
-  "salePrice": 19,
-  "marketPrice": 19,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 20",
-  "description": "Description 20",
-  "salePrice": 20,
-  "marketPrice": 20,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 21",
-  "description": "Description 21",
-  "salePrice": 21,
-  "marketPrice": 21,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-},
-{
-  "name": "Card 22",
-  "description": "Description 22",
-  "salePrice": 22,
-  "marketPrice": 22,
-  "rating": [],
-  "image": "linktoImage",
-  "priceHistory": []
-}
+  {
+    "name": "Charmander",
+    "description": "Basic Pokemon, Fire Type, HP: 70",
+    "salePrice": 12.50,
+    "marketPrice": 22.23,
+    "rating": [10, 8],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV6.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Charmeleon",
+    "description": "Stage 1 Pokemon, Evolves From Charmander, Fire Type, HP: 90",
+    "salePrice": 17.50,
+    "marketPrice": 24.23,
+    "rating": [1, 8, 9, 6],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH4/SWSH4_EN_24.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Charizard",
+    "description": "Stage 2 Pokemon, Evolves From Charmeleon, Fire Type, HP: 150",
+    "salePrice": 17.56,
+    "marketPrice": 29.83,
+    "rating": [10, 8, 9, 10],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM226.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Pikachu",
+    "description": "Basic Pokemon, Lightning Type, HP: 60",
+    "salePrice": 7.56,
+    "marketPrice": 9.93,
+    "rating": [8, 4, 9, 10],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW54.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Ash's Pikachu",
+    "description": "Basic Pokemon, Lightning Type, HP: 70",
+    "salePrice": 4.86,
+    "marketPrice": 11.99,
+    "rating": [8, 4, 9],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM109.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Zekrom",
+    "description": "Basic Pokemon, Lightning Type, HP: 130",
+    "salePrice": 14.86,
+    "marketPrice": 18.99,
+    "rating": [8, 10, 9],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW05.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Zekrom EX",
+    "description": "Basic Pokemon, Lightning Type, HP: 180",
+    "salePrice": 143.76,
+    "marketPrice": 118.99,
+    "rating": [9, 10, 10],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW38.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Electrode",
+    "description": "Stage 1 Pokemon, Evolves From Voltorb, Lightning Type, HP: 100",
+    "salePrice": 3.99,
+    "marketPrice": 11.99,
+    "rating": [9, 7, 3],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW38.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Voltorb",
+    "description": "Basic Pokemon, Lightning Type, HP: 50",
+    "salePrice": 0.99,
+    "marketPrice": 1.99,
+    "rating": [2, 3, 3],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/SMA/SMA_EN_SV13.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Zorua",
+    "description": "Basic Pokemon, Darkness Type, HP: 60",
+    "salePrice": 2.99,
+    "marketPrice": 3.99,
+    "rating": [5, 3, 3],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW12.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Zoroark",
+    "description": "Basic Pokemon, Evolves From Zorua, Darkness Type, HP: 100",
+    "salePrice": 42.99,
+    "marketPrice": 33.99,
+    "rating": [5, 9, 9],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW09.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Darkrai EX",
+    "description": "Basic Pokemon, Darkness Type, HP: 180",
+    "salePrice": 142.99,
+    "marketPrice": 21.99,
+    "rating": [10, 9, 9],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW46.png",
+    "priceHistory": []
+  }
+  
 ]
