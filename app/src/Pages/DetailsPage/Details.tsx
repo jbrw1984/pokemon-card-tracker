@@ -24,7 +24,19 @@ function Details() {
   receivedStatePokemonCard from the ProductCard component. 
   */
   const [card, setCard] = useState<PokemonCard>(); 
-  const [priceHistory, setPriceHistory ] = useState<PriceHistory>(); 
+  const [priceHistory, setPriceHistory ] = useState<PriceHistory[]>([]); 
+
+  /*
+  Function to be called when new price history is posted. 
+  Appends new price history entry to the price history array. 
+  Then, React will automatically re-render the PriceHistoryComponent
+  to include the new price history entry.
+  */
+  const handleNewPriceHistorySubmission = (newPriceHistorySubmission: PriceHistory) => {
+    console.log("price history state before adding stuff in: ", priceHistory); 
+    setPriceHistory(priceHistory => [newPriceHistorySubmission, ...priceHistory])
+    console.log("price history state after adding stuff in: ", priceHistory); 
+  }
 
   useEffect(() => {
     const fetchCurrentCard = async() => {
@@ -40,6 +52,7 @@ function Details() {
       }
     };
     fetchCurrentCard(); 
+
   }, [])
 
 
@@ -55,7 +68,7 @@ function Details() {
        * Optionally: can also pass in this component's state variable 'card', which is obtained
        * along with the price history from the fetch statement. 
       */}
-      <CardDescription cardInfo={receivedStatePokemonCard as PokemonCard}/>
+      <CardDescription cardInfo={receivedStatePokemonCard as PokemonCard} onNewPriceHistorySubmission={handleNewPriceHistorySubmission}/>
 
       <div className="info-flexbox">
         <PriceHistoryComponent priceHistoryArray={Array.isArray(priceHistory) ? priceHistory : []}/>

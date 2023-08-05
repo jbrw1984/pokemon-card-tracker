@@ -28,7 +28,13 @@ export class CardService {
 
     // Include price history
     if(includePriceHistory) {
-      const findCard: PokemonCard = await (await PokemonCardModel.findOne({ _id: cardId })).populate('priceHistoryEntries'); 
+      // Find card by id and populate price history, then sort price history by date, descending
+      const findCard: PokemonCard = await PokemonCardModel.findOne({ _id: cardId })
+        .populate({
+          path: 'priceHistoryEntries',
+          options: { sort: {date: 'desc'}}
+        }); 
+
       if (!findCard) throw new HttpException(409, "Card doesn't exist");
       return findCard;
     }
