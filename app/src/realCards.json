@@ -19,7 +19,7 @@
   },
   {
     "name": "Charizard",
-    "description": "Stage 2 Pokemon, Evolves From Charmeleon, Fire Type, HP: 150",
+    "description": "Stage 2 Pokemon, Evolves From Charmeleon From Charmander, Fire Type, HP: 150",
     "salePrice": 17.56,
     "marketPrice": 29.83,
     "rating": [10, 8, 9, 10],
@@ -106,6 +106,257 @@
     "rating": [10, 9, 9],
     "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW46.png",
     "priceHistory": []
+  },
+  {
+    "name": "Snivy",
+    "description": "Basic Pokemon, Grass Type, HP: 60",
+    "salePrice": 2.99,
+    "marketPrice": 1.99,
+    "rating": [1, 4, 9],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW06.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Virizion",
+    "description": "Basic Pokemon, Grass Type, HP: 100",
+    "salePrice": 12.99,
+    "marketPrice": 14.99,
+    "rating": [6, 4, 3],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW70.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Leafeon",
+    "description": "Stage 1 Pokemon, Evolves From Eevee, Grass Type, HP: 90",
+    "salePrice": 11.99,
+    "marketPrice": 16.99,
+    "rating": [6, 4, 9],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW87.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Oshawott",
+    "description": "Basic Pokemon, Wator Type, HP: 60",
+    "salePrice": 11.99,
+    "marketPrice": 12.99,
+    "rating": [6, 4, 9],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW03.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Kyurem EX",
+    "description": "Basic Pokemon, Wator Type, HP: 180",
+    "salePrice": 111.99,
+    "marketPrice": 142.99,
+    "rating": [6, 10, 9, 10],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW37.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Kyurem",
+    "description": "Basic Pokemon, Wator Type, HP: 130",
+    "salePrice": 16.99,
+    "marketPrice": 42.99,
+    "rating": [6, 7, 9, 10],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW44.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Vaporeon",
+    "description": "Stage 1 Pokemon, Evolves From Eevee, Wator Type, HP: 110",
+    "salePrice": 23.99,
+    "marketPrice": 32.99,
+    "rating": [6, 7, 9, 4],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW89.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Glaceon",
+    "description": "Stage 1 Pokemon, Evolves From Eevee, Wator Type, HP: 90",
+    "salePrice": 13.99,
+    "marketPrice": 22.99,
+    "rating": [6, 7, 4, 4],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW90.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Glaceon GX",
+    "description": "Stage 1 Pokemon, Evolves From Eevee, Wator Type, HP: 200",
+    "salePrice": 223.99,
+    "marketPrice": 352.99,
+    "rating": [10, 9, 10, 10],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM147.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Dewott",
+    "description": "Stage 1 Pokemon, Evolves From Oshawott, Wator Type, HP: 90",
+    "salePrice": 3.99,
+    "marketPrice": 8.99,
+    "rating": [1, 6, 1, 10],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH4/SWSH4_EN_34.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Samurott",
+    "description": "Stage 2 Pokemon, Evolves From Dewott From Oshawott, Wator Type, HP: 140",
+    "salePrice": 13.99,
+    "marketPrice": 18.99,
+    "rating": [1, 6, 8, 10],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW22.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Mewtwo EX",
+    "description": "Basic Pokemon, Psychic Type, HP: 170",
+    "salePrice": 113.99,
+    "marketPrice": 118.99,
+    "rating": [10, 10, 10, 10],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW45.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Espeon",
+    "description": "Stage 1 Pokemon, Evolves From Eevee, Psychic Type, HP: 90",
+    "salePrice": 3.99,
+    "marketPrice": 5.99,
+    "rating": [9, 5, 10, 6],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW92.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Mew",
+    "description": "Basic Pokemon, Psychic Type, HP: 60",
+    "salePrice": 1.99,
+    "marketPrice": 1.99,
+    "rating": [9, 5, 4, 6],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW98.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Landorus",
+    "description": "Basic Pokemon, Fighting Type, HP: 110",
+    "salePrice": 11.99,
+    "marketPrice": 12.99,
+    "rating": [9, 7, 4, 6],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW43.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Terrakion",
+    "description": "Basic Pokemon, Fighting Type, HP: 130",
+    "salePrice": 11.99,
+    "marketPrice": 9.99,
+    "rating": [9, 7, 4, 8],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW71.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Meltan",
+    "description": "Basic Pokemon, Metal Type, HP: 60",
+    "salePrice": 2.99,
+    "marketPrice": 1.99,
+    "rating": [6, 3, 4, 8],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM177.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Melmetal GX",
+    "description": "Stage 1 Pokemon, Evolves From Meltan, Metal Type, HP: 220",
+    "salePrice": 9.99,
+    "marketPrice": 11.99,
+    "rating": [6, 10, 4, 8],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM178.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Melmetal",
+    "description": "Stage 1 Pokemon, Evolves From Meltan, Metal Type, HP: 220",
+    "salePrice": 8.99,
+    "marketPrice": 11.99,
+    "rating": [6, 9, 7, 8],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM181.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Meowth",
+    "description": "Basic Pokemon, Colorless Type, HP: 60",
+    "salePrice": 4.99,
+    "marketPrice": 6.99,
+    "rating": [6, 9, 7, 2],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW35.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Eevee",
+    "description": "Basic Pokemon, Colorless Type, HP: 60",
+    "salePrice": 6.99,
+    "marketPrice": 8.99,
+    "rating": [6, 9, 10, 6],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW94.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Sylveon",
+    "description": "Stage 1 Pokemon, Evolves From Eevee, Fairy Type, HP: 90",
+    "salePrice": 16.99,
+    "marketPrice": 18.99,
+    "rating": [9, 9, 10, 8],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/XYP/XYP_EN_XY04.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Slurpuff",
+    "description": "Stage 1 Pokemon, Evolves From Swirlix, Fairy Type, HP: 100",
+    "salePrice": 1.99,
+    "marketPrice": 1.99,
+    "rating": [9, 4, 1, 8],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/XYP/XYP_EN_XY15.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Rayquaza EX",
+    "description": "Basic Pokemon, Dragon Type, HP: 170",
+    "salePrice": 111.99,
+    "marketPrice": 141.99,
+    "rating": [7, 4, 10, 8],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW47.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Black Kyurem EX",
+    "description": "Basic Pokemon, Dragon Type, HP: 180",
+    "salePrice": 87.99,
+    "marketPrice": 94.99,
+    "rating": [7, 9, 10, 8],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW62.png",
+    "priceHistory": []
+  },
+  {
+    "name": "White Kyurem EX",
+    "description": "Basic Pokemon, Dragon Type, HP: 180",
+    "salePrice": 84.99,
+    "marketPrice": 94.99,
+    "rating": [7, 9, 9, 8],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW63.png",
+    "priceHistory": []
+  },
+  {
+    "name": "White Kyurem",
+    "description": "Basic Pokemon, Dragon Type, HP: 130",
+    "salePrice": 44.99,
+    "marketPrice": 74.99,
+    "rating": [7, 5, 6, 8],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW59.png",
+    "priceHistory": []
+  },
+  {
+    "name": "Black Kyurem",
+    "description": "Basic Pokemon, Dragon Type, HP: 130",
+    "salePrice": 24.99,
+    "marketPrice": 52.99,
+    "rating": [7, 3, 6, 10],
+    "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW58.png",
+    "priceHistory": []
   }
-  
 ]
