@@ -13,9 +13,15 @@ import { ObjectId } from 'mongoose';
 export class CardService {
   public async findAllCards(page: number, limit: number, cardName: string | undefined, sortBy: string | undefined, order: string | undefined): Promise<PokemonCard[]> {
     // Regex is the 'like' match, and i makes the match case insensative. 
-    const filter: {} = cardName ? { name: { $regex: `${cardName}`, $options: 'i' } } : {};
-    const sortFilter: {} = sortBy ? { [sortBy]: order } : {};
+    const filter: {} = cardName ? { $or: 
+      [
+        { name: { $regex: `${cardName}`, $options: 'i' } },
+        { description: { $regex: `${cardName}`, $options: 'i' } }
+      ]
+    } : {};
 
+    const sortFilter: {} = sortBy ? { [sortBy]: order } : {};
+    
     const cards: PokemonCard[] = await PokemonCardModel.find(filter)
       .sort(sortFilter)
       .limit(limit * 1)

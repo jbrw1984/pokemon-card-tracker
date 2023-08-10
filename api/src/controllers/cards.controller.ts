@@ -38,7 +38,12 @@ export class CardsController {
       const sortBy: string = req.query.sort as string | "";
       const order: string = req.query.order as string | "";
 
-      const filter = cardName ? { name: { $regex: `${cardName}`, $options: 'i' } } : {};
+      const filter: {} = cardName ? { $or: 
+        [
+          { name: { $regex: `${cardName}`, $options: 'i' } },
+          { description: { $regex: `${cardName}`, $options: 'i' } }
+        ]
+      } : {};
       totalNumberOfPages = Math.ceil((await PokemonCardModel.find(filter)).length / limit);
       
       if (page > totalNumberOfPages) {
