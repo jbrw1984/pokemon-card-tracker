@@ -5,9 +5,9 @@ import ReactPaginate from "react-paginate";
 import { PokemonCard } from "../../../../api/src/interfaces/cards.interface";
 
 interface Props {
-  search?: string,
-  sortBy?: string,
-  order?: string
+  search: string,
+  sortBy: string,
+  order: string
 }
 
 function DisplayCards ({ search, sortBy, order }: Props) {
@@ -21,9 +21,9 @@ function DisplayCards ({ search, sortBy, order }: Props) {
   const SEARCH_DELAY: number = 300;
 
   // State variables to see if search value changes (useful when user changes a filter past page 1)
-  const [prevSearch, setPrevSearch] = useState<string | undefined>(undefined);
-  const [prevSortBy, setPrevSortBy] = useState<string | undefined>(undefined);
-  const [prevOrder, setPrevOrder] = useState<string | undefined>(undefined);
+  const [prevSearch, setPrevSearch] = useState<string | "">("");
+  const [prevSortBy, setPrevSortBy] = useState<string | "">("");
+  const [prevOrder, setPrevOrder] = useState<string | "">("");
 
   useEffect(() => {
     // Bring up loading symbol
