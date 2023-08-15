@@ -88,26 +88,33 @@ function DisplayCards ({ search, sortBy, order }: Props) {
   const paginationComponentRef = useRef<any>(null);
   
   return (
-    <div className="page-container">
-      <div className="pagination-container">
-        <h4>Page {pageNumber + 1} of {totalPages}</h4>
-        <ReactPaginate 
-          ref={paginationComponentRef}
-          pageCount={totalPages}
-          previousLabel={"<"}
-          nextLabel={">"}
-          onPageChange={changePage}
-          containerClassName={"pagination-btn"}
-          pageClassName={"page-num-btn"}
-          breakClassName={"break-btn"}
-        />
+    <div className="body">
+      <div className="page-container">
+        <div className="pagination-container">
+          <h4>Page {pageNumber + 1} of {totalPages}</h4>
+          <ReactPaginate 
+            ref={paginationComponentRef}
+            pageCount={totalPages}
+            previousLabel={"<"}
+            nextLabel={">"}
+            onPageChange={changePage}
+            containerClassName={"pagination-btn"}
+            pageClassName={"page-num-btn"}
+            breakClassName={"break-btn"}
+          />
+        </div>
+        {!isLoading && (
+          <div className="card-container">
+            {displaySetOfCards}
+          </div>
+        )}
       </div>
-      {isLoading && <h1>Loading...</h1>}
+
+      {/* {isLoading && <div className="pokemon-spinner"></div>} */}
+      {<div className="pokemon-spinner"></div>}
       {!isLoading && (!cards || cards.length === 0) && <h1>No cards found</h1>}
-      <div className="card-container">
-        {displaySetOfCards}
-      </div>
     </div>
+    
   );
 }
 
