@@ -1,8 +1,5 @@
-import { hash } from 'bcrypt';
 import { Service } from 'typedi';
 import { HttpException } from '@exceptions/httpException';
-// import { User } from '@interfaces/users.interface';
-// import { UserModel } from '@models/users.model';
 import { PokemonCard } from '@/interfaces/cards.interface';
 import { PokemonCardModel } from '@/models/cards.model';
 import { PriceHistory } from '@/interfaces/priceHistory.interface';
@@ -13,14 +10,6 @@ import { ObjectId } from 'mongoose';
 export class CardService {
   public async findAllCards(page: number, limit: number, cardName: string | undefined, sortBy: string | undefined, order: string | undefined, minPrice: number, maxPrice: number): Promise<PokemonCard[]> {
     // Regex is the 'like' match, and i makes the match case insensative. 
-    /*
-    const filter: {} = cardName ? { $or: 
-      [
-        { name: { $regex: `${cardName}`, $options: 'i' } },
-        { description: { $regex: `${cardName}`, $options: 'i' } }
-      ]
-    } : {};
-    */
     const filter: {} = cardName ? {
       $and: [
         { $or: [

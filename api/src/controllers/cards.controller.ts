@@ -1,13 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import { Container } from 'typedi';
-import { User } from '@interfaces/users.interface';
-import { UserService } from '@services/users.service';
 import { PokemonCard } from '@interfaces/cards.interface';
 import { CardService } from '@/services/cards.service';
 import { PokemonCardModel } from '@/models/cards.model';
 import { PriceHistory } from '@/interfaces/priceHistory.interface';
 import { ObjectId } from 'mongoose';
-import { CreatePriceHistoryDto } from '@/dtos/priceHistory.dto';
 
 // All routes that will need controllers
 // Create new card: POST /cards
@@ -39,14 +36,6 @@ export class CardsController {
       const order: string = req.query.order as string | "";
       const minPrice: number = Number(req.query.min) || 0;
       const maxPrice: number = Number(req.query.max) || Number.MAX_SAFE_INTEGER;
-      /*
-      const filter: {} = cardName || minPrice || maxPrice ? { $or: 
-        [
-          { name: { $regex: `${cardName}`, $options: 'i' } },
-          { description: { $regex: `${cardName}`, $options: 'i' } }
-        ]
-      } : {};
-      */
 
       // If the cardname is provided match the cardname else just match price range
       const filter: {} = cardName ? {
@@ -58,6 +47,7 @@ export class CardsController {
           { salePrice: { $gte: `${minPrice}`, $lte: `${maxPrice}` } }
         ]
       } : { salePrice: { $gte: `${minPrice}`, $lte: `${maxPrice}` } };
+
       totalNumberOfPages = Math.ceil((await PokemonCardModel.find(filter)).length / limit);
       
       if (page > totalNumberOfPages) {
@@ -103,7 +93,6 @@ export class CardsController {
       // TODO: look into what to do if post request fails 
       next(error); 
       res.status(500).json({ error: 'Internal Server Error' });
-
     }
   }
 
