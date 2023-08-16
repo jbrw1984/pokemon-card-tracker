@@ -11,14 +11,25 @@ import { ObjectId } from 'mongoose';
 
 @Service()
 export class CardService {
-  public async findAllCards(page: number, limit: number, cardName: string | undefined, sortBy: string | undefined, order: string | undefined): Promise<PokemonCard[]> {
+  public async findAllCards(page: number, limit: number, cardName: string | undefined, sortBy: string | undefined, order: string | undefined, minPrice: number, maxPrice: number): Promise<PokemonCard[]> {
     // Regex is the 'like' match, and i makes the match case insensative. 
+    /*
     const filter: {} = cardName ? { $or: 
       [
         { name: { $regex: `${cardName}`, $options: 'i' } },
         { description: { $regex: `${cardName}`, $options: 'i' } }
       ]
     } : {};
+    */
+    const filter: {} = cardName ? {
+      $and: [
+        { $or: [
+          { name: { $regex: `${cardName}`, $options: 'i' } },
+          { description: { $regex: `${cardName}`, $options: 'i' } }
+        ]},
+        { salePrice: { $gte: `${minPrice}`, $lte: `${maxPrice}` } }
+      ]
+    } : { salePrice: { $gte: `${minPrice}`, $lte: `${maxPrice}` } };
 
     const sortFilter: {} = sortBy ? { [sortBy]: order } : {};
     

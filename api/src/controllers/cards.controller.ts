@@ -37,20 +37,34 @@ export class CardsController {
       const cardName: string = req.query.name as string | "";
       const sortBy: string = req.query.sort as string | "";
       const order: string = req.query.order as string | "";
-
-      const filter: {} = cardName ? { $or: 
+      const minPrice: number = Number(req.query.min) || 0;
+      const maxPrice: number = Number(req.query.max) || Number.MAX_SAFE_INTEGER;
+      /*
+      const filter: {} = cardName || minPrice || maxPrice ? { $or: 
         [
           { name: { $regex: `${cardName}`, $options: 'i' } },
           { description: { $regex: `${cardName}`, $options: 'i' } }
         ]
       } : {};
+      */
+
+      // If the cardname is provided match the cardname else just match price range
+      const filter: {} = cardName ? {
+        $and: [
+          { $or: [
+            { name: { $regex: `${cardName}`, $options: 'i' } },
+            { description: { $regex: `${cardName}`, $options: 'i' } }
+          ]},
+          { salePrice: { $gte: `${minPrice}`, $lte: `${maxPrice}` } }
+        ]
+      } : { salePrice: { $gte: `${minPrice}`, $lte: `${maxPrice}` } };
       totalNumberOfPages = Math.ceil((await PokemonCardModel.find(filter)).length / limit);
       
       if (page > totalNumberOfPages) {
         page = totalNumberOfPages;
       }
     
-      const findAllCardsData: PokemonCard[] = await this.card.findAllCards(page, limit, cardName, sortBy, order);
+      const findAllCardsData: PokemonCard[] = await this.card.findAllCards(page, limit, cardName, sortBy, order, minPrice, maxPrice);
 
       res.status(200).json({ data: findAllCardsData, message: 'findAll', totalPages: totalNumberOfPages });
     } catch (error) {
