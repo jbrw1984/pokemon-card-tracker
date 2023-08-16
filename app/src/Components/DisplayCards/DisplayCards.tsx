@@ -104,12 +104,12 @@ function DisplayCards ({ search, sortBy, order }: Props) {
         />
       </div>
 
-      {/* {isLoading && <div className="pokemon-spinner"></div>} */}
       {isLoading && 
         <div className="pokemon-spinner-container">
           <div className="pokemon-spinner"></div>
         </div>
       }
+      
       {!isLoading && (!cards || cards.length === 0) && <h1>No cards found</h1>}
 
       {!isLoading && (
