@@ -223,6 +223,17 @@ describe('Testing Cards', () => {
       expect(result.body.data[0].name).toBe("SearchCardQuery");
       expect(result.body.data[0]._id).toHaveLength(24);
     });
+    
+    // Get card by min/max price filter
+    it('Query min/max price of card', async () => {
+      const result = await request(app.getServer()).get(`${cardsRoute.path}?min=20&max=22`);
+      expect(result.status).toEqual(200);
+      expect(result.body.data.length).toBeGreaterThanOrEqual(1);
+      expect(result.body.data[0].name).toBe("Card 20");
+      expect(result.body.data[1].name).toBe("Card 21");
+      expect(result.body.data[2].name).toBe("Card 22");
+      expect(result.body.data[0]._id).toHaveLength(24);
+    });
   });
 
   // GET card by ID
