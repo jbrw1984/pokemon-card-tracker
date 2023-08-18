@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import './DisplayCards.css';
+import pikachuFaceplantImg from './pikachu_faceplant.png'
 import ReactPaginate from "react-paginate";
 import { PokemonCard } from "../../../../api/src/interfaces/cards.interface";
+
 
 interface Props {
   search: string,
@@ -110,7 +112,13 @@ function DisplayCards ({ search, sortBy, order }: Props) {
         </div>
       }
       
-      {!isLoading && (!cards || cards.length === 0) && <h1>No cards found</h1>}
+      {!isLoading && (!cards || cards.length === 0) && 
+        <div>
+          <h1>No cards found</h1>
+          <img src={pikachuFaceplantImg} alt="Pikachu Faceplant"  />
+        </div>
+        
+      }
 
       {!isLoading && (
         <div className="card-container">
