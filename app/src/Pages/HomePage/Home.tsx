@@ -11,19 +11,31 @@ function Home() {
 
   return (
     <div className="App">
-      <TopNav 
-        onChange={setSearch} 
-        onSortClick={setSortBy} 
-        onOrderClick={setOrder}
-      />
 
-      <DisplayCards 
-        search={search} 
-        sortBy={sortBy} 
-        order={order}
-      />
+      <div id="page-container">
+        
+        <div id="content-wrap">
+          <TopNav 
+          onChange={setSearch} 
+          onSortClick={setSortBy} 
+          onOrderClick={setOrder}
+          />
 
-      <Footer />
+          <DisplayCards 
+            search={search} 
+            sortBy={sortBy} 
+            order={order}
+          />
+
+          
+        </div>
+
+        <div id="footer-container">
+          <Footer />
+        </div>
+      </div>
+      
+      
       
     </div>
   );
