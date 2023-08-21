@@ -4,19 +4,22 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './TopNav.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import pokemonLogo from './pokemon-logo-black-transparent.png';
 import cartImg from './cart.png';
 import { Link } from 'react-router-dom';
+import InputGroup from 'react-bootstrap/InputGroup';
+import { useState } from 'react';
 
 interface Props {
-  onChange?: any,
+  onSearchChange?: any,
   onSortClick?: any,
   onOrderClick?: any
 }
 
-function TopNav ({ onChange, onSortClick, onOrderClick }: Props) {
+function TopNav ({ onSearchChange, onSortClick, onOrderClick }: Props) {
+
   // When the user sorts the cards
   const handleSortClick = (e: any) => {
     // Change the sort value (Classes correspond to the sort type)
@@ -28,8 +31,13 @@ function TopNav ({ onChange, onSortClick, onOrderClick }: Props) {
   // When the user searches for a card.
   const handleSearchChange = (e: any) => {
     // Change the search value 
-    onChange(e.currentTarget[0].value);
+    onSearchChange(e.currentTarget[0].value);
     console.log(`Searched: ${e.currentTarget[0].value}`);
+  }
+
+  // When the user filters by price
+  const handleFilterSubmit = (e: any) => {
+    
   }
 
   return (
@@ -60,17 +68,21 @@ function TopNav ({ onChange, onSortClick, onOrderClick }: Props) {
                   <NavDropdown.Item onClick={handleSortClick} className="rating asc">Rating Low to High</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Filter" id="basic-nav-dropdown" className="sort-filter collapse-btn">
-                  <NavDropdown.Item href="#action/3.6">
-                    <Form className="mb-3">
-                      <Form.Group>
-                        <Form.Label>Rarity</Form.Label>
-                        <Form.Check type="checkbox" label="Common" />
-                        <Form.Check type="checkbox" label="Uncommon" />
-                        <Form.Check type="checkbox" label="Rare" />
-                      </Form.Group>
-                      <Button variant="primary" type="submit">Search Filter</Button>
-                    </Form>
-                  </NavDropdown.Item>
+                  <Form className="mb-3" onSubmit={handleFilterSubmit}>
+                    <Form.Control 
+                      className="filter-price" 
+                      type="number" 
+                      placeholder="$0.00" 
+                      min={0}
+                    />
+                    <Form.Control 
+                      className="filter-price" 
+                      type="number" 
+                      placeholder="$1000.00" 
+                      min={0}
+                    />
+                    <Button variant="primary" type="submit">Search Filter</Button>
+                  </Form>
                 </NavDropdown>
                 <Form className="d-flex collapse-btn" id="nav-search" onChange={handleSearchChange}>
                   <Form.Control

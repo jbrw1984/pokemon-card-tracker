@@ -42,4 +42,6 @@
     padding-left: 14px;
 }
 
-
+.price-filter {
+  appearance: initial;
+}

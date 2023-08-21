@@ -8,6 +8,8 @@ function Home() {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [order, setOrder] =  useState("");
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(Number.MAX_SAFE_INTEGER);
 
   return (
     <div className="App">
@@ -16,9 +18,9 @@ function Home() {
         
         <div id="content-wrap">
           <TopNav 
-          onChange={setSearch} 
-          onSortClick={setSortBy} 
-          onOrderClick={setOrder}
+            onSearchChange={setSearch} 
+            onSortClick={setSortBy} 
+            onOrderClick={setOrder}
           />
 
           <DisplayCards 
