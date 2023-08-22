@@ -21,12 +21,16 @@ function Home() {
             onSearchChange={setSearch} 
             onSortClick={setSortBy} 
             onOrderClick={setOrder}
+            onMinChange={setMinPrice}
+            onMaxChange={setMaxPrice}
           />
 
           <DisplayCards 
             search={search} 
             sortBy={sortBy} 
             order={order}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
           />
 
           

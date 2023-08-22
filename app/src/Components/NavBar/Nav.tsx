@@ -15,10 +15,14 @@ import { useState } from 'react';
 interface Props {
   onSearchChange?: any,
   onSortClick?: any,
-  onOrderClick?: any
+  onOrderClick?: any,
+  onMinChange?: any,
+  onMaxChange?: any
 }
 
-function TopNav ({ onSearchChange, onSortClick, onOrderClick }: Props) {
+function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMaxChange }: Props) {
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(Number.MAX_SAFE_INTEGER);
 
   // When the user sorts the cards
   const handleSortClick = (e: any) => {
@@ -35,10 +39,25 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick }: Props) {
     console.log(`Searched: ${e.currentTarget[0].value}`);
   }
 
+  // When user changes min price filter
+  const handleMinChange = (e: any) => {
+    setMinPrice(e.target.value);
+  }
+
+  // When user changes max price filter
+  const handleMaxChange = (e: any) => {
+    setMaxPrice(e.target.value);
+  }
+ 
   // When the user filters by price
   const handleFilterSubmit = (e: any) => {
-    
+    //e.preventDefualt();
+    console.log("New Filter")
+    onMinChange(minPrice);
+    onMaxChange(maxPrice);
   }
+
+  let isFilterSubmitDisabled: boolean = !(minPrice < maxPrice);
 
   return (
     <Navbar id="top-nav" expand="lg" variant="dark">
@@ -68,20 +87,31 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick }: Props) {
                   <NavDropdown.Item onClick={handleSortClick} className="rating asc">Rating Low to High</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Filter" id="basic-nav-dropdown" className="sort-filter collapse-btn">
-                  <Form className="mb-3" onSubmit={handleFilterSubmit}>
+                  <Form className="mb-3">
+
                     <Form.Control 
                       className="filter-price" 
+                      id="min-price"
                       type="number" 
-                      placeholder="$0.00" 
-                      min={0}
+                      placeholder="$0.00"
+                      value={minPrice}
+                      onChange={handleMinChange}
                     />
                     <Form.Control 
                       className="filter-price" 
+                      id="max-price"
                       type="number" 
                       placeholder="$1000.00" 
-                      min={0}
+                      value={maxPrice}
+                      onChange={handleMaxChange}
                     />
-                    <Button variant="primary" type="submit">Search Filter</Button>
+                    <Button 
+                      variant="primary" 
+                      disabled={isFilterSubmitDisabled}
+                      onClick={handleFilterSubmit}
+                      type="button">
+                      Search Filter
+                    </Button>
                   </Form>
                 </NavDropdown>
                 <Form className="d-flex collapse-btn" id="nav-search" onChange={handleSearchChange}>
