@@ -81,17 +81,17 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
               </Nav>
               <Nav>
                 <NavDropdown title="Sort By" id="basic-nav-dropdown" className="sort-filter collapse-btn">
-                  <NavDropdown.Item onClick={handleSortClick} className="salePrice desc">Price High to Low</NavDropdown.Item>
-                  <NavDropdown.Item onClick={handleSortClick} className="salePrice asc">Price Low to High</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleSortClick} className="salePrice desc dropdown-item">Price High to Low</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleSortClick} className="salePrice asc dropdown-item">Price Low to High</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={handleSortClick} className="rating desc">Rating High to Low</NavDropdown.Item>
-                  <NavDropdown.Item onClick={handleSortClick} className="rating asc">Rating Low to High</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleSortClick} className="rating desc dropdown-item">Rating High to Low</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleSortClick} className="rating asc dropdown-item">Rating Low to High</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Filter" id="basic-nav-dropdown" className="sort-filter collapse-btn">
-                  <Form className="mb-3">
+                  <Form className="mb-3 dropdown-item">
                     <Form.Group id="min-price-group">
                       <Form.Label>Minimum Price</Form.Label><br/>
-                      <InputGroup>                        
+                      <InputGroup className="filter-inputs">                        
                         <InputGroup.Text id="basic-addon1">$</InputGroup.Text>
                         <Form.Control 
                           className="filter-price" 
@@ -99,6 +99,7 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
                           type="number" 
                           placeholder="0.00"
                           aria-describedby="basic-addon1"
+                          width={140}
                           value={minPrice}
                           onChange={handleMinChange}
                         />
@@ -106,7 +107,7 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
                     </Form.Group>
                     <Form.Group id="max-price-group">
                       <Form.Label>Maximum Price</Form.Label><br/>
-                      <InputGroup>
+                      <InputGroup className="filter-inputs">
                         <InputGroup.Text id="basic-addon1">$</InputGroup.Text>
                         <Form.Control 
                           className="filter-price" 
@@ -114,11 +115,12 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
                           type="number" 
                           placeholder="1000.00" 
                           aria-describedby="basic-addon1"
+                          width={140}
                           value={maxPrice}
                           onChange={handleMaxChange}
                         />
                       </InputGroup>
-                    </Form.Group>
+                    </Form.Group><br/>
                     <Button 
                       variant="primary" 
                       disabled={isFilterSubmitDisabled}
