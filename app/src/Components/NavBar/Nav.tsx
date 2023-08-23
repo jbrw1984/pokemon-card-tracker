@@ -21,8 +21,8 @@ interface Props {
 }
 
 function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMaxChange }: Props) {
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(Number.MAX_SAFE_INTEGER);
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
 
   // When the user sorts the cards
   const handleSortClick = (e: any) => {
@@ -57,7 +57,8 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
     onMaxChange(maxPrice);
   }
 
-  let isFilterSubmitDisabled: boolean = !(minPrice < maxPrice);
+  // Disable the filter submit button when minPrice > maxPrice and there is a value for each of the min and max prices
+  let isFilterSubmitDisabled: boolean = Number(minPrice) > Number(maxPrice) && minPrice !== "" && maxPrice !== "";
 
   return (
     <Navbar id="top-nav" expand="lg" variant="dark">
@@ -88,23 +89,36 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
                 </NavDropdown>
                 <NavDropdown title="Filter" id="basic-nav-dropdown" className="sort-filter collapse-btn">
                   <Form className="mb-3">
-
-                    <Form.Control 
-                      className="filter-price" 
-                      id="min-price"
-                      type="number" 
-                      placeholder="$0.00"
-                      value={minPrice}
-                      onChange={handleMinChange}
-                    />
-                    <Form.Control 
-                      className="filter-price" 
-                      id="max-price"
-                      type="number" 
-                      placeholder="$1000.00" 
-                      value={maxPrice}
-                      onChange={handleMaxChange}
-                    />
+                    <Form.Group id="min-price-group">
+                      <Form.Label>Minimum Price</Form.Label><br/>
+                      <InputGroup>                        
+                        <InputGroup.Text id="basic-addon1">$</InputGroup.Text>
+                        <Form.Control 
+                          className="filter-price" 
+                          id="min-price"
+                          type="number" 
+                          placeholder="0.00"
+                          aria-describedby="basic-addon1"
+                          value={minPrice}
+                          onChange={handleMinChange}
+                        />
+                      </InputGroup>
+                    </Form.Group>
+                    <Form.Group id="max-price-group">
+                      <Form.Label>Maximum Price</Form.Label><br/>
+                      <InputGroup>
+                        <InputGroup.Text id="basic-addon1">$</InputGroup.Text>
+                        <Form.Control 
+                          className="filter-price" 
+                          id="max-price"
+                          type="number" 
+                          placeholder="1000.00" 
+                          aria-describedby="basic-addon1"
+                          value={maxPrice}
+                          onChange={handleMaxChange}
+                        />
+                      </InputGroup>
+                    </Form.Group>
                     <Button 
                       variant="primary" 
                       disabled={isFilterSubmitDisabled}
