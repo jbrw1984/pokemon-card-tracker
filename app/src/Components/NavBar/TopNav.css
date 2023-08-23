@@ -47,12 +47,18 @@
   padding-left: 14px;
 }
 
-.dropdown-item {
-  --bs-dropdown-min-width: 17rem;
+#min-max-filter-form {
+  margin-bottom: 0!important;
+  --bs-dropdown-link-active-color: #212529;
+  --bs-dropdown-link-active-bg: #e9ecef;
 }
 
 #min-price, #max-price {
   width: 130px;
+}
+
+#filter-submit {
+  margin-top: -0.6rem;
 }
 
 

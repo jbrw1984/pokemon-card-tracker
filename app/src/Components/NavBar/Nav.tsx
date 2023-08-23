@@ -88,7 +88,7 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
                   <NavDropdown.Item onClick={handleSortClick} className="rating asc dropdown-item">Rating Low to High</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Filter" id="basic-nav-dropdown" className="sort-filter collapse-btn">
-                  <Form className="mb-3 dropdown-item">
+                  <Form className="mb-3 dropdown-item" id="min-max-filter-form">
                     <Form.Group id="min-price-group">
                       <Form.Label>Minimum Price</Form.Label><br/>
                       <InputGroup className="filter-inputs">                        
@@ -100,6 +100,7 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
                           placeholder="0.00"
                           aria-describedby="basic-addon1"
                           width={140}
+                          min={0}
                           value={minPrice}
                           onChange={handleMinChange}
                         />
@@ -116,6 +117,7 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
                           placeholder="1000.00" 
                           aria-describedby="basic-addon1"
                           width={140}
+                          min={0}
                           value={maxPrice}
                           onChange={handleMaxChange}
                         />
@@ -123,6 +125,7 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
                     </Form.Group><br/>
                     <Button 
                       variant="primary" 
+                      id="filter-submit"
                       disabled={isFilterSubmitDisabled}
                       onClick={handleFilterSubmit}
                       type="button">
