@@ -8,13 +8,15 @@ import { PokemonCard } from "../../../../api/src/interfaces/cards.interface";
 import './CardDescription.css';
 import '../ProductCard/Cardback.jpg'
 import { PriceHistory } from "../../../../api/src/interfaces/priceHistory.interface";
+import { CardRating } from "../../../../api/src/interfaces/cardRating.interface";
 
 interface CardDescriptionProps {
     cardInfo: PokemonCard; 
+    cardRatingAverageProp: number; 
     onNewPriceHistorySubmission: (priceHistoryPostData: PriceHistory) => void
 }
 
-const CardDescription: FC<CardDescriptionProps> = ({ cardInfo, onNewPriceHistorySubmission}): JSX.Element => {
+const CardDescription: FC<CardDescriptionProps> = ({ cardInfo, cardRatingAverageProp, onNewPriceHistorySubmission}): JSX.Element => {
     const DEFAULT_NAME : string = 'Pokemon'
     const DEFAULT_IMAGE : string = './Cardback.jpg'
     const DEFAULT_SALE_PRICE : number = NaN
@@ -89,7 +91,8 @@ const CardDescription: FC<CardDescriptionProps> = ({ cardInfo, onNewPriceHistory
                         ${cardInfo && cardInfo.marketPrice ? cardInfo.marketPrice : DEFAULT_MARKET_PRICE}
                     </span>  |  Card Rating: 
                     <span className="card-desc-rating">
-                        {cardInfo && cardInfo.rating ? cardInfo.rating : DEFAULT_RATING}
+                        {cardInfo && cardRatingAverageProp ? cardRatingAverageProp : DEFAULT_RATING}
+                        {/* {cardInfo && DEFAULT_RATING} */}
                     </span>
                 </Card.Text>
 

@@ -9,6 +9,8 @@ import { useLocation, useParams } from 'react-router-dom';
 import { PokemonCard } from '../../../../api/src/interfaces/cards.interface';
 import { useEffect, useState } from 'react';
 import { PriceHistory } from "../../../../api/src/interfaces/priceHistory.interface";
+import { CardRating } from "../../../../api/src/interfaces/cardRating.interface";
+
 
 
 
@@ -25,6 +27,8 @@ function Details() {
   */
   const [card, setCard] = useState<PokemonCard>(); 
   const [priceHistory, setPriceHistory ] = useState<PriceHistory[]>([]); 
+  const [cardRating, setCardRating] = useState<CardRating[]>([]); 
+  const [cardRatingAverage, setCardRatingAverage] = useState<number>(0);
 
   /*
   Function to be called when new price history is posted. 
@@ -38,14 +42,33 @@ function Details() {
     console.log("price history state after adding stuff in: ", priceHistory); 
   }
 
+  /*
+  Function to be called when new card rating is posted. 
+  Appends new card rating entry to the card rating array. 
+  Then, React will automatically re-render the CardDescription component
+  to include the newly computed averages of all the card ratings.
+  */
+  const handleNewCardRatingSubmission = (newCardRatingSubmission: CardRating) => {
+    console.log("card rating state before adding stuff in: ", cardRating); 
+    setCardRating(cardRating => [newCardRatingSubmission, ...cardRating]); 
+    console.log("card rating state after adding stuff in: ", cardRating); 
+
+    let cardRatingAvg : number = cardRating.reduce((accumulator, currentCardRatingObj) => {
+      return accumulator + currentCardRatingObj.rating
+    }, 0) / cardRating.length
+
+  }
+
   useEffect(() => {
     const fetchCurrentCard = async() => {
       try{
-        const result = await fetch(`http://localhost:3000/cards/${params.id}?include=price-history`)
+        // Must include both card rating and price history
+        const result = await fetch(`http://localhost:3000/cards/${params.id}?include=price-history;card-rating`)
         const pokemonCardFetchedData = await result.json(); 
        
         setCard(pokemonCardFetchedData.data); 
         setPriceHistory(pokemonCardFetchedData.data.priceHistoryEntries); 
+        setCardRating(pokemonCardFetchedData.data.cardRatingEntries); 
       }
       catch(error) {
         console.log(error); 
@@ -68,11 +91,16 @@ function Details() {
        * Optionally: can also pass in this component's state variable 'card', which is obtained
        * along with the price history from the fetch statement. 
       */}
-      <CardDescription cardInfo={receivedStatePokemonCard as PokemonCard} onNewPriceHistorySubmission={handleNewPriceHistorySubmission}/>
+      <CardDescription 
+        cardInfo={receivedStatePokemonCard as PokemonCard} 
+        cardRatingAverageProp={cardRatingAverage}
+        onNewPriceHistorySubmission={handleNewPriceHistorySubmission}
+      />
 
       <div className="info-flexbox">
         <PriceHistoryComponent priceHistoryArray={Array.isArray(priceHistory) ? priceHistory : []}/>
-        <CardRater />
+        {/* <CardRater onNewCardRatingSubmission={handleNewCardRatingSubmission}/> */}
+        <CardRater/>
       </div>
       
       <Footer />
