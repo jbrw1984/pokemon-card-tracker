@@ -6,6 +6,6 @@ export interface PokemonCard {
   description: string;
   salePrice: number;
   marketPrice: number;
-  rating: number[]; 
+  // rating: number[]; 
   image: string;
 }

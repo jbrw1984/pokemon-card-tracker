@@ -19,10 +19,10 @@ const PokemonCardSchema: Schema = new Schema({
     type: Number, 
     required: true, 
   },
-  rating: {
-    type: Array, 
-    required: true, 
-  },
+  // rating: {
+  //   type: Array, 
+  //   required: true, 
+  // },
   image: {
     type: String, 
     required: true, 
@@ -39,6 +39,12 @@ whose pokemonCardId field matches the current PokemonCardModel's _id field
 */
 PokemonCardSchema.virtual('priceHistoryEntries', {
   ref: 'PriceHistoryData', 
+  localField: '_id', 
+  foreignField: 'pokemonCardId'
+})
+
+PokemonCardSchema.virtual('cardRatingEntries', {
+  ref: 'CardRatingData', 
   localField: '_id', 
   foreignField: 'pokemonCardId'
 })

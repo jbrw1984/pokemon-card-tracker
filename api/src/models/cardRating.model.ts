@@ -22,4 +22,4 @@ const CardRatingSchema: Schema = new Schema({
   }
 })
 
-export const CardRatingModel = model<PriceHistory>('CardRatingData', CardRatingSchema); 
+export const CardRatingModel = model<CardRating>('CardRatingData', CardRatingSchema); 

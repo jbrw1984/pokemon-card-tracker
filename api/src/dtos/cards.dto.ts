@@ -23,8 +23,8 @@ export class CreateCardDto {
   @IsNotEmpty()
   public marketPrice: number; 
 
-  @IsArray()
-  public rating: number[]; 
+  // @IsArray()
+  // public rating: number[]; 
 
   @IsString()
   public image: string; 
