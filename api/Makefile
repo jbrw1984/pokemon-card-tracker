@@ -8,7 +8,7 @@ APP_NAME = typescript-express
 APP_NAME := $(APP_NAME)
 
 .PHONY: help start clean db test
-
+asdfasdfasd
 help:
 	@grep -E '^[1-9a-zA-Z_-]+:.*?## .*$$|(^#--)' $(MAKEFILE_LIST) \
 	| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m %-43s\033[0m %s\n", $$1, $$2}' \
