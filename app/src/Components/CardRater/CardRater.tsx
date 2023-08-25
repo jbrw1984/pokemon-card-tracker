@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './CardRater.css';
+import { CardRating } from "../../../../api/src/interfaces/cardRating.interface";
+import { PokemonCard } from '../../../../api/src/interfaces/cards.interface';
+
+interface CardRatingProps {
+    cardInfo: PokemonCard; 
+    onNewCardRatingSubmission: (cardRatingPostData: CardRating) => void
+}
+
+
 const sliderTrackColor : NodeListOf<Element> = document.querySelectorAll('input[type="range"]::-webkit-slider-runnable-track'); 
 const slider : any = document.getElementById("myinput"); 
 
-
-export function CardRater() {
-    const inputRef : any = React.createRef()
+const CardRater: FC<CardRatingProps> = ({ cardInfo, onNewCardRatingSubmission}): JSX.Element => {
+// export function CardRater() {
+    // const inputRef : any = React.createRef()
 
     const [sliderValue, setSliderValue] = useState<number>(0);
     
@@ -16,13 +25,21 @@ export function CardRater() {
     const max : number = 10; 
 
     const updateSliderColor = (event : any) : void => {
-        setSliderValue(event.target.value); 
-        console.log(sliderValue); 
+        // Parse slider value as an integer
+        const newSliderValue = parseInt(event.target.value, 10); 
+        setSliderValue(newSliderValue); 
+        console.log("sliderValue: " + sliderValue); 
 
-        const progress : string = (sliderValue-min)/(max-min)*100 + '%'; 
+        const progress : string = (newSliderValue-min)/(max-min)*100 + '%'; 
+        event.target.style.background = 'linear-gradient(90deg, #FCCD29 0% ${progress}%, #94938d ${progress}% 100%)'; 
 
-        const newBackgroundStyle = `linear-gradient(90deg, #FCCD29 0% ${progress}%, #94938d ${progress}% 100%)`
-        inputRef.current.style.background = newBackgroundStyle
+        // setSliderValue(event.target.value); 
+        // console.log(sliderValue); 
+
+        // const progress : string = (sliderValue-min)/(max-min)*100 + '%'; 
+
+        // const newBackgroundStyle = `linear-gradient(90deg, #FCCD29 0% ${progress}%, #94938d ${progress}% 100%)`
+        // inputRef.current.style.background = newBackgroundStyle
     }
     
     let progressUpdate : string = (sliderValue-min)/(max-min)*100 + '%';
@@ -30,6 +47,53 @@ export function CardRater() {
         background: `linear-gradient(90deg, #FCCD29 0% ${progressUpdate}, #94938d ${progressUpdate} 100%)`,
     }
 
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault()
+        console.log("Button Clicked")
+        console.log("Card ID: " + cardInfo._id)
+
+
+        try {
+            const cardRatingPostData: CardRating = {
+                pokemonCardId: String(cardInfo._id), 
+                date: new Date(), 
+                rating: Number(sliderValue)
+            }
+
+            // Fetch/post request with newly created card rating object...
+            const response = await fetch(`http://localhost:3000/cards/${cardInfo._id}/card-rating`, {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json',
+                }, 
+                body: JSON.stringify(cardRatingPostData),
+            })
+
+            if(!response.ok) {
+                throw new Error('BAD RESPONSE: Failed to save card rating'); 
+            }
+        
+            const cardRatingPostResponse = await response.json(); 
+            console.log("Server response (newly posted Price History): " + JSON.stringify(cardRatingPostResponse)); 
+
+            // Call function once new price history submission is posted
+            onNewCardRatingSubmission(cardRatingPostData)
+
+            // Reset Price History to initial state
+            setSliderValue(0); 
+
+        }
+        catch(error) {
+            throw new Error('OUTSIDE ERRORS: Failed to save card rating')
+        }
+
+    }
+
+
+    // Only allows card rating entry to be submitted if sliderValue is greater than 0
+    let isSubmitDisabled = sliderValue > 0 ? false : true
+    // console.log("isSubmitDisabled" + isSubmitDisabled)
 
     return (
         <Form className="card-rater-form">
@@ -47,6 +111,7 @@ export function CardRater() {
                     value={sliderValue}
                     onChange={updateSliderColor}
                     style={styleInput}
+                    required
                 />
             </Form.Group>
 
@@ -54,7 +119,14 @@ export function CardRater() {
                 <p className="lower-bound">1</p>
                 <p className="upper-bound">10</p>
             </div>  
-            <Button className="card-rater-btn" variant="dark" type="submit" value="Submit">
+            <Button 
+                className="card-rater-btn" 
+                variant="dark" 
+                type="submit" 
+                value="Submit"
+                disabled={isSubmitDisabled}
+                onClick={handleSubmit}
+            >
                 ENTER RATING
             </Button>
         </Form>

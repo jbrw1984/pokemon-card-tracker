@@ -12,7 +12,7 @@ import { CardRating } from "../../../../api/src/interfaces/cardRating.interface"
 
 interface CardDescriptionProps {
     cardInfo: PokemonCard; 
-    cardRatingAverageProp: number; 
+    cardRatingAverageProp: number | string; 
     onNewPriceHistorySubmission: (priceHistoryPostData: PriceHistory) => void
 }
 
@@ -91,7 +91,8 @@ const CardDescription: FC<CardDescriptionProps> = ({ cardInfo, cardRatingAverage
                         ${cardInfo && cardInfo.marketPrice ? cardInfo.marketPrice : DEFAULT_MARKET_PRICE}
                     </span>  |  Card Rating: 
                     <span className="card-desc-rating">
-                        {cardInfo && cardRatingAverageProp ? cardRatingAverageProp : DEFAULT_RATING}
+                        {/* {cardInfo && cardRatingAverageProp ? cardRatingAverageProp : DEFAULT_RATING} */}
+                        {cardRatingAverageProp}
                         {/* {cardInfo && DEFAULT_RATING} */}
                     </span>
                 </Card.Text>

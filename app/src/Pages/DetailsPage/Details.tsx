@@ -21,6 +21,8 @@ function Details() {
   // Grabs the args/params passed in through useNavigate's URL
   const params = useParams(); 
 
+  const EMPTY_CARD_RATING_MSG : string = 'No card ratings made yet'; 
+
   /*
   'card' state variable is optional because we are already using the 
   receivedStatePokemonCard from the ProductCard component. 
@@ -28,7 +30,24 @@ function Details() {
   const [card, setCard] = useState<PokemonCard>(); 
   const [priceHistory, setPriceHistory ] = useState<PriceHistory[]>([]); 
   const [cardRating, setCardRating] = useState<CardRating[]>([]); 
-  const [cardRatingAverage, setCardRatingAverage] = useState<number>(0);
+
+  /**
+   * Could not make cardRatingAverage as a state variable because 
+   * it would need a default value. If you used a default value of 0, 
+   * then anytime you clicked to view a card's details, the card
+   * rating would display as 0. 
+   */  
+  let cardRatingAverage : number | string; 
+
+  if(cardRating.length <= 0) {
+    cardRatingAverage = EMPTY_CARD_RATING_MSG; 
+  }
+  else {
+    cardRatingAverage = cardRating.reduce((accumulator, currentCardRatingObj) => {
+      return accumulator + currentCardRatingObj.rating
+    }, 0) / cardRating.length; 
+  }
+
 
   /*
   Function to be called when new price history is posted. 
@@ -53,9 +72,25 @@ function Details() {
     setCardRating(cardRating => [newCardRatingSubmission, ...cardRating]); 
     console.log("card rating state after adding stuff in: ", cardRating); 
 
-    let cardRatingAvg : number = cardRating.reduce((accumulator, currentCardRatingObj) => {
-      return accumulator + currentCardRatingObj.rating
-    }, 0) / cardRating.length
+    /*
+    Compute the new average of the card ratings, including the newly posted card rating
+    in your calculations. 
+    Use reduce() iterator to get the sum of all the card ratings. Then divide by total 
+    number of ratings
+    */
+    if(cardRating.length <= 0) {
+      cardRatingAverage = EMPTY_CARD_RATING_MSG; 
+    }
+    else {
+      cardRatingAverage = cardRating.reduce((accumulator, currentCardRatingObj) => {
+        return accumulator + currentCardRatingObj.rating
+      }, 0) / cardRating.length; 
+    }
+    // cardRatingAverage = cardRating.reduce((accumulator, currentCardRatingObj) => {
+    //   return accumulator + currentCardRatingObj.rating
+    // }, 0) / cardRating.length
+
+    // // setCardRatingAverage(cardRatingAvg); 
 
   }
 
@@ -99,8 +134,12 @@ function Details() {
 
       <div className="info-flexbox">
         <PriceHistoryComponent priceHistoryArray={Array.isArray(priceHistory) ? priceHistory : []}/>
-        {/* <CardRater onNewCardRatingSubmission={handleNewCardRatingSubmission}/> */}
-        <CardRater/>
+
+        <CardRater 
+          cardInfo={receivedStatePokemonCard as PokemonCard}
+          onNewCardRatingSubmission={handleNewCardRatingSubmission}
+        />
+        {/* <CardRater/> */}
       </div>
       
       <Footer />
