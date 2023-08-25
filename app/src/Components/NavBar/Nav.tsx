@@ -10,14 +10,14 @@ import pokemonLogo from './pokemon-logo-black-transparent.png';
 import cartImg from './cart.png';
 import { Link } from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { useState } from 'react';
+import { useState, Dispatch, SetStateAction} from 'react';
 
 interface Props {
-  onSearchChange?: any,
-  onSortClick?: any,
-  onOrderClick?: any,
-  onMinChange?: any,
-  onMaxChange?: any
+  onSearchChange: Dispatch<SetStateAction<string>>,
+  onSortClick: Dispatch<SetStateAction<string>>,
+  onOrderClick: Dispatch<SetStateAction<string>>, 
+  onMinChange: Dispatch<SetStateAction<string>>,
+  onMaxChange: Dispatch<SetStateAction<string>>
 }
 
 function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMaxChange }: Props) {
@@ -57,8 +57,10 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
     onMaxChange(maxPrice);
   }
 
-  // Disable the filter submit button when minPrice > maxPrice and there is a value for each of the min and max prices
-  let isFilterSubmitDisabled: boolean = Number(minPrice) > Number(maxPrice) && minPrice !== "" && maxPrice !== "";
+  // Disable the filter submit button when minPrice is not less than maxPrice and there is a value for each of the min and max prices
+  // Also disable is min or max is a negative value.
+  let isFilterSubmitDisabled: boolean = (!(Number(minPrice) < Number(maxPrice)) && minPrice !== "" && maxPrice !== "")
+                                        || (Number(minPrice) < 0 || Number(maxPrice) < 0);
 
   return (
     <Navbar id="top-nav" expand="lg" variant="dark">

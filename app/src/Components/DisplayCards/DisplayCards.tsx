@@ -25,11 +25,11 @@ function DisplayCards ({ search, sortBy, order, minPrice, maxPrice }: Props) {
   const SEARCH_DELAY: number = 300;
 
   // State variables to see if search value changes (useful when user changes a filter past page 1)
-  const [prevSearch, setPrevSearch] = useState<string | "">("");
-  const [prevSortBy, setPrevSortBy] = useState<string | "">("");
-  const [prevOrder, setPrevOrder] = useState<string | "">("");
-  const [prevMin, setPrevMin] = useState<number | "">(0);
-  const [prevMax, setPrevMax] = useState<number | "">(Number.MAX_SAFE_INTEGER);
+  const [prevSearch, setPrevSearch] = useState<string>("");
+  const [prevSortBy, setPrevSortBy] = useState<string>("");
+  const [prevOrder, setPrevOrder] = useState<string>("");
+  const [prevMin, setPrevMin] = useState<number>(0);
+  const [prevMax, setPrevMax] = useState<number>(Number.MAX_SAFE_INTEGER);
 
   useEffect(() => {
     // Bring up loading symbol

@@ -5,17 +5,15 @@ import DisplayCards from '../../Components/DisplayCards/DisplayCards';
 import { useState } from 'react';
 
 function Home() {
-  const [search, setSearch] = useState("");
-  const [sortBy, setSortBy] = useState("");
-  const [order, setOrder] =  useState("");
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(Number.MAX_SAFE_INTEGER);
+  const [search, setSearch] = useState<string>("");
+  const [sortBy, setSortBy] = useState<string>("");
+  const [order, setOrder] =  useState<string>("");
+  const [minPrice, setMinPrice] = useState<string>("");
+  const [maxPrice, setMaxPrice] = useState<string>("");
 
   return (
     <div className="App">
-
       <div id="page-container">
-        
         <div id="content-wrap">
           <TopNav 
             onSearchChange={setSearch} 
@@ -29,11 +27,9 @@ function Home() {
             search={search} 
             sortBy={sortBy} 
             order={order}
-            minPrice={minPrice}
-            maxPrice={maxPrice}
+            minPrice={Number(minPrice)}
+            maxPrice={Number(maxPrice)}
           />
-
-          
         </div>
 
         <div id="footer-container">
