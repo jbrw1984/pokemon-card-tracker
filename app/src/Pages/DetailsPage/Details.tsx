@@ -21,7 +21,7 @@ function Details() {
   // Grabs the args/params passed in through useNavigate's URL
   const params = useParams(); 
 
-  const EMPTY_CARD_RATING_MSG : string = 'No card ratings made yet'; 
+  const EMPTY_CARD_RATING_MSG : string = 'No card ratings'; 
 
   /*
   'card' state variable is optional because we are already using the 
@@ -36,6 +36,8 @@ function Details() {
    * it would need a default value. If you used a default value of 0, 
    * then anytime you clicked to view a card's details, the card
    * rating would display as 0. 
+   * NOTE: if there are no card ratings, will instead display 
+   *       message saying no card ratings have been given. 
    */  
   let cardRatingAverage : number | string; 
 
@@ -72,12 +74,12 @@ function Details() {
     setCardRating(cardRating => [newCardRatingSubmission, ...cardRating]); 
     console.log("card rating state after adding stuff in: ", cardRating); 
 
-    /*
-    Compute the new average of the card ratings, including the newly posted card rating
-    in your calculations. 
-    Use reduce() iterator to get the sum of all the card ratings. Then divide by total 
-    number of ratings
-    */
+    /**
+     * Compute the new average of the card ratings, including the newly posted card rating
+     * in your calculations. 
+     * Use reduce() iterator to get the sum of all the card ratings. Then divide by total 
+     * number of ratings.
+     */
     if(cardRating.length <= 0) {
       cardRatingAverage = EMPTY_CARD_RATING_MSG; 
     }
@@ -86,11 +88,6 @@ function Details() {
         return accumulator + currentCardRatingObj.rating
       }, 0) / cardRating.length; 
     }
-    // cardRatingAverage = cardRating.reduce((accumulator, currentCardRatingObj) => {
-    //   return accumulator + currentCardRatingObj.rating
-    // }, 0) / cardRating.length
-
-    // // setCardRatingAverage(cardRatingAvg); 
 
   }
 
@@ -139,7 +136,6 @@ function Details() {
           cardInfo={receivedStatePokemonCard as PokemonCard}
           onNewCardRatingSubmission={handleNewCardRatingSubmission}
         />
-        {/* <CardRater/> */}
       </div>
       
       <Footer />

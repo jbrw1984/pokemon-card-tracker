@@ -16,8 +16,6 @@ const sliderTrackColor : NodeListOf<Element> = document.querySelectorAll('input[
 const slider : any = document.getElementById("myinput"); 
 
 const CardRater: FC<CardRatingProps> = ({ cardInfo, onNewCardRatingSubmission}): JSX.Element => {
-// export function CardRater() {
-    // const inputRef : any = React.createRef()
 
     const [sliderValue, setSliderValue] = useState<number>(0);
     
@@ -25,21 +23,13 @@ const CardRater: FC<CardRatingProps> = ({ cardInfo, onNewCardRatingSubmission}):
     const max : number = 10; 
 
     const updateSliderColor = (event : any) : void => {
-        // Parse slider value as an integer
-        const newSliderValue = parseInt(event.target.value, 10); 
-        setSliderValue(newSliderValue); 
-        console.log("sliderValue: " + sliderValue); 
 
-        const progress : string = (newSliderValue-min)/(max-min)*100 + '%'; 
-        event.target.style.background = 'linear-gradient(90deg, #FCCD29 0% ${progress}%, #94938d ${progress}% 100%)'; 
+        console.log("True slider value: " + event.target.value)
+        setSliderValue(event.target.value); 
 
-        // setSliderValue(event.target.value); 
-        // console.log(sliderValue); 
+        const progress : string = (sliderValue-min)/(max-min)*100 + '%'; 
+        event.target.style.background = `linear-gradient(90deg, #FCCD29 0% ${progress}%, #94938d ${progress}% 100%)`; 
 
-        // const progress : string = (sliderValue-min)/(max-min)*100 + '%'; 
-
-        // const newBackgroundStyle = `linear-gradient(90deg, #FCCD29 0% ${progress}%, #94938d ${progress}% 100%)`
-        // inputRef.current.style.background = newBackgroundStyle
     }
     
     let progressUpdate : string = (sliderValue-min)/(max-min)*100 + '%';
@@ -48,20 +38,27 @@ const CardRater: FC<CardRatingProps> = ({ cardInfo, onNewCardRatingSubmission}):
     }
 
 
+    /**
+     * Function for handling slider form submission. 
+     * Will create new card rating object, post it to API, 
+     * and update current card rating average. 
+     * 
+     * @param e event from slider form submission
+     */
     const handleSubmit = async (e: any) => {
         e.preventDefault()
         console.log("Button Clicked")
         console.log("Card ID: " + cardInfo._id)
 
-
         try {
+            // Make new CardRating object
             const cardRatingPostData: CardRating = {
                 pokemonCardId: String(cardInfo._id), 
                 date: new Date(), 
                 rating: Number(sliderValue)
             }
 
-            // Fetch/post request with newly created card rating object...
+            // Fetch and do post request with newly created card rating object...
             const response = await fetch(`http://localhost:3000/cards/${cardInfo._id}/card-rating`, {
                 method: 'POST', 
                 headers: {

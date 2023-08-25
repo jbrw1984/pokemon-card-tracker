@@ -14,7 +14,27 @@ interface CardDescriptionProps {
     cardInfo: PokemonCard; 
     cardRatingAverageProp: number | string; 
     onNewPriceHistorySubmission: (priceHistoryPostData: PriceHistory) => void
+    
 }
+
+/**
+ * Used this stack-overflow article for how to truncate numbers
+ * in JavaScript: https://stackoverflow.com/questions/4912788/truncate-not-round-off-decimal-numbers-in-javascript
+ * 
+ * @param num Number to truncate
+ * @param digits Number of decimal places to truncate to 
+ * @returns Truncated number
+ */
+const truncateDecimals  = (num: number, digits: number) => {
+    var numS = num.toString(),
+        decPos = numS.indexOf('.'),
+        substrLength = decPos == -1 ? numS.length : 1 + decPos + digits,
+        trimmedResult = numS.substring(0, substrLength),
+        finalResult = isNaN(Number(trimmedResult)) ? 0 : trimmedResult;
+
+    return parseFloat(finalResult.toString());
+}
+
 
 const CardDescription: FC<CardDescriptionProps> = ({ cardInfo, cardRatingAverageProp, onNewPriceHistorySubmission}): JSX.Element => {
     const DEFAULT_NAME : string = 'Pokemon'
@@ -77,6 +97,11 @@ const CardDescription: FC<CardDescriptionProps> = ({ cardInfo, cardRatingAverage
 
     // Only allows price history entry to be submitted if priceText is not empty
     let isSubmitDisabled = !priceText
+    
+    // If the cardRatingAverageProp is a number, truncate it so that only 1 decimal displayed
+    if (typeof cardRatingAverageProp === 'number') {
+        cardRatingAverageProp = truncateDecimals(cardRatingAverageProp, 1)
+    }
 
     return (
         <Card className="card-desc-comp">
@@ -86,14 +111,12 @@ const CardDescription: FC<CardDescriptionProps> = ({ cardInfo, cardRatingAverage
                 <Card.Subtitle className="card-desc-sale-price">${cardInfo && cardInfo.salePrice ? cardInfo.salePrice : DEFAULT_SALE_PRICE}</Card.Subtitle>
 
                 <Card.Text className="card-desc-price-rtn">
-                    Market Price: 
+                    Market Price: &nbsp; 
                     <span className="card-desc-market-price">
                         ${cardInfo && cardInfo.marketPrice ? cardInfo.marketPrice : DEFAULT_MARKET_PRICE}
-                    </span>  |  Card Rating: 
+                    </span> &nbsp; | &nbsp; Card Rating: &nbsp; 
                     <span className="card-desc-rating">
-                        {/* {cardInfo && cardRatingAverageProp ? cardRatingAverageProp : DEFAULT_RATING} */}
                         {cardRatingAverageProp}
-                        {/* {cardInfo && DEFAULT_RATING} */}
                     </span>
                 </Card.Text>
 
