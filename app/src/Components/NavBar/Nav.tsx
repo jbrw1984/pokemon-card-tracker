@@ -59,7 +59,7 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
 
   // Disable the filter submit button when minPrice is not less than maxPrice and there is a value for each of the min and max prices
   // Also disable is min or max is a negative value.
-  let isFilterSubmitDisabled: boolean = (!(Number(minPrice) < Number(maxPrice)) && minPrice !== "" && maxPrice !== "")
+  let isFilterSubmitDisabled: boolean = (!(Number(minPrice) <= Number(maxPrice)) && minPrice !== "" && maxPrice !== "")
                                         || (Number(minPrice) < 0 || Number(maxPrice) < 0);
 
   return (
