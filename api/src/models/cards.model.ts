@@ -19,10 +19,6 @@ const PokemonCardSchema: Schema = new Schema({
     type: Number, 
     required: true, 
   },
-  // rating: {
-  //   type: Array, 
-  //   required: true, 
-  // },
   image: {
     type: String, 
     required: true, 

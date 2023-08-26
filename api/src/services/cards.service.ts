@@ -88,26 +88,26 @@ export class CardService {
   public async createCard(cardData: PokemonCard): Promise<PokemonCard> {
     const createdCard: PokemonCard = await PokemonCardModel.create(cardData);
     
-    //TODO: add some kind of catch for catching errors
-    // if (!createdCard) throw new HttpException(409, "Card doesn't exist");
+    // Catching errors if created card is undefined
+    if (!createdCard) throw new HttpException(409, "Card doesn't exist");
 
     return createdCard;
   }
   
-  public async createPriceHistory(cardId : ObjectId | string , priceHistoryData: PriceHistory): Promise<PriceHistory> {
+  public async createPriceHistory(priceHistoryData: PriceHistory): Promise<PriceHistory> {
     const createdPriceHistory: PriceHistory = await PriceHistoryModel.create(priceHistoryData);
     
-    //TODO: add some kind of catch for catching errors
-    // if (!createdPriceHistory) throw new HttpException(409, "Price History doesn't exist");
+    // Catching errors if created price history is undefined
+    if (!createdPriceHistory) throw new HttpException(409, "Price History doesn't exist");
 
     return createdPriceHistory;
   }
 
-  public async createCardRating(cardId : ObjectId | string , cardRatingData: CardRating): Promise<CardRating> {
+  public async createCardRating(cardRatingData: CardRating): Promise<CardRating> {
     const createdCardRating: CardRating = await CardRatingModel.create(cardRatingData);
     
-    //TODO: add some kind of catch for catching errors
-    // if (!createdCardRating) throw new HttpException(409, "Card Rating doesn't exist");
+    // Catching errors if created card rating is undefined
+    if (!createdCardRating) throw new HttpException(409, "Card Rating doesn't exist");
 
     return createdCardRating;
   }

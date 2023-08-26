@@ -126,8 +126,8 @@ export class CardsController {
       priceHistoryData.pokemonCardId = cardId; 
 
       // Pass in priceHistoryData into the cards service method createPriceHistory()
-      // This will create a new card in the database and return it
-      const createdPriceHistory : PriceHistory = await this.card.createPriceHistory(cardId, priceHistoryData); 
+      // This will create a new price history entry in the database and return it
+      const createdPriceHistory : PriceHistory = await this.card.createPriceHistory(priceHistoryData); 
 
       // Send response back to user with HTTP status code 201 and 
       // created price history obj in JSON form
@@ -149,12 +149,12 @@ export class CardsController {
       // const priceHistoryData : CreatePriceHistoryDto = req.body;
       const cardId : ObjectId | string = req.params.id; 
       
-      // Inject the cardId from the URL path into priceHistoryData
+      // Inject the cardId from the URL path into cardRatingData
       cardRatingData.pokemonCardId = cardId; 
 
-      // Pass in priceHistoryData into the cards service method createPriceHistory()
-      // This will create a new card in the database and return it
-      const createdCardRating : CardRating = await this.card.createCardRating(cardId, cardRatingData); 
+      // Pass in cardRatingData into the cards service method createCardRating()
+      // This will create a new card rating entry in the database and return it
+      const createdCardRating : CardRating = await this.card.createCardRating(cardRatingData); 
 
       // Send response back to user with HTTP status code 201 and 
       // created price history obj in JSON form

@@ -7,8 +7,6 @@ import { PokemonCardModel } from '@/models/cards.model';
 import { App } from '@/app'; 
 import { CardsRoute } from '@routes/cards.route'; 
 import { PokemonCard } from '@/interfaces/cards.interface';
-import { ClientSession } from 'mongodb';
-import { Document, Model, DocumentSetOptions, QueryOptions, Callback, UpdateQuery, AnyObject, PopulateOptions, MergeType, Query, SaveOptions, LeanDocument, ToObjectOptions, FlattenMaps, Require_id, UpdateWithAggregationPipeline, PathsToValidate, CallbackWithoutResult, pathsToSkip, Error, Connection } from 'mongoose';
 import { cardData } from './arrayOfCards';
 import { CreateCardRatingDto } from '@/dtos/cardRating.dto';
 import { CardRating } from '@/interfaces/cardRating.interface';
@@ -58,7 +56,6 @@ describe('Testing Cards', () => {
         description: 'Electric Type',
         salePrice: 1,
         marketPrice: 1,
-        // rating: [],
         image: 'Pikachu.png',
       }
 
@@ -75,7 +72,6 @@ describe('Testing Cards', () => {
       expect(response.body.data.description).toBe(cardData1.description);
       expect(response.body.data.salePrice).toBe(cardData1.salePrice);
       expect(response.body.data.marketPrice).toBe(cardData1.marketPrice);
-      // expect(response.body.data.rating).toStrictEqual(cardData1.rating);
       expect(response.body.data.image).toBe(cardData1.image);
 
     });
@@ -88,7 +84,6 @@ describe('Testing Cards', () => {
         description: 'Fire Type',
         salePrice: 23.10,
         marketPrice: 46.20,
-        // rating: [1, 9, 8, 2, 10],
         image: 'Charmander.png',
       }
 
@@ -105,7 +100,6 @@ describe('Testing Cards', () => {
       expect(response.body.data.description).toBe(cardData2.description);
       expect(response.body.data.salePrice).toBe(cardData2.salePrice);
       expect(response.body.data.marketPrice).toBe(cardData2.marketPrice);
-      // expect(response.body.data.rating).toStrictEqual(cardData2.rating);
       expect(response.body.data.image).toBe(cardData2.image);
     });
   });
@@ -123,7 +117,6 @@ describe('Testing Cards', () => {
         description: 'Electric Type',
         salePrice: 1,
         marketPrice: 1,
-        // rating: [],
         image: 'Pikachu.png',
       }
       const createdCard1: PokemonCard = await PokemonCardModel.create(cardData1);
@@ -168,7 +161,6 @@ describe('Testing Cards', () => {
         description: 'Water Type',
         salePrice: 2,
         marketPrice: 4,
-        // rating: [],
         image: 'Mudkip.png',
       }
       const createdCard1: PokemonCard = await PokemonCardModel.create(cardData1);
@@ -252,7 +244,6 @@ describe('Testing Cards', () => {
         description: 'Search', 
         salePrice: 1, 
         marketPrice: 2, 
-        // rating: [], 
         image: 'img',
       }
       let createdSameNameCards: PokemonCard[] = [];
@@ -356,7 +347,6 @@ describe('Testing Cards', () => {
       expect(result.body.data.description).toEqual(createdCards[0].description);
       expect(result.body.data.salePrice).toEqual(createdCards[0].salePrice);
       expect(result.body.data.marketPrice).toEqual(createdCards[0].marketPrice);
-      // expect(result.body.data.rating).toEqual(createdCards[0].rating);
       expect(result.body.data.image).toEqual(createdCards[0].image);
 
       // Check first price history entry
@@ -366,7 +356,6 @@ describe('Testing Cards', () => {
       const responseDateObject0 = new Date(+year0, +month0 - 1, +day0);
 
       expect(responseDateObject0.toString()).toBe(priceHistoryData0.date.toString());
-      // expect(result.body.data.priceHistoryEntries[0]._id.toString()).toEqual(createdPriceHistory1._id.toString());
       expect(result.body.data.priceHistoryEntries[0].pokemonCardId.toString()).toEqual(priceHistoryData0.pokemonCardId.toString());
       expect(result.body.data.priceHistoryEntries[0].price).toEqual(priceHistoryData0.price);
       expect(result.body.data.priceHistoryEntries[0].quantity).toEqual(priceHistoryData0.quantity);
@@ -379,7 +368,6 @@ describe('Testing Cards', () => {
       const responseDateObject3 = new Date(+year3, +month3 - 1, +day3);
 
       expect(responseDateObject3.toString()).toBe(priceHistoryData3.date.toString());
-      // expect(result.body.data.priceHistoryEntries[0]._id.toString()).toEqual(createdPriceHistory1._id.toString());
       expect(result.body.data.priceHistoryEntries[1].pokemonCardId.toString()).toEqual(priceHistoryData3.pokemonCardId.toString());
       expect(result.body.data.priceHistoryEntries[1].price).toEqual(priceHistoryData3.price);
       expect(result.body.data.priceHistoryEntries[1].quantity).toEqual(priceHistoryData3.quantity);
@@ -429,7 +417,6 @@ describe('Testing Cards', () => {
       expect(result.body.data.description).toEqual(createdCards[0].description);
       expect(result.body.data.salePrice).toEqual(createdCards[0].salePrice);
       expect(result.body.data.marketPrice).toEqual(createdCards[0].marketPrice);
-      // expect(result.body.data.rating).toEqual(createdCards[0].rating);
       expect(result.body.data.image).toEqual(createdCards[0].image);
 
       // Check first card rating entry
@@ -439,7 +426,6 @@ describe('Testing Cards', () => {
       const responseDateObject0 = new Date(+year0, +month0 - 1, +day0);
 
       expect(responseDateObject0.toString()).toBe(cardRatingData0.date.toString());
-      // expect(result.body.data.priceHistoryEntries[0]._id.toString()).toEqual(createdPriceHistory1._id.toString());
       expect(result.body.data.cardRatingEntries[0].pokemonCardId.toString()).toEqual(cardRatingData0.pokemonCardId.toString());
       expect(result.body.data.cardRatingEntries[0].rating).toEqual(cardRatingData0.rating);
 
@@ -451,7 +437,6 @@ describe('Testing Cards', () => {
       const responseDateObject3 = new Date(+year3, +month3 - 1, +day3);
 
       expect(responseDateObject3.toString()).toBe(cardRatingData3.date.toString());
-      // expect(result.body.data.priceHistoryEntries[0]._id.toString()).toEqual(createdPriceHistory1._id.toString());
       expect(result.body.data.cardRatingEntries[1].pokemonCardId.toString()).toEqual(cardRatingData3.pokemonCardId.toString());
       expect(result.body.data.cardRatingEntries[1].rating).toEqual(cardRatingData3.rating);
     });
@@ -489,16 +474,8 @@ describe('Testing Cards', () => {
       const createdPriceHistory1: PriceHistory = await PriceHistoryModel.create(priceHistoryData1);
 
 
-
-      // Pass the new ID to the [GET] by ID endpoint
-      // HOW TO STRING QUERIES???????????
-      // Rather, how to get mupltiple queries from one url
-      // const result = await request(app.getServer()).get(`${cardsRoute.path}/${cardId}?include=price-history&include=card-rating`);
-      // const result = await request(app.getServer()).get(`${cardsRoute.path}/${cardId}?include[]=price-history&include[]=card-rating`);
-      // const result = await request(app.getServer()).get(`${cardsRoute.path}/${cardId}`)
-      //   .query({
-      //     include: [`price-history`, `card-rating`]
-      //   });
+      // To pass in multiple queries, separate by ';'. 
+      // Can't use '&' or pass in arrays because Express will only use the last include query
       const result = await request(app.getServer()).get(`${cardsRoute.path}/${cardId}?include=price-history;card-rating`);
 
       // Expect good status code and cardId to match the route
@@ -511,7 +488,6 @@ describe('Testing Cards', () => {
       expect(result.body.data.description).toEqual(createdCards[1].description);
       expect(result.body.data.salePrice).toEqual(createdCards[1].salePrice);
       expect(result.body.data.marketPrice).toEqual(createdCards[1].marketPrice);
-      // expect(result.body.data.rating).toEqual(createdCards[1].rating);
       expect(result.body.data.image).toEqual(createdCards[1].image);
 
       // Check second price history entry
@@ -521,7 +497,6 @@ describe('Testing Cards', () => {
       const responseDateObject1 = new Date(+year1, +month1 - 1, +day1);
 
       expect(responseDateObject1.toString()).toBe(priceHistoryData1.date.toString());
-      // expect(result.body.data.priceHistoryEntries[0]._id.toString()).toEqual(createdPriceHistory1._id.toString());
       expect(result.body.data.priceHistoryEntries[1].pokemonCardId.toString()).toEqual(priceHistoryData1.pokemonCardId.toString());
       expect(result.body.data.priceHistoryEntries[1].price).toEqual(priceHistoryData1.price);
       expect(result.body.data.priceHistoryEntries[1].quantity).toEqual(priceHistoryData1.quantity);       
@@ -533,7 +508,6 @@ describe('Testing Cards', () => {
       const responseDateObject0 = new Date(+year0, +month0 - 1, +day0);
 
       expect(responseDateObject0.toString()).toBe(cardRatingData0.date.toString());
-      // expect(result.body.data.priceHistoryEntries[0]._id.toString()).toEqual(createdPriceHistory1._id.toString());
       expect(result.body.data.cardRatingEntries[0].pokemonCardId.toString()).toEqual(cardRatingData0.pokemonCardId.toString());
       expect(result.body.data.cardRatingEntries[0].rating).toEqual(cardRatingData0.rating);
 

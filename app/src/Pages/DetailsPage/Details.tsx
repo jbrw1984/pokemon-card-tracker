@@ -12,6 +12,13 @@ import { PriceHistory } from "../../../../api/src/interfaces/priceHistory.interf
 import { CardRating } from "../../../../api/src/interfaces/cardRating.interface";
 
 
+function findAverageCardRating(cardRatingArray: CardRating[]) : number | string {
+
+  return cardRatingArray.reduce((accumulator, currentCardRatingObj) => {
+    return accumulator + currentCardRatingObj.rating
+  }, 0) / cardRatingArray.length; 
+
+}
 
 
 function Details() {
@@ -39,16 +46,7 @@ function Details() {
    * NOTE: if there are no card ratings, will instead display 
    *       message saying no card ratings have been given. 
    */  
-  let cardRatingAverage : number | string; 
-
-  if(cardRating.length <= 0) {
-    cardRatingAverage = EMPTY_CARD_RATING_MSG; 
-  }
-  else {
-    cardRatingAverage = cardRating.reduce((accumulator, currentCardRatingObj) => {
-      return accumulator + currentCardRatingObj.rating
-    }, 0) / cardRating.length; 
-  }
+  let cardRatingAverage : number | string = cardRating.length <= 0 ? EMPTY_CARD_RATING_MSG : findAverageCardRating(cardRating);
 
 
   /*
@@ -80,14 +78,7 @@ function Details() {
      * Use reduce() iterator to get the sum of all the card ratings. Then divide by total 
      * number of ratings.
      */
-    if(cardRating.length <= 0) {
-      cardRatingAverage = EMPTY_CARD_RATING_MSG; 
-    }
-    else {
-      cardRatingAverage = cardRating.reduce((accumulator, currentCardRatingObj) => {
-        return accumulator + currentCardRatingObj.rating
-      }, 0) / cardRating.length; 
-    }
+    cardRatingAverage = cardRating.length <= 0 ? EMPTY_CARD_RATING_MSG : findAverageCardRating(cardRating);
 
   }
 
