@@ -110,12 +110,43 @@ export class CardService {
     const cardUpdate = { salePrice: priceHistoryData.price }
 
     const updatedSalePrice: number = await PokemonCardModel.findOneAndUpdate(cardFilter, cardUpdate);
-    console.log(updatedSalePrice)
 
     // Catch error if update fails
     if (!updatedSalePrice) throw new HttpException(409, "Card does not exsist");
 
     return updatedSalePrice;
+  }
+
+  public async updateMarketPrice(priceHistoryData: PriceHistory): Promise<number> {
+   
+    // Find the card that matches the priceHistory data entry and populate all of the priceHistoryEntries
+    const findCard: PokemonCard = await PokemonCardModel.findOne({ _id: priceHistoryData.pokemonCardId })
+      .populate({
+        path: 'priceHistoryEntries',
+        options: { sort: {date: 'desc'}}
+      });
+    console.log(findCard)
+    // Finding the average card price 
+    function findAvgPrice(priceHistoryArr: PriceHistory[]) : number {
+      return priceHistoryArr.reduce((accumulator, currentPriceHistory) => {
+        return accumulator + currentPriceHistory.price
+      }, 0) / priceHistoryArr.length; 
+    }
+
+    //const priceHistoryArr: PriceHistory[] = findCard.priceHistory;
+
+    const avgPrice: number = await findAvgPrice([priceHistoryData])
+
+
+    const cardFilter = { _id: priceHistoryData.pokemonCardId }
+    const cardUpdate = { marketPrice: avgPrice }
+
+    const updatedMarketPrice: number = await PokemonCardModel.findOneAndUpdate(cardFilter, cardUpdate);
+    console.log("UPDATING MARKET PRICE HERE")
+    // Catch error if update fails
+    if (!updatedMarketPrice) throw new HttpException(409, "Card does not exsist");
+
+    return updatedMarketPrice;
   }
   
 
