@@ -4,6 +4,7 @@ import { PokemonCard } from '@interfaces/cards.interface';
 import { CardService } from '@/services/cards.service';
 import { PokemonCardModel } from '@/models/cards.model';
 import { PriceHistory } from '@/interfaces/priceHistory.interface';
+import { CardRating } from '@/interfaces/cardRating.interface';
 import { ObjectId } from 'mongoose';
 
 // All routes that will need controllers
@@ -65,8 +66,26 @@ export class CardsController {
   public getCardById = async (req: Request, res: Response, next: NextFunction) => {
     try { 
       const cardId: string = req.params.id;
-      const includePriceHistory : boolean = req.query.include === 'price-history';
-      const findOneCardData: PokemonCard = await this.card.findCardById(cardId, includePriceHistory);
+      let includePriceHistory : boolean = false
+      let includeCardRating : boolean = false
+
+      // The `include` search query will come in as a string, with ';' separating each param
+      // Must separate by ';' to get each param
+      const includeQueryParams : string | undefined = req.query.include as string
+      let includeOptions : string[]
+      if (includeQueryParams !== undefined) {
+        includeOptions = includeQueryParams.split(";")
+
+        if (includeOptions.includes('price-history')) {
+          includePriceHistory = true
+        }
+  
+        if (includeOptions.includes('card-rating')) {
+          includeCardRating = true
+        }
+      }
+      
+      const findOneCardData: PokemonCard = await this.card.findCardById(cardId, includePriceHistory, includeCardRating);
 
       res.status(200).json({ data: findOneCardData, message: 'findOne' });
     } catch (error) {
@@ -107,12 +126,39 @@ export class CardsController {
       priceHistoryData.pokemonCardId = cardId; 
 
       // Pass in priceHistoryData into the cards service method createPriceHistory()
-      // This will create a new card in the database and return it
-      const createdPriceHistory : PriceHistory = await this.card.createPriceHistory(cardId, priceHistoryData); 
+      // This will create a new price history entry in the database and return it
+      const createdPriceHistory : PriceHistory = await this.card.createPriceHistory(priceHistoryData); 
 
       // Send response back to user with HTTP status code 201 and 
       // created price history obj in JSON form
       res.status(201).json({ data: createdPriceHistory, message: 'created' }); 
+    }
+    catch(error) {
+
+      // TODO: look into what to do if post request fails 
+      next(error); 
+      res.status(500).json({ error: 'Internal Server Error' });
+
+    }
+  } 
+  
+  public createCardRating = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      // priceHistoryData: price history info sent by user in post request
+      const cardRatingData : CardRating = req.body; 
+      // const priceHistoryData : CreatePriceHistoryDto = req.body;
+      const cardId : ObjectId | string = req.params.id; 
+      
+      // Inject the cardId from the URL path into cardRatingData
+      cardRatingData.pokemonCardId = cardId; 
+
+      // Pass in cardRatingData into the cards service method createCardRating()
+      // This will create a new card rating entry in the database and return it
+      const createdCardRating : CardRating = await this.card.createCardRating(cardRatingData); 
+
+      // Send response back to user with HTTP status code 201 and 
+      // created price history obj in JSON form
+      res.status(201).json({ data: createdCardRating, message: 'created' }); 
     }
     catch(error) {
 

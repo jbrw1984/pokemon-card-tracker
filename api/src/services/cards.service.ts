@@ -5,6 +5,8 @@ import { PokemonCardModel } from '@/models/cards.model';
 import { PriceHistory } from '@/interfaces/priceHistory.interface';
 import { PriceHistoryModel } from '@/models/priceHistory.model';
 import { ObjectId } from 'mongoose';
+import { CardRating } from '@/interfaces/cardRating.interface';
+import { CardRatingModel } from '@/models/cardRating.model';
 
 @Service()
 export class CardService {
@@ -30,10 +32,27 @@ export class CardService {
     return cards;
   }
 
-  public async findCardById(cardId: string, includePriceHistory: boolean): Promise<PokemonCard> {
+  public async findCardById(cardId: string, includePriceHistory: boolean, includeCardRating: boolean): Promise<PokemonCard> {
 
-    // Include price history
-    if(includePriceHistory) {
+    // Include price history and card rating
+    if(includePriceHistory && includeCardRating) {
+      // Find card by id and populate price history, then sort price history by date, descending
+      const findCard: PokemonCard = await PokemonCardModel.findOne({ _id: cardId })
+        .populate({
+          path: 'priceHistoryEntries',
+          options: { sort: {date: 'desc'}}
+        })
+        .populate({
+          path: 'cardRatingEntries', 
+          options: { sort: {date: 'desc'}}
+        }); 
+
+      if (!findCard) throw new HttpException(409, "Card doesn't exist");
+      return findCard;
+    }
+
+    // Include price history only
+    else if (includePriceHistory && !includeCardRating) {
       // Find card by id and populate price history, then sort price history by date, descending
       const findCard: PokemonCard = await PokemonCardModel.findOne({ _id: cardId })
         .populate({
@@ -42,9 +61,23 @@ export class CardService {
         }); 
 
       if (!findCard) throw new HttpException(409, "Card doesn't exist");
-      return findCard;
+      return findCard; 
     }
-    // Don't include price history
+
+    // Include card rating only
+    else if (!includePriceHistory && includeCardRating) {
+      // Find card by id and populate price history, then sort price history by date, descending
+      const findCard: PokemonCard = await PokemonCardModel.findOne({ _id: cardId })
+        .populate({
+          path: 'cardRatingEntries',
+          options: { sort: {date: 'desc'}}
+        }); 
+        
+      if (!findCard) throw new HttpException(409, "Card doesn't exist");
+      return findCard; 
+    }
+
+    // Don't include price history or card rating
     else {
       const findCard: PokemonCard = await PokemonCardModel.findOne({ _id: cardId });
       if (!findCard) throw new HttpException(409, "Card doesn't exist");
@@ -55,19 +88,28 @@ export class CardService {
   public async createCard(cardData: PokemonCard): Promise<PokemonCard> {
     const createdCard: PokemonCard = await PokemonCardModel.create(cardData);
     
-    //TODO: add some kind of catch for catching errors
-    // if (!createdCard) throw new HttpException(409, "Card doesn't exist");
+    // Catching errors if created card is undefined
+    if (!createdCard) throw new HttpException(409, "Card doesn't exist");
 
     return createdCard;
   }
   
-  public async createPriceHistory(cardId : ObjectId | string , priceHistoryData: PriceHistory): Promise<PriceHistory> {
+  public async createPriceHistory(priceHistoryData: PriceHistory): Promise<PriceHistory> {
     const createdPriceHistory: PriceHistory = await PriceHistoryModel.create(priceHistoryData);
     
-    //TODO: add some kind of catch for catching errors
-    // if (!createdPriceHistory) throw new HttpException(409, "Price History doesn't exist");
+    // Catching errors if created price history is undefined
+    if (!createdPriceHistory) throw new HttpException(409, "Price History doesn't exist");
 
     return createdPriceHistory;
+  }
+
+  public async createCardRating(cardRatingData: CardRating): Promise<CardRating> {
+    const createdCardRating: CardRating = await CardRatingModel.create(cardRatingData);
+    
+    // Catching errors if created card rating is undefined
+    if (!createdCardRating) throw new HttpException(409, "Card Rating doesn't exist");
+
+    return createdCardRating;
   }
   
 }

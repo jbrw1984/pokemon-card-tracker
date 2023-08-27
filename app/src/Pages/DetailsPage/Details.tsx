@@ -9,7 +9,16 @@ import { useLocation, useParams } from 'react-router-dom';
 import { PokemonCard } from '../../../../api/src/interfaces/cards.interface';
 import { useEffect, useState } from 'react';
 import { PriceHistory } from "../../../../api/src/interfaces/priceHistory.interface";
+import { CardRating } from "../../../../api/src/interfaces/cardRating.interface";
 
+
+function findAverageCardRating(cardRatingArray: CardRating[]) : number | string {
+
+  return cardRatingArray.reduce((accumulator, currentCardRatingObj) => {
+    return accumulator + currentCardRatingObj.rating
+  }, 0) / cardRatingArray.length; 
+
+}
 
 
 function Details() {
@@ -19,12 +28,26 @@ function Details() {
   // Grabs the args/params passed in through useNavigate's URL
   const params = useParams(); 
 
+  const EMPTY_CARD_RATING_MSG : string = 'No card ratings'; 
+
   /*
   'card' state variable is optional because we are already using the 
   receivedStatePokemonCard from the ProductCard component. 
   */
   const [card, setCard] = useState<PokemonCard>(); 
   const [priceHistory, setPriceHistory ] = useState<PriceHistory[]>([]); 
+  const [cardRating, setCardRating] = useState<CardRating[]>([]); 
+
+  /**
+   * Could not make cardRatingAverage as a state variable because 
+   * it would need a default value. If you used a default value of 0, 
+   * then anytime you clicked to view a card's details, the card
+   * rating would display as 0. 
+   * NOTE: if there are no card ratings, will instead display 
+   *       message saying no card ratings have been given. 
+   */  
+  let cardRatingAverage : number | string = cardRating.length <= 0 ? EMPTY_CARD_RATING_MSG : findAverageCardRating(cardRating);
+
 
   /*
   Function to be called when new price history is posted. 
@@ -38,14 +61,37 @@ function Details() {
     console.log("price history state after adding stuff in: ", priceHistory); 
   }
 
+  /*
+  Function to be called when new card rating is posted. 
+  Appends new card rating entry to the card rating array. 
+  Then, React will automatically re-render the CardDescription component
+  to include the newly computed averages of all the card ratings.
+  */
+  const handleNewCardRatingSubmission = (newCardRatingSubmission: CardRating) => {
+    console.log("card rating state before adding stuff in: ", cardRating); 
+    setCardRating(cardRating => [newCardRatingSubmission, ...cardRating]); 
+    console.log("card rating state after adding stuff in: ", cardRating); 
+
+    /**
+     * Compute the new average of the card ratings, including the newly posted card rating
+     * in your calculations. 
+     * Use reduce() iterator to get the sum of all the card ratings. Then divide by total 
+     * number of ratings.
+     */
+    cardRatingAverage = cardRating.length <= 0 ? EMPTY_CARD_RATING_MSG : findAverageCardRating(cardRating);
+
+  }
+
   useEffect(() => {
     const fetchCurrentCard = async() => {
       try{
-        const result = await fetch(`http://localhost:3000/cards/${params.id}?include=price-history`)
+        // Must include both card rating and price history
+        const result = await fetch(`http://localhost:3000/cards/${params.id}?include=price-history;card-rating`)
         const pokemonCardFetchedData = await result.json(); 
        
         setCard(pokemonCardFetchedData.data); 
         setPriceHistory(pokemonCardFetchedData.data.priceHistoryEntries); 
+        setCardRating(pokemonCardFetchedData.data.cardRatingEntries); 
       }
       catch(error) {
         console.log(error); 
@@ -68,11 +114,19 @@ function Details() {
        * Optionally: can also pass in this component's state variable 'card', which is obtained
        * along with the price history from the fetch statement. 
       */}
-      <CardDescription cardInfo={receivedStatePokemonCard as PokemonCard} onNewPriceHistorySubmission={handleNewPriceHistorySubmission}/>
+      <CardDescription 
+        cardInfo={receivedStatePokemonCard as PokemonCard} 
+        cardRatingAverageProp={cardRatingAverage}
+        onNewPriceHistorySubmission={handleNewPriceHistorySubmission}
+      />
 
       <div className="info-flexbox">
         <PriceHistoryComponent priceHistoryArray={Array.isArray(priceHistory) ? priceHistory : []}/>
-        <CardRater />
+
+        <CardRater 
+          cardInfo={receivedStatePokemonCard as PokemonCard}
+          onNewCardRatingSubmission={handleNewCardRatingSubmission}
+        />
       </div>
       
       <Footer />

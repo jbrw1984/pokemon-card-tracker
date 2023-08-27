@@ -1,10 +1,11 @@
 import { model, Schema } from 'mongoose';
 import { PriceHistory } from '@interfaces/priceHistory.interface'; 
+import { CardRating } from '@interfaces/cardRating.interface'
 import { PokemonCardModel } from './cards.model';
 
-const PriceHistorySchema: Schema = new Schema({
-  // Required because for a price history object to be created it must be linked to a card.
-  // Relates the priceHistory model back to the card model
+const CardRatingSchema: Schema = new Schema({
+  // Required because for a card rating object to be created it must be linked to a card.
+  // Relates the CardRating model back to the card model
   // https://medium.com/@brandon.lau86/one-to-many-relationships-with-mongodb-and-mongoose-in-node-express-d5c9d23d93c2
   pokemonCardId: {
     type: Schema.Types.ObjectId, 
@@ -15,14 +16,10 @@ const PriceHistorySchema: Schema = new Schema({
     type: Date,
     required: true,
   },
-  quantity: {
+  rating: {
     type: Number, 
     required: true, 
-  }, 
-  price: {
-    type: Number, 
-    required: true, 
-  },
+  }
 })
 
-export const PriceHistoryModel = model<PriceHistory>('PriceHistoryData', PriceHistorySchema); 
+export const CardRatingModel = model<CardRating>('CardRatingData', CardRatingSchema); 
