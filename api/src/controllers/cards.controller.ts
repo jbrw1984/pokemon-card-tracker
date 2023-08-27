@@ -129,9 +129,11 @@ export class CardsController {
       // This will create a new price history entry in the database and return it
       const createdPriceHistory : PriceHistory = await this.card.createPriceHistory(priceHistoryData); 
 
+      const updatedSalePrice: number = await this.card.updateSalePrice(priceHistoryData);
+
       // Send response back to user with HTTP status code 201 and 
       // created price history obj in JSON form
-      res.status(201).json({ data: createdPriceHistory, message: 'created' }); 
+      res.status(201).json({ data: [createdPriceHistory, updatedSalePrice], message: 'Created Price History and Updated salePrice' }); 
     }
     catch(error) {
 
@@ -141,6 +143,25 @@ export class CardsController {
 
     }
   } 
+
+  /*
+  public updateCardSalePrice = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      // priceHistoryData: price history info sent by user in post request
+      const priceHistoryData : PriceHistory = req.body;
+
+      // Make a call to a our card service.
+      const newSalePrice: number = await this.card.updateSalePrice(priceHistoryData);
+
+      // Send response back to user with HTTP status code 201 and 
+      // created price history obj in JSON form
+      res.status(201).json({ data: newSalePrice, message: 'UPDATED SALE PRICE' }); 
+    } catch(error) {
+      console.log(error)
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  }
+  */
   
   public createCardRating = async (req: Request, res: Response, next: NextFunction) => {
     try {

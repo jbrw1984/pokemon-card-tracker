@@ -95,13 +95,29 @@ export class CardService {
   }
   
   public async createPriceHistory(priceHistoryData: PriceHistory): Promise<PriceHistory> {
+    // Creat Price history
     const createdPriceHistory: PriceHistory = await PriceHistoryModel.create(priceHistoryData);
     
     // Catching errors if created price history is undefined
-    if (!createdPriceHistory) throw new HttpException(409, "Price History doesn't exist");
+    if (!createdPriceHistory) throw new HttpException(409, "Error creating price history");
 
     return createdPriceHistory;
   }
+
+  
+  public async updateSalePrice(priceHistoryData: PriceHistory): Promise<number> {
+    const cardFilter = { _id: priceHistoryData.pokemonCardId }
+    const cardUpdate = { salePrice: priceHistoryData.price }
+
+    const updatedSalePrice: number = await PokemonCardModel.findOneAndUpdate(cardFilter, cardUpdate);
+    console.log(updatedSalePrice)
+
+    // Catch error if update fails
+    if (!updatedSalePrice) throw new HttpException(409, "Card does not exsist");
+
+    return updatedSalePrice;
+  }
+  
 
   public async createCardRating(cardRatingData: CardRating): Promise<CardRating> {
     const createdCardRating: CardRating = await CardRatingModel.create(cardRatingData);

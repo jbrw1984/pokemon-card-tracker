@@ -13,8 +13,8 @@ import { CardRating } from "../../../../api/src/interfaces/cardRating.interface"
 interface CardDescriptionProps {
     cardInfo: PokemonCard; 
     cardRatingAverageProp: number | string; 
-    onNewPriceHistorySubmission: (priceHistoryPostData: PriceHistory) => void
-    
+    onNewPriceHistorySubmission: (priceHistoryPostData: PriceHistory) => void;
+    salePrice: number | undefined
 }
 
 /**
@@ -36,7 +36,7 @@ const truncateDecimals  = (num: number, digits: number) => {
 }
 
 
-const CardDescription: FC<CardDescriptionProps> = ({ cardInfo, cardRatingAverageProp, onNewPriceHistorySubmission}): JSX.Element => {
+const CardDescription: FC<CardDescriptionProps> = ({ cardInfo, cardRatingAverageProp, onNewPriceHistorySubmission, salePrice}): JSX.Element => {
     const DEFAULT_NAME : string = 'Pokemon'
     const DEFAULT_IMAGE : string = './Cardback.jpg'
     const DEFAULT_SALE_PRICE : number = NaN
@@ -108,7 +108,7 @@ const CardDescription: FC<CardDescriptionProps> = ({ cardInfo, cardRatingAverage
             <Card.Img className="card-desc-img" src={cardInfo && cardInfo.image ? cardInfo.image : DEFAULT_IMAGE}></Card.Img>
             <Card.Body className="card-desc-body">
                 <Card.Title className="card-desc-name">{cardInfo && cardInfo.name ? cardInfo.name : DEFAULT_NAME}</Card.Title>
-                <Card.Subtitle className="card-desc-sale-price">${cardInfo && cardInfo.salePrice ? cardInfo.salePrice : DEFAULT_SALE_PRICE}</Card.Subtitle>
+                <Card.Subtitle className="card-desc-sale-price">${salePrice ? salePrice : DEFAULT_SALE_PRICE}</Card.Subtitle>
 
                 <Card.Text className="card-desc-price-rtn">
                     Market Price: &nbsp; 

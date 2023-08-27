@@ -44,6 +44,7 @@ function Details() {
   const [card, setCard] = useState<PokemonCard>(); 
   const [priceHistory, setPriceHistory ] = useState<PriceHistory[]>([]); 
   const [cardRating, setCardRating] = useState<CardRating[]>([]); 
+  const [salePrice, setSalePrice] = useState<number>();
 
   /**
    * Could not make cardRatingAverage as a state variable because 
@@ -65,7 +66,8 @@ function Details() {
   const handleNewPriceHistorySubmission = (newPriceHistorySubmission: PriceHistory) => {
     console.log("price history state before adding stuff in: ", priceHistory); 
     setPriceHistory(priceHistory => [newPriceHistorySubmission, ...priceHistory])
-    console.log("price history state after adding stuff in: ", priceHistory); 
+    console.log("price history state after adding stuff in: ", priceHistory);
+    setSalePrice(newPriceHistorySubmission.price); 
   }
 
   /*
@@ -99,6 +101,7 @@ function Details() {
         setCard(pokemonCardFetchedData.data); 
         setPriceHistory(pokemonCardFetchedData.data.priceHistoryEntries); 
         setCardRating(pokemonCardFetchedData.data.cardRatingEntries); 
+        setSalePrice(pokemonCardFetchedData.data.salePrice);
       }
       catch(error) {
         console.log(error); 
@@ -131,6 +134,7 @@ function Details() {
         cardInfo={receivedStatePokemonCard as PokemonCard} 
         cardRatingAverageProp={cardRatingAverage}
         onNewPriceHistorySubmission={handleNewPriceHistorySubmission}
+        salePrice={salePrice}
       />
 
       <div className="info-flexbox">

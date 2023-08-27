@@ -23,7 +23,7 @@ export class CardsRoute implements Routes {
     this.router.post(`${this.path}`, ValidationMiddleware(CreateCardDto), this.card.createCard);
 
     // Route for post request for creating a new price history entry
-    this.router.post(`${this.path}/:id/price-history`, ValidationMiddleware(CreatePriceHistoryDto), this.card.createPriceHistory)
+    this.router.post(`${this.path}/:id/price-history`, ValidationMiddleware(CreatePriceHistoryDto), this.card.createPriceHistory);
 
     // Route for post request for creating a new card rating entry
     this.router.post(`${this.path}/:id/card-rating`, ValidationMiddleware(CreateCardRatingDto), this.card.createCardRating)
