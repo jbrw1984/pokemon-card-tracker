@@ -118,14 +118,8 @@ export class CardService {
   }
 
   public async updateMarketPrice(priceHistoryData: PriceHistory): Promise<number> {
-   
     // Find the card that matches the priceHistory data entry and populate all of the priceHistoryEntries
-    const findCard: PokemonCard = await PokemonCardModel.findOne({ _id: priceHistoryData.pokemonCardId })
-      .populate({
-        path: 'priceHistoryEntries',
-        options: { sort: {date: 'desc'}}
-      });
-    console.log(findCard)
+    const findPriceHistoryEntries: PriceHistory[] = await PriceHistoryModel.find({ pokemonCardId: priceHistoryData.pokemonCardId })
     // Finding the average card price 
     function findAvgPrice(priceHistoryArr: PriceHistory[]) : number {
       return priceHistoryArr.reduce((accumulator, currentPriceHistory) => {
@@ -133,22 +127,17 @@ export class CardService {
       }, 0) / priceHistoryArr.length; 
     }
 
-    //const priceHistoryArr: PriceHistory[] = findCard.priceHistory;
-
-    const avgPrice: number = await findAvgPrice([priceHistoryData])
-
-
+    const avgPrice: number = await findAvgPrice(findPriceHistoryEntries)
     const cardFilter = { _id: priceHistoryData.pokemonCardId }
     const cardUpdate = { marketPrice: avgPrice }
 
     const updatedMarketPrice: number = await PokemonCardModel.findOneAndUpdate(cardFilter, cardUpdate);
-    console.log("UPDATING MARKET PRICE HERE")
+
     // Catch error if update fails
     if (!updatedMarketPrice) throw new HttpException(409, "Card does not exsist");
 
     return updatedMarketPrice;
   }
-  
 
   public async createCardRating(cardRatingData: CardRating): Promise<CardRating> {
     const createdCardRating: CardRating = await CardRatingModel.create(cardRatingData);

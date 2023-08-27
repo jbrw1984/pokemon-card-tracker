@@ -142,7 +142,6 @@ export class CardsController {
       // TODO: look into what to do if post request fails 
       next(error); 
       res.status(500).json({ error: 'Internal Server Error' });
-
     }
   } 
   

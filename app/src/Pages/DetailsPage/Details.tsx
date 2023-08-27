@@ -13,11 +13,15 @@ import { CardRating } from "../../../../api/src/interfaces/cardRating.interface"
 
 
 function findAverageCardRating(cardRatingArray: CardRating[]) : number | string {
-
   return cardRatingArray.reduce((accumulator, currentCardRatingObj) => {
     return accumulator + currentCardRatingObj.rating
   }, 0) / cardRatingArray.length; 
+}
 
+function findAverageCardPrice(priceHistoryArray: PriceHistory[]) : number {
+  return priceHistoryArray.reduce((accumulator, currentPriceHistory) => {
+    return accumulator + currentPriceHistory.price
+  }, 0) / priceHistoryArray.length; 
 }
 
 
@@ -45,6 +49,7 @@ function Details() {
   const [priceHistory, setPriceHistory ] = useState<PriceHistory[]>([]); 
   const [cardRating, setCardRating] = useState<CardRating[]>([]); 
   const [salePrice, setSalePrice] = useState<number>();
+  const [marketPrice, setMarketPrice] = useState<number>();
 
   /**
    * Could not make cardRatingAverage as a state variable because 
@@ -68,6 +73,8 @@ function Details() {
     setPriceHistory(priceHistory => [newPriceHistorySubmission, ...priceHistory])
     console.log("price history state after adding stuff in: ", priceHistory);
     setSalePrice(newPriceHistorySubmission.price); 
+    let avgPrice: number = findAverageCardPrice([newPriceHistorySubmission, ...priceHistory]);
+    setMarketPrice(avgPrice);
   }
 
   /*
@@ -102,6 +109,7 @@ function Details() {
         setPriceHistory(pokemonCardFetchedData.data.priceHistoryEntries); 
         setCardRating(pokemonCardFetchedData.data.cardRatingEntries); 
         setSalePrice(pokemonCardFetchedData.data.salePrice);
+        setMarketPrice(pokemonCardFetchedData.data.marketPrice);
       }
       catch(error) {
         console.log(error); 
@@ -135,6 +143,7 @@ function Details() {
         cardRatingAverageProp={cardRatingAverage}
         onNewPriceHistorySubmission={handleNewPriceHistorySubmission}
         salePrice={salePrice}
+        marketPrice={marketPrice}
       />
 
       <div className="info-flexbox">
