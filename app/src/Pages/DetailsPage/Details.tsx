@@ -22,6 +22,13 @@ function findAverageCardRating(cardRatingArray: CardRating[]) : number | string 
 
 
 function Details() {
+  // Dummy values to be passed as props. 
+  const [search, setSearch] = useState<string>("");
+  const [sortBy, setSortBy] = useState<string>("");
+  const [order, setOrder] =  useState<string>("");
+  const [minPrice, setMinPrice] = useState<string>("");
+  const [maxPrice, setMaxPrice] = useState<string>("");
+
   const location = useLocation();
   const receivedStatePokemonCard = location.state;
 
@@ -104,7 +111,13 @@ function Details() {
 
   return (
     <div className="App">
-      <TopNav />
+      <TopNav 
+        onSearchChange={setSearch} 
+        onSortClick={setSortBy} 
+        onOrderClick={setOrder}
+        onMinChange={setMinPrice}
+        onMaxChange={setMaxPrice}
+      />
 
       <BackToResult /> 
       

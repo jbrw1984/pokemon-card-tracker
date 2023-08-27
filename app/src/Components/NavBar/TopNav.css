@@ -1,45 +1,64 @@
 #top-nav {
-    background-color: #ED1B24;
-    --bs-navbar-color: white;
-    --bs-navbar-hover-color: white;
-    --bs-navbar-toggler-border-color: white;
+  background-color: #ED1B24;
+  --bs-navbar-color: white;
+  --bs-navbar-hover-color: white;
+  --bs-navbar-toggler-border-color: white;
 }
 
 .top-nav-link {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .top-nav-link:hover {
-    font-weight: bold;
-    border-radius: 0.3rem;
-    color: white;
-    text-decoration: none;
+  font-weight: bold;
+  border-radius: 0.3rem;
+  color: white;
+  text-decoration: none;
 }
 
 .sort-filter {
-    padding-right: .5rem;
+  max-width: 250px;
+  padding-right: .5rem;
+}
+.dropdown-item {
+  min-width: 200px;
+  margin-bottom: .5rem;
 }
 
-.sort-filter:hover, .sort-filter:active{
-    font-weight: bold;
-    border-radius: 0.3rem;
+.sort-filter:hover, .sort-filter:active {
+  font-weight: bold;
+  border-radius: 0.3rem;
 }
 
 #nav-search {
-    max-width: 220px;
-    padding-right: 0.5rem;
+  max-width: 220px;
+  padding-right: 0.5rem;
 }
 
 #cart-img:hover {
-    border: white solid 1px;
-    border-radius: 0.3rem;
-    padding: 2px;
+  border: white solid 1px;
+  border-radius: 0.3rem;
+  padding: 2px;
 }
 
 .collapse-btn {
-    text-align: left;
-    padding-left: 14px;
+  text-align: left;
+  padding-left: 14px;
+}
+
+#min-max-filter-form {
+  margin-bottom: 0!important;
+  --bs-dropdown-link-active-color: #212529;
+  --bs-dropdown-link-active-bg: #e9ecef;
+}
+
+#min-price, #max-price {
+  width: 130px;
+}
+
+#filter-submit {
+  margin-top: -0.6rem;
 }
 
 

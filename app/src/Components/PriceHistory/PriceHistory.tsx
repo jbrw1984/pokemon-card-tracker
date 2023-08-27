@@ -22,7 +22,6 @@ const PriceHistoryComponent: FC<PriceHistoryProps > = ({ priceHistoryArray }): J
         let dateObj = new Date(priceHistory.date); 
         console.log(dateObj)
 
-
         return (
         <tr /*key={index}*/>
             <th>{dateObj.getMonth() + 1}/{dateObj.getDate()}/{dateObj.getFullYear()}</th>

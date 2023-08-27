@@ -4,19 +4,26 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './TopNav.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import pokemonLogo from './pokemon-logo-black-transparent.png';
 import cartImg from './cart.png';
 import { Link } from 'react-router-dom';
+import InputGroup from 'react-bootstrap/InputGroup';
+import { useState, Dispatch, SetStateAction} from 'react';
 
 interface Props {
-  onChange?: any,
-  onSortClick?: any,
-  onOrderClick?: any
+  onSearchChange: Dispatch<SetStateAction<string>>,
+  onSortClick: Dispatch<SetStateAction<string>>,
+  onOrderClick: Dispatch<SetStateAction<string>>, 
+  onMinChange: Dispatch<SetStateAction<string>>,
+  onMaxChange: Dispatch<SetStateAction<string>>
 }
 
-function TopNav ({ onChange, onSortClick, onOrderClick }: Props) {
+function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMaxChange }: Props) {
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+
   // When the user sorts the cards
   const handleSortClick = (e: any) => {
     // Change the sort value (Classes correspond to the sort type)
@@ -28,9 +35,32 @@ function TopNav ({ onChange, onSortClick, onOrderClick }: Props) {
   // When the user searches for a card.
   const handleSearchChange = (e: any) => {
     // Change the search value 
-    onChange(e.currentTarget[0].value);
+    onSearchChange(e.currentTarget[0].value);
     console.log(`Searched: ${e.currentTarget[0].value}`);
   }
+
+  // When user changes min price filter
+  const handleMinChange = (e: any) => {
+    setMinPrice(e.target.value);
+  }
+
+  // When user changes max price filter
+  const handleMaxChange = (e: any) => {
+    setMaxPrice(e.target.value);
+  }
+ 
+  // When the user filters by price
+  const handleFilterSubmit = (e: any) => {
+    //e.preventDefualt();
+    console.log("New Filter")
+    onMinChange(minPrice);
+    onMaxChange(maxPrice);
+  }
+
+  // Disable the filter submit button when minPrice is not less than maxPrice and there is a value for each of the min and max prices
+  // Also disable is min or max is a negative value.
+  let isFilterSubmitDisabled: boolean = (!(Number(minPrice) <= Number(maxPrice)) && minPrice !== "" && maxPrice !== "")
+                                        || (Number(minPrice) < 0 || Number(maxPrice) < 0);
 
   return (
     <Navbar id="top-nav" expand="lg" variant="dark">
@@ -53,24 +83,57 @@ function TopNav ({ onChange, onSortClick, onOrderClick }: Props) {
               </Nav>
               <Nav>
                 <NavDropdown title="Sort By" id="basic-nav-dropdown" className="sort-filter collapse-btn">
-                  <NavDropdown.Item onClick={handleSortClick} className="salePrice desc">Price High to Low</NavDropdown.Item>
-                  <NavDropdown.Item onClick={handleSortClick} className="salePrice asc">Price Low to High</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleSortClick} className="salePrice desc dropdown-item">Price High to Low</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleSortClick} className="salePrice asc dropdown-item">Price Low to High</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={handleSortClick} className="rating desc">Rating High to Low</NavDropdown.Item>
-                  <NavDropdown.Item onClick={handleSortClick} className="rating asc">Rating Low to High</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleSortClick} className="rating desc dropdown-item">Rating High to Low</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleSortClick} className="rating asc dropdown-item">Rating Low to High</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Filter" id="basic-nav-dropdown" className="sort-filter collapse-btn">
-                  <NavDropdown.Item href="#action/3.6">
-                    <Form className="mb-3">
-                      <Form.Group>
-                        <Form.Label>Rarity</Form.Label>
-                        <Form.Check type="checkbox" label="Common" />
-                        <Form.Check type="checkbox" label="Uncommon" />
-                        <Form.Check type="checkbox" label="Rare" />
-                      </Form.Group>
-                      <Button variant="primary" type="submit">Search Filter</Button>
-                    </Form>
-                  </NavDropdown.Item>
+                  <Form className="mb-3 dropdown-item" id="min-max-filter-form">
+                    <Form.Group id="min-price-group">
+                      <Form.Label>Minimum Price</Form.Label><br/>
+                      <InputGroup className="filter-inputs">                        
+                        <InputGroup.Text id="basic-addon1">$</InputGroup.Text>
+                        <Form.Control 
+                          className="filter-price" 
+                          id="min-price"
+                          type="number" 
+                          placeholder="0.00"
+                          aria-describedby="basic-addon1"
+                          width={140}
+                          min={0}
+                          value={minPrice}
+                          onChange={handleMinChange}
+                        />
+                      </InputGroup>
+                    </Form.Group>
+                    <Form.Group id="max-price-group">
+                      <Form.Label>Maximum Price</Form.Label><br/>
+                      <InputGroup className="filter-inputs">
+                        <InputGroup.Text id="basic-addon1">$</InputGroup.Text>
+                        <Form.Control 
+                          className="filter-price" 
+                          id="max-price"
+                          type="number" 
+                          placeholder="1000.00" 
+                          aria-describedby="basic-addon1"
+                          width={140}
+                          min={0}
+                          value={maxPrice}
+                          onChange={handleMaxChange}
+                        />
+                      </InputGroup>
+                    </Form.Group><br/>
+                    <Button 
+                      variant="primary" 
+                      id="filter-submit"
+                      disabled={isFilterSubmitDisabled}
+                      onClick={handleFilterSubmit}
+                      type="button">
+                      Search Filter
+                    </Button>
+                  </Form>
                 </NavDropdown>
                 <Form className="d-flex collapse-btn" id="nav-search" onChange={handleSearchChange}>
                   <Form.Control

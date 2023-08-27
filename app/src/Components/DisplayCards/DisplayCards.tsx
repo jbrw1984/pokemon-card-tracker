@@ -9,10 +9,12 @@ import { PokemonCard } from "../../../../api/src/interfaces/cards.interface";
 interface Props {
   search: string,
   sortBy: string,
-  order: string
+  order: string,
+  minPrice: number,
+  maxPrice: number
 }
 
-function DisplayCards ({ search, sortBy, order }: Props) {
+function DisplayCards ({ search, sortBy, order, minPrice, maxPrice }: Props) {
   const [pageNumber, setPageNumber] = useState(0);
   const [cards, setCards] = useState<PokemonCard[]>([]);
   const [totalPages, setTotalPages] = useState(0);
@@ -23,16 +25,18 @@ function DisplayCards ({ search, sortBy, order }: Props) {
   const SEARCH_DELAY: number = 300;
 
   // State variables to see if search value changes (useful when user changes a filter past page 1)
-  const [prevSearch, setPrevSearch] = useState<string | "">("");
-  const [prevSortBy, setPrevSortBy] = useState<string | "">("");
-  const [prevOrder, setPrevOrder] = useState<string | "">("");
+  const [prevSearch, setPrevSearch] = useState<string>("");
+  const [prevSortBy, setPrevSortBy] = useState<string>("");
+  const [prevOrder, setPrevOrder] = useState<string>("");
+  const [prevMin, setPrevMin] = useState<number>(0);
+  const [prevMax, setPrevMax] = useState<number>(Number.MAX_SAFE_INTEGER);
 
   useEffect(() => {
     // Bring up loading symbol
     setIsLoading(true);
 
     // Check if filters Changed
-    const filtersHaveChanged = search !== prevSearch || sortBy !== prevSortBy || order !== prevOrder;
+    const filtersHaveChanged = search !== prevSearch || sortBy !== prevSortBy || order !== prevOrder || minPrice !== prevMin || maxPrice !== prevMax;
     // If they have set page back to 1.
     if (filtersHaveChanged) {
       setPageNumber(0);
@@ -48,7 +52,7 @@ function DisplayCards ({ search, sortBy, order }: Props) {
       try {
         // Fetch the cards from the API
         const result = await fetch(
-          `http://localhost:3000/cards/?page=${pageNumber + 1}&limit=${CARD_LIMIT}&name=${search}&sort=${sortBy}&order=${order}`
+          `http://localhost:3000/cards/?page=${pageNumber + 1}&limit=${CARD_LIMIT}&name=${search}&sort=${sortBy}&order=${order}&min=${minPrice}&max=${maxPrice}`
         );
         const data = await result.json();
         setCards(data.data);
@@ -64,14 +68,16 @@ function DisplayCards ({ search, sortBy, order }: Props) {
     }, SEARCH_DELAY)
 
     return () => clearTimeout(fetchCurrentCards)
-  }, [pageNumber, search, sortBy, order, prevSearch, prevSortBy, prevOrder]);
+  }, [pageNumber, search, sortBy, order, minPrice, maxPrice, prevSearch, prevSortBy, prevOrder, prevMin, prevMax]);
 
   useEffect(() => {
     // Update previous filter values
     setPrevSearch(search);
     setPrevSortBy(sortBy);
     setPrevOrder(order);
-  }, [search, sortBy, order]);
+    setPrevMin(minPrice);
+    setPrevMax(maxPrice);
+  }, [search, sortBy, order, minPrice, maxPrice]);
 
   // Map all of the current cards
   const displaySetOfCards = cards && cards.map((card) => {
@@ -90,7 +96,6 @@ function DisplayCards ({ search, sortBy, order }: Props) {
   const paginationComponentRef = useRef<any>(null);
   
   return (
-
     <div className="page-container">
       <div className="pagination-container">
         <h4>Page {pageNumber + 1} of {totalPages}</h4>
@@ -105,7 +110,6 @@ function DisplayCards ({ search, sortBy, order }: Props) {
           breakClassName={"break-btn"}
         />
       </div>
-
       {isLoading && 
         <div className="pokemon-spinner-container">
           <div className="pokemon-spinner"></div>
@@ -125,11 +129,7 @@ function DisplayCards ({ search, sortBy, order }: Props) {
           {displaySetOfCards}
         </div>
       )}
-
-
-
     </div>
-    
   );
 }
 
