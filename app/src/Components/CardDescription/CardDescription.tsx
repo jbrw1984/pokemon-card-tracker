@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
@@ -7,8 +7,6 @@ import { PokemonCard } from "../../../../api/src/interfaces/cards.interface";
 import './CardDescription.css';
 import '../ProductCard/Cardback.jpg'
 import { PriceHistory } from "../../../../api/src/interfaces/priceHistory.interface";
-import { CardRating } from "../../../../api/src/interfaces/cardRating.interface";
-import { markAsUntransferable } from "worker_threads";
 
 interface CardDescriptionProps {
     cardInfo: PokemonCard; 
@@ -29,7 +27,7 @@ interface CardDescriptionProps {
 const truncateDecimals  = (num: number, digits: number) => {
     var numS = num.toString(),
         decPos = numS.indexOf('.'),
-        substrLength = decPos == -1 ? numS.length : 1 + decPos + digits,
+        substrLength = decPos === -1 ? numS.length : 1 + decPos + digits,
         trimmedResult = numS.substring(0, substrLength),
         finalResult = isNaN(Number(trimmedResult)) ? 0 : trimmedResult;
 

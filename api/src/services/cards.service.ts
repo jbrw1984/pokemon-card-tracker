@@ -109,7 +109,9 @@ export class CardService {
     const cardFilter = { _id: priceHistoryData.pokemonCardId }
     const cardUpdate = { salePrice: priceHistoryData.price }
 
-    const updatedSalePrice: number = await PokemonCardModel.findOneAndUpdate(cardFilter, cardUpdate);
+    const updatedSalePrice: number = await PokemonCardModel.findOneAndUpdate(cardFilter, cardUpdate, {
+      new: true
+    });
 
     // Catch error if update fails
     if (!updatedSalePrice) throw new HttpException(409, "Card does not exsist");
@@ -131,7 +133,9 @@ export class CardService {
     const cardFilter = { _id: priceHistoryData.pokemonCardId }
     const cardUpdate = { marketPrice: avgPrice }
 
-    const updatedMarketPrice: number = await PokemonCardModel.findOneAndUpdate(cardFilter, cardUpdate);
+    const updatedMarketPrice: number = await PokemonCardModel.findOneAndUpdate(cardFilter, cardUpdate, {
+      new: true
+    });
 
     // Catch error if update fails
     if (!updatedMarketPrice) throw new HttpException(409, "Card does not exsist");
