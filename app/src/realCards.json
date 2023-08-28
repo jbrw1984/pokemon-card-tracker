@@ -106,56 +106,56 @@
   },
   {
     "name": "Oshawott",
-    "description": "Basic Pokemon, Evolves to Dewott to Samurott, Wator Type, HP: 60",
+    "description": "Basic Pokemon, Evolves to Dewott to Samurott, Water Type, HP: 60",
     "salePrice": 0,
     "marketPrice": 0,
     "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW03.png"
   },
   {
     "name": "Kyurem EX",
-    "description": "Basic Pokemon, Wator Type, HP: 180",
+    "description": "Basic Pokemon, Water Type, HP: 180",
     "salePrice": 0,
     "marketPrice": 0,
     "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW37.png"
   },
   {
     "name": "Kyurem",
-    "description": "Basic Pokemon, Wator Type, HP: 130",
+    "description": "Basic Pokemon, Water Type, HP: 130",
     "salePrice": 0,
     "marketPrice": 0,
     "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW44.png"
   },
   {
     "name": "Vaporeon",
-    "description": "Stage 1 Pokemon, Evolves From Eevee, Wator Type, HP: 110",
+    "description": "Stage 1 Pokemon, Evolves From Eevee, Water Type, HP: 110",
     "salePrice": 0,
     "marketPrice": 0,
     "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW89.png"
   },
   {
     "name": "Glaceon",
-    "description": "Stage 1 Pokemon, Evolves From Eevee, Wator Type, HP: 90",
+    "description": "Stage 1 Pokemon, Evolves From Eevee, Water Type, HP: 90",
     "salePrice": 0,
     "marketPrice": 0,
     "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW90.png"
   },
   {
     "name": "Glaceon GX",
-    "description": "Stage 1 Pokemon, Evolves From Eevee, Wator Type, HP: 200",
+    "description": "Stage 1 Pokemon, Evolves From Eevee, Water Type, HP: 200",
     "salePrice": 0,
     "marketPrice": 0,
     "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/SMP/SMP_EN_SM147.png"
   },
   {
     "name": "Dewott",
-    "description": "Stage 1 Pokemon, Evolves From Oshawott, Evolves to Samurott, Wator Type, HP: 90",
+    "description": "Stage 1 Pokemon, Evolves From Oshawott, Evolves to Samurott, Water Type, HP: 90",
     "salePrice": 0,
     "marketPrice": 0,
     "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/SWSH4/SWSH4_EN_34.png"
   },
   {
     "name": "Samurott",
-    "description": "Stage 2 Pokemon, Evolves From Dewott From Oshawott, Wator Type, HP: 140",
+    "description": "Stage 2 Pokemon, Evolves From Dewott From Oshawott, Water Type, HP: 140",
     "salePrice": 0,
     "marketPrice": 0,
     "image": "https://assets.pokemon.com/assets/cms2/img/cards/web/BWP/BWP_EN_BW22.png"
