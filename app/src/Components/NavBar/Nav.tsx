@@ -24,6 +24,32 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
 
+  /**
+   * When the user clicks the home button or Pokémon logo, 
+   * reset all the filters/query parameters so that default 
+   * order of cards is displayed.
+   */
+  const handleGoHome = () : void => {
+    // Reset all the filters (passes empty strings to the state variables
+    // that are used to filter the cards)
+    onSearchChange("");
+    onSortClick("");
+    onOrderClick("");
+    onMinChange("");
+    onMaxChange("");
+
+    /**
+     * OPTIONAL: Reset the min and max price fields to empty strings
+     *          so that there are not values in the input fields either
+     * 
+     * NOTE: Unable to reset values in search field because we
+     *      did not use state variables for the search field.
+     */
+    setMinPrice("");
+    setMaxPrice("");
+  }
+
+  
   // When the user sorts the cards
   const handleSortClick = (e: any) => {
     // Change the sort value (Classes correspond to the sort type)
@@ -40,16 +66,19 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
   }
 
   // When user changes min price filter
+  // Used for logging value when typed in min price field
   const handleMinChange = (e: any) => {
     setMinPrice(e.target.value);
   }
 
   // When user changes max price filter
+  // Used for logging value when typed in max price field
   const handleMaxChange = (e: any) => {
     setMaxPrice(e.target.value);
   }
  
   // When the user filters by price
+  // Used for submitting min/max values for filtering
   const handleFilterSubmit = (e: any) => {
     //e.preventDefualt();
     console.log("New Filter")
@@ -66,7 +95,10 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
     <Navbar id="top-nav" expand="lg" variant="dark">
       <Container>
         <Navbar.Brand href="#home">
-          <Link to="/">
+          <Link 
+            to="/"
+            onClick={() => handleGoHome()}
+          >
             <img 
               src={pokemonLogo}
               height="30"
@@ -79,7 +111,15 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" >
               <Nav className="me-auto" >
-                <Nav.Link href="#home" className='collapse-btn'><Link className="top-nav-link" to="/">Home</Link></Nav.Link>
+                <Nav.Link href="#home" className='collapse-btn'>
+                  <Link 
+                    className="top-nav-link" 
+                    to="/" 
+                    onClick={() => handleGoHome()}
+                  >
+                    Home
+                  </Link>
+                </Nav.Link>
               </Nav>
               <Nav>
                 <NavDropdown title="Sort By" id="basic-nav-dropdown" className="sort-filter collapse-btn">
