@@ -93,7 +93,7 @@ const CardDescription: FC<CardDescriptionProps> = ({ cardInfo, cardRatingAverage
     }
 
     // Only allows price history entry to be submitted if priceText is not empty
-    let isSubmitDisabled = !priceText
+    let isSubmitDisabled = !priceText || Number(priceText) < 0;
     
     // If the cardRatingAverageProp is a number, truncate it so that only 1 decimal displayed
     if (typeof cardRatingAverageProp === 'number') {
