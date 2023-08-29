@@ -33,13 +33,13 @@ function ProductCard(props: any) {
         </Card.Title>
 
         <Card.Title className="sale-price">
-          ${props.pokemonCard && props.pokemonCard.salePrice ? props.pokemonCard.salePrice : DEFAULT_SALE_PRICE}
+          ${props.pokemonCard && props.pokemonCard.salePrice ? props.pokemonCard.salePrice.toFixed(2) : DEFAULT_SALE_PRICE}
         </Card.Title>
 
         <Card.Text 
           className="mkt-price">Market Price: 
           <span className="mkt-price-num">
-            ${props.pokemonCard && props.pokemonCard.marketPrice ? props.pokemonCard.marketPrice : DEFAULT_MARKET_PRICE}
+            ${props.pokemonCard && props.pokemonCard.marketPrice ? props.pokemonCard.marketPrice.toFixed(2) : DEFAULT_MARKET_PRICE}
           </span>
         </Card.Text>
 

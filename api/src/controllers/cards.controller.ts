@@ -129,16 +129,19 @@ export class CardsController {
       // This will create a new price history entry in the database and return it
       const createdPriceHistory : PriceHistory = await this.card.createPriceHistory(priceHistoryData); 
 
+      const updatedSalePrice: number = await this.card.updateSalePrice(priceHistoryData);
+
+      const updatedMarketPrice: number = await this.card.updateMarketPrice(priceHistoryData);
+
       // Send response back to user with HTTP status code 201 and 
       // created price history obj in JSON form
-      res.status(201).json({ data: createdPriceHistory, message: 'created' }); 
+      res.status(201).json({ data: [createdPriceHistory, updatedSalePrice, updatedMarketPrice], message: 'Created Price History and Updated salePrice' }); 
     }
     catch(error) {
 
       // TODO: look into what to do if post request fails 
       next(error); 
       res.status(500).json({ error: 'Internal Server Error' });
-
     }
   } 
   

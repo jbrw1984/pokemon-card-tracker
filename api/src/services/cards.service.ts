@@ -95,12 +95,52 @@ export class CardService {
   }
   
   public async createPriceHistory(priceHistoryData: PriceHistory): Promise<PriceHistory> {
+    // Creat Price history
     const createdPriceHistory: PriceHistory = await PriceHistoryModel.create(priceHistoryData);
     
     // Catching errors if created price history is undefined
-    if (!createdPriceHistory) throw new HttpException(409, "Price History doesn't exist");
+    if (!createdPriceHistory) throw new HttpException(409, "Error creating price history");
 
     return createdPriceHistory;
+  }
+
+  
+  public async updateSalePrice(priceHistoryData: PriceHistory): Promise<number> {
+    const cardFilter = { _id: priceHistoryData.pokemonCardId }
+    const cardUpdate = { salePrice: priceHistoryData.price }
+
+    const updatedSalePrice: number = await PokemonCardModel.findOneAndUpdate(cardFilter, cardUpdate, {
+      new: true
+    });
+
+    // Catch error if update fails
+    if (!updatedSalePrice) throw new HttpException(409, "Card does not exsist");
+
+    return updatedSalePrice;
+  }
+
+  public async updateMarketPrice(priceHistoryData: PriceHistory): Promise<number> {
+    // Find the card that matches the priceHistory data entry and populate all of the priceHistoryEntries
+    const findPriceHistoryEntries: PriceHistory[] = await PriceHistoryModel.find({ pokemonCardId: priceHistoryData.pokemonCardId })
+    // Finding the average card price 
+    function findAvgPrice(priceHistoryArr: PriceHistory[]) : number {
+      return priceHistoryArr.reduce((accumulator, currentPriceHistory) => {
+        return accumulator + currentPriceHistory.price
+      }, 0) / priceHistoryArr.length; 
+    }
+
+    const avgPrice: number = await findAvgPrice(findPriceHistoryEntries)
+    const cardFilter = { _id: priceHistoryData.pokemonCardId }
+    const cardUpdate = { marketPrice: avgPrice }
+
+    const updatedMarketPrice: number = await PokemonCardModel.findOneAndUpdate(cardFilter, cardUpdate, {
+      new: true
+    });
+
+    // Catch error if update fails
+    if (!updatedMarketPrice) throw new HttpException(409, "Card does not exsist");
+
+    return updatedMarketPrice;
   }
 
   public async createCardRating(cardRatingData: CardRating): Promise<CardRating> {
