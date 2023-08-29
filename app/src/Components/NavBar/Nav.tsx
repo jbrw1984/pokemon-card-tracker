@@ -7,7 +7,6 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import './TopNav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import pokemonLogo from './pokemon-logo-black-transparent.png';
-import cartImg from './cart.png';
 import { Link } from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useState, Dispatch, SetStateAction} from 'react';
@@ -183,15 +182,6 @@ function TopNav ({ onSearchChange, onSortClick, onOrderClick, onMinChange, onMax
                     aria-label="Search"
                   />
                 </Form>
-                <Navbar.Brand href="#cart" className='collapse-btn'>
-                  <img 
-                    src={cartImg}
-                    height="30"
-                    width="30"
-                    id="cart-img"
-                    alt="Add To Cart"
-                  />
-                </Navbar.Brand>
               </Nav>
             </Navbar.Collapse>
       </Container>
