@@ -137,15 +137,15 @@ describe('Testing Cards', () => {
         .send(priceHistoryData1); 
           
       // Need to create a date object from the string date given in the response object
-      const dateAndTimePriceHistory : string[] = response.body.data.date.split("T"); 
+      const dateAndTimePriceHistory : string[] = response.body.data[0].date.split("T"); 
       const dateOfPriceHistory : string = dateAndTimePriceHistory[0]; 
       const [year, month, day] : string[] = dateOfPriceHistory.split('-');
       const responseDateObject = new Date(+year, +month - 1, +day);        
 
-      expect(response.body.data.pokemonCardId).toBe(createdCard1Id.toString());
+      expect(response.body.data[0].pokemonCardId).toBe(createdCard1Id.toString());
       expect(responseDateObject.toString()).toBe(priceHistoryData1.date.toString());
-      expect(response.body.data.quantity).toBe(priceHistoryData1.quantity);
-      expect(response.body.data.price).toBe(priceHistoryData1.price);
+      expect(response.body.data[0].quantity).toBe(priceHistoryData1.quantity);
+      expect(response.body.data[0].price).toBe(priceHistoryData1.price);
     });
   });
 
