@@ -1,7 +1,9 @@
 .info-flexbox {
     display: flex; 
+    flex-wrap: wrap; 
     align-content: center; 
     gap: 2rem; 
     padding: 1rem 5rem;
-    margin-top: 1rem; {/*CHANGE THIS*/}
+    margin-top: 1rem; 
+    /* {CHANGE THIS} */
 }
