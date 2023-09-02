@@ -19,7 +19,8 @@ Created by Kobe Yang and Avery Tribbett, guided by Reid Williams.
 ## Contact
 Avery Tribbett
 * [LinkedIn](https://www.linkedin.com/in/averytribbett/)
-*[GitHub](https://github.com/averytribbett)
+* [GitHub](https://github.com/averytribbett)
+
 Kobe Yang
 * [LinkedIn](https://www.linkedin.com/in/kobeyang16/)
 * [GitHub](https://github.com/Kobe16)
