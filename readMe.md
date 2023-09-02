@@ -15,7 +15,9 @@ Created by Kobe Yang and Avery Tribbett, guided by Reid Williams.
 ---
 ## File Structure
 ---
-<!-- Not sure if github links are redundant and we can also ask if Reid wants his contact info as well. -->
+<!-- 
+  Not sure if github links are redundant and we can also ask if Reid wants his contact info as well. 
+-->
 ## Contact
 Avery Tribbett
 * [LinkedIn](https://www.linkedin.com/in/averytribbett/)
