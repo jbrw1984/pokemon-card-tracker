@@ -1,6 +1,15 @@
 # Pokémon Card Tracker App
-Comprehensive web-app used to track prices & ratings of Pokémon cards. 
+###Comprehensive web-app used to track prices & ratings of Pokémon cards. 
 Created by Kobe Yang and Avery Tribbett, guided by Reid Williams.
+
+---
+
+![App Home Page](/images/webapp-homepage-screenshot.png)
+
+---
+
+![App Details Page](/images/webapp-detailspage-screenshot.png)
+
 ---
 ## Table of Contents
 * [General Info](#general-info)
@@ -10,6 +19,8 @@ Created by Kobe Yang and Avery Tribbett, guided by Reid Williams.
 * [Acknowledgments](#acknowledgments)
 ---
 ## General Info
+
+
 ---
 ## Setup
 ---

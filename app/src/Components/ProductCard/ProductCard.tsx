@@ -26,7 +26,7 @@ function ProductCard(props: any) {
     <Card className="card-component">
       <Card.Img src={props.pokemonCard && props.pokemonCard.image ? props.pokemonCard.image : DEFAULT_IMAGE} className="card-img" />
       <Card.Body className="card-body">
-        <Card.Text className="card-title">Pokemon Go</Card.Text>
+        {/* <Card.Text className="card-title">Pokémon Card</Card.Text> */}
 
         <Card.Title className="card-name">
           {props.pokemonCard && props.pokemonCard.name ? props.pokemonCard.name : DEFAULT_NAME}
