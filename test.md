@@ -47,7 +47,7 @@ This is a full-stack web-app created with an interactice front-end design, unit-
 ###Language: 
 <img src='/images/Typescript_logo_2020.svg' alt='React Icon' width=48 height=48/>
 
-- The entire codebase is written in TypeScript, to ensure application type safety and prevent bugs. 
+- The entire codebase is written in **TypeScript**, to ensure application type safety and prevent bugs. 
 
 
 ###Front-end: 
@@ -251,8 +251,7 @@ You can now effectively manage and track your Pokémon card collection!
 │   │   └── setupTests.ts
 │   └── tsconfig.json
 ├── images
-│   ├── webapp-detailspage-screenshot.png
-│   └── webapp-homepage-screenshot.png
+│   └── ...
 └── readMe.md
 ```
 
