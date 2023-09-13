@@ -1,5 +1,6 @@
 # Pokémon Card Tracker
-###Comprehensive web-app used to track prices & ratings of Pokémon cards. 
+<!-- ###Comprehensive web-app used to track prices & ratings of Pokémon cards.  -->
+###Track and manage the prices & rating of your Pokémon cards! 
 Created by Kobe Yang and Avery Tribbett, guided by Reid Williams.
 
 ---
@@ -13,6 +14,7 @@ Created by Kobe Yang and Avery Tribbett, guided by Reid Williams.
 ---
 ## Table of Contents
 * [General Info](#general-info)
+* [Code Info](#code-info)
 * [Setup](#setup)
 * [File Structure](#file-structure)
 * [Contact](#contact)
@@ -37,6 +39,43 @@ This web-app is designed to help Pokémon card vendors, enthusiasts, and collect
 5. Explore card details through a custom details page, including descriptions and images. 
 
 ---
+## Code Info
+
+This is a full-stack web-app created with an interactice front-end design, unit-testing built into the API, and comprehensive database querying. 
+
+
+###Language: 
+<img src='/images/Typescript_logo_2020.svg' alt='React Icon' width=48 height=48/>
+
+- The entire codebase is written in TypeScript, to ensure application type safety and prevent bugs. 
+
+
+###Front-end: 
+<img src='/images/reactjs.svg' alt='React Icon' width=48 height=48/>
+<img src='/images/css.svg' alt='CSS Icon' width=48 height=48/>
+<img src='/images/reactbootstrap.svg' alt='React Bootstrap Icon' width=48 height=48/>
+
+- Interactive home page and details page are built with **React.js**, connected together with **React Router**
+- Components are styled with combination of **CSS** and **React-Bootstrap**
+
+###API:
+<img src='/images/nodejs-vertical-dark.svg' alt='Node.js Icon' height=48/>
+<img src='/images/expressjs-ar21.svg' alt='Express.js Icon' height=48/>
+<img src='/images/jest.svg' alt='Jest Icon' height=48/>
+
+- API is constructed with **Node.js** + **Express.js**, implementing routes, middlewares, controllers, and services
+- Unit-testing is integrated into API, carried out with **Supertest** and **Jest**. Tests every API endpoint extensively (i.e., POST cards, GET card ratings, etc...)
+
+###Database: 
+<img src='/images/mongodb2-horizontal.svg' alt='Jest Icon' height=48/>
+<img src='/images/mongoose-logo.png' alt='Jest Icon' height=48/>
+
+- All card information (i.e., price histories, card ratings, etc) stored in database created with **MongoDB**
+- Using **Mongoose** (a MongoDB object modeling tool) to standardize database queries with models/schemas
+
+
+
+---
 ## Setup
 You can run this web-app on your local environment in three simple steps: 
 
@@ -50,13 +89,13 @@ You can run this web-app on your local environment in three simple steps:
 ###2. Input your own cards
 
 - Install the [MongoDB Compass GUI](https://www.mongodb.com/try/download/compass)
-- Create a JSON file that contains all of your cards (See `/app/src/realCards.json` for an example of the format). 
+- Create a JSON file that contains all of your cards (See `/app/src/realCards.json` for an example of the file format). 
 - Open MongoDB Compass, create new connection to connect to a MongoDB deployment. 
 - On the left hand side, click on the `pokemon` database, then click on the `pokemoncards` folder. 
 - Add data into this folder by importing your JSON file containing your cards
 
 
-###3. Start up the Create-React-App
+###3. Start up the React app
 
 - Navigate to the `/app` directory. 
 - Run the React app by using: `npm start` OR `yarn start`
@@ -67,17 +106,168 @@ You can now effectively manage and track your Pokémon card collection!
 ---
 ## File Structure
 
+<!-- Create a comprehensive file structure of this project for the README file -->
+
+```
+├── api
+│   ├── Dockerfile.dev
+│   ├── Dockerfile.prod
+│   ├── Makefile
+│   ├── docker-compose.yml
+│   ├── ecosystem.config.js
+│   ├── jest.config.js
+│   ├── nginx.conf
+│   ├── nodemon.json
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── coverage
+│   │   └── ...
+│   ├── dist
+│   │   └── ...
+│   ├── node_modules
+│   │   └── ...
+│   ├── src
+│   │   ├── app.ts
+│   │   ├── config
+│   │   │   └── index.ts
+│   │   ├── controllers
+│   │   │   ├── auth.controller.ts
+│   │   │   ├── cards.controller.ts
+│   │   │   └── users.controller.ts
+│   │   ├── database
+│   │   │   └── index.ts
+│   │   ├── dtos
+│   │   │   ├── cardRating.dto.ts
+│   │   │   ├── cards.dto.ts
+│   │   │   ├── priceHistory.dto.ts
+│   │   │   └── users.dto.ts
+│   │   ├── exceptions
+│   │   │   └── httpException.ts
+│   │   ├── http
+│   │   │   ├── auth.http
+│   │   │   └── users.http
+│   │   ├── interfaces
+│   │   │   ├── auth.interface.ts
+│   │   │   ├── cardRating.interface.ts
+│   │   │   ├── cards.interface.ts
+│   │   │   ├── priceHistory.interface.ts
+│   │   │   ├── routes.interface.ts
+│   │   │   └── users.interface.ts
+│   │   ├── middlewares
+│   │   │   ├── auth.middleware.ts
+│   │   │   ├── error.middleware.ts
+│   │   │   └── validation.middleware.ts
+│   │   ├── models
+│   │   │   ├── cardRating.model.ts
+│   │   │   ├── cards.model.ts
+│   │   │   ├── priceHistory.model.ts
+│   │   │   └── users.model.ts
+│   │   ├── routes
+│   │   │   ├── auth.route.ts
+│   │   │   ├── cards.route.ts
+│   │   │   ├── index.route.ts
+│   │   │   └── users.route.ts
+│   │   ├── server.ts
+│   │   ├── services
+│   │   │   ├── auth.service.ts
+│   │   │   ├── cards.service.ts
+│   │   │   └── users.service.ts
+│   │   ├── test
+│   │   │   ├── arrayOfCards.ts
+│   │   │   ├── auth.test.ts.bac
+│   │   │   ├── cards.test.ts
+│   │   │   ├── index.test.ts
+│   │   │   └── users.test.ts.bac
+│   │   └── utils
+│   │       ├── logger.ts
+│   │       ├── logs
+│   │       │   └── ...
+│   │       └── validateEnv.ts
+│   ├── swagger.yaml
+│   └── tsconfig.json
+├── app
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── node_modules
+│   │   └── ...
+│   ├── public
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   ├── src
+│   │   ├── App.css
+│   │   ├── App.test.tsx
+│   │   ├── App.tsx
+│   │   ├── Components
+│   │   │   ├── BackToResult
+│   │   │   │   ├── BackToResult.css
+│   │   │   │   └── BackToResult.tsx
+│   │   │   ├── CardDescription
+│   │   │   │   ├── CardDescription.css
+│   │   │   │   └── CardDescription.tsx
+│   │   │   ├── CardRater
+│   │   │   │   ├── CardRater.css
+│   │   │   │   └── CardRater.tsx
+│   │   │   ├── DisplayCards
+│   │   │   │   ├── DisplayCards.css
+│   │   │   │   ├── DisplayCards.tsx
+│   │   │   │   ├── nextPage.png
+│   │   │   │   ├── pikachu_faceplant.png
+│   │   │   │   └── prevPage.png
+│   │   │   ├── Footer
+│   │   │   │   ├── Footer.tsx
+│   │   │   │   ├── FooterStyle.css
+│   │   │   │   └── pokemon-symbol-logo-png-31 1.png
+│   │   │   ├── NavBar
+│   │   │   │   ├── Nav.tsx
+│   │   │   │   ├── TopNav.css
+│   │   │   │   ├── cart.png
+│   │   │   │   └── pokemon-logo-black-transparent.png
+│   │   │   ├── PriceHistory
+│   │   │   │   ├── PriceHistory.css
+│   │   │   │   └── PriceHistory.tsx
+│   │   │   └── ProductCard
+│   │   │       ├── 274465 1.png
+│   │   │       ├── Cardback.jpg
+│   │   │       ├── ProductCard.css
+│   │   │       ├── ProductCard.tsx
+│   │   │       └── cardInfo.ts
+│   │   ├── Pages
+│   │   │   ├── DetailsPage
+│   │   │   │   ├── Details.css
+│   │   │   │   └── Details.tsx
+│   │   │   └── HomePage
+│   │   │       ├── Home.css
+│   │   │       └── Home.tsx
+│   │   ├── index.css
+│   │   ├── index.tsx
+│   │   ├── logo.svg
+│   │   ├── react-app-env.d.ts
+│   │   ├── realCards.json
+│   │   ├── reportWebVitals.ts
+│   │   └── setupTests.ts
+│   └── tsconfig.json
+├── images
+│   ├── webapp-detailspage-screenshot.png
+│   └── webapp-homepage-screenshot.png
+└── readMe.md
+```
+
 
 
 ---
 ## Contact
-Avery Tribbett
-* [LinkedIn](https://www.linkedin.com/in/averytribbett/)
-* [GitHub](https://github.com/averytribbett)
+- Avery Tribbett
+<a href='https://www.linkedin.com/in/averytribbett/'><img src='/images/LinkedIn_icon.svg' alt='React Icon' width=24 height=24/></a> [LinkedIn](https://www.linkedin.com/in/averytribbett/)
+<a href='https://github.com/averytribbett'><img src='/images/Octicons-mark-github.svg' alt='React Icon' width=24 height=24/></a> [GitHub](https://github.com/averytribbett)
 
-Kobe Yang
-* [LinkedIn](https://www.linkedin.com/in/kobeyang16/)
-* [GitHub](https://github.com/Kobe16)
+- Kobe Yang
+<a href='https://www.linkedin.com/in/kobeyang16/'><img src='/images/LinkedIn_icon.svg' alt='React Icon' width=24 height=24/></a> [LinkedIn](https://www.linkedin.com/in/kobeyang16/)
+<a href='https://github.com/Kobe16'><img src='/images/Octicons-mark-github.svg' alt='React Icon' width=24 height=24/></a> [GitHub](https://github.com/Kobe16)
+
 ---
 ## Acknowledgments
 Reid Williams (Mentor)
@@ -87,7 +277,7 @@ Ashleigh Stewart (UI/UX Designer)
 
 
 <!-- We can probably use some of this in the setup -->
-# APP README copied
+<!-- # APP README copied
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -133,4 +323,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To learn React, check out the [React documentation](https://reactjs.org/). -->
