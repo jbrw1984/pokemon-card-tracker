@@ -1,4 +1,4 @@
-# Pokémon Card Tracker App
+# Pokémon Card Tracker
 ###Comprehensive web-app used to track prices & ratings of Pokémon cards. 
 Created by Kobe Yang and Avery Tribbett, guided by Reid Williams.
 
@@ -20,11 +20,55 @@ Created by Kobe Yang and Avery Tribbett, guided by Reid Williams.
 ---
 ## General Info
 
+This web-app is designed to help Pokémon card vendors, enthusiasts, and collectors keep track of their growing Pokémon card collections. Here is are some of its functionalities: 
+<!-- 1. View all of your cards in a grid format
+2. Search for a specific card
+3. Input a price entries for the card
+4. Keep track of a history of price entries
+5. View the card's market (average) and latest prices
+5. Input a rating for the card
+7. View the card's average rating
+8. View the card's information (i.e., description, picture, etc) -->
+
+1. Browse and manage all of your cards in a grid format, displaying card information such as descriptions, pictures, and prices. 
+2. Search for cards easily by name or description, and sort them by price
+3. Track price history for each card and input card prices. Access market (average) prices and latest pricing data. 
+4. Rate cards and view their average rating
+5. Explore card details through a custom details page, including descriptions and images. 
 
 ---
 ## Setup
+You can run this web-app on your local environment in three simple steps: 
+
+###1. Run the API
+
+- Navigate to the `/api` directory. 
+- Run the API by using: `npm run start` OR `yarn start`
+- This will start the API on port 3000
+
+
+###2. Input your own cards
+
+- Install the [MongoDB Compass GUI](https://www.mongodb.com/try/download/compass)
+- Create a JSON file that contains all of your cards (See `/app/src/realCards.json` for an example of the format). 
+- Open MongoDB Compass, create new connection to connect to a MongoDB deployment. 
+- On the left hand side, click on the `pokemon` database, then click on the `pokemoncards` folder. 
+- Add data into this folder by importing your JSON file containing your cards
+
+
+###3. Start up the Create-React-App
+
+- Navigate to the `/app` directory. 
+- Run the React app by using: `npm start` OR `yarn start`
+- This will start the app on port 3001
+
+You can now effectively manage and track your Pokémon card collection! 
+
 ---
 ## File Structure
+
+
+
 ---
 ## Contact
 Avery Tribbett
