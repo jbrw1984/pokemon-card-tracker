@@ -79,23 +79,38 @@ This is a full-stack web-app created with an interactice front-end design, unit-
 ## Setup
 You can run this web-app on your local environment in three simple steps: 
 
-###1. Run the API
+###1. Pre-steps
+- Install npm (or yarn) and Node.js
+- Clone the repository onto your local machine
+- Navigate to `/api` and install dependencies: `npm install` OR `yarn install` 
+- Create .env files: `.env.development.local`, `.env.production.local`, `.env.test.local` with the following code: 
+```
+LOG_DIR=logs
+PORT=3000
+DB_HOST=localhost
+DB_PORT=27017
+DB_DATABASE=pokemon
+```
+- Navigate to `/app` and install dependencies: `npm install` OR `yarn install` 
+
+
+###2. Run the API
 
 - Navigate to the `/api` directory. 
 - Run the API by using: `npm run start` OR `yarn start`
 - This will start the API on port 3000
 
 
-###2. Input your own cards
+###3. Input your own cards
 
 - Install the [MongoDB Compass GUI](https://www.mongodb.com/try/download/compass)
 - Create a JSON file that contains all of your cards (See `/app/src/realCards.json` for an example of the file format). 
-- Open MongoDB Compass, create new connection to connect to a MongoDB deployment. 
+- Open MongoDB Compass and create new connection to connect to a MongoDB deployment. 
 - On the left hand side, click on the `pokemon` database, then click on the `pokemoncards` folder. 
 - Add data into this folder by importing your JSON file containing your cards
 
 
-###3. Start up the React app
+###4. Start up the React app
 
 - Navigate to the `/app` directory. 
 - Run the React app by using: `npm start` OR `yarn start`
@@ -105,8 +120,6 @@ You can now effectively manage and track your Pokémon card collection!
 
 ---
 ## File Structure
-
-<!-- Create a comprehensive file structure of this project for the README file -->
 
 ```
 ├── api
@@ -252,7 +265,7 @@ You can now effectively manage and track your Pokémon card collection!
 │   └── tsconfig.json
 ├── images
 │   └── ...
-└── readMe.md
+└── README.md
 ```
 
 
