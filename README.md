@@ -82,7 +82,7 @@ You can run this web-app on your local environment in three simple steps:
 ###1. Pre-steps
 - Install npm (or yarn) and Node.js
 - Clone the repository onto your local machine
-- Navigate to `/api` and install dependencies: `npm install` OR `yarn install` 
+- Navigate to `/api` directory and install dependencies: `npm install` OR `yarn install` 
 - Create .env files: `.env.development.local`, `.env.production.local`, `.env.test.local` with the following code: 
 ```
 LOG_DIR=logs
@@ -91,7 +91,7 @@ DB_HOST=localhost
 DB_PORT=27017
 DB_DATABASE=pokemon
 ```
-- Navigate to `/app` and install dependencies: `npm install` OR `yarn install` 
+- Navigate to `/app` directory and install dependencies: `npm install` OR `yarn install` 
 
 
 ###2. Run the API
