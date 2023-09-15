@@ -67,10 +67,10 @@ This is a full-stack web-app created with an interactice front-end design, unit-
 - Unit-testing is integrated into API, carried out with **Supertest** and **Jest**. Tests every API endpoint extensively (i.e., POST cards, GET card ratings, etc...)
 
 ###Database: 
-<img src='/images/mongodb2-horizontal.svg' alt='Jest Icon' height=48/>
-<img src='/images/mongoose-logo.png' alt='Jest Icon' height=48/>
+<img src='/images/mongodb2-horizontal.svg' alt='MongoDB Icon' height=48/>
+<img src='/images/mongoose-logo.png' alt='Mongoose Icon' height=48/>
 
-- All card information (i.e., price histories, card ratings, etc) stored in database created with **MongoDB**
+- All card information (i.e., price histories, card ratings, etc) is stored in database created with **MongoDB**
 - Using **Mongoose** (a MongoDB object modeling tool) to standardize database queries with models/schemas
 
 
@@ -82,7 +82,7 @@ You can run this web-app on your local environment in three simple steps:
 ###1. Pre-steps
 - Install npm (or yarn) and Node.js
 - Clone the repository onto your local machine
-- Navigate to `/api` directory and install dependencies: `npm install` OR `yarn install` 
+- Navigate to the `/api` directory and install dependencies: `npm install` OR `yarn install` 
 - Create .env files: `.env.development.local`, `.env.production.local`, `.env.test.local` with the following code: 
 ```
 LOG_DIR=logs
@@ -91,7 +91,7 @@ DB_HOST=localhost
 DB_PORT=27017
 DB_DATABASE=pokemon
 ```
-- Navigate to `/app` directory and install dependencies: `npm install` OR `yarn install` 
+- Navigate to the `/app` directory and install dependencies: `npm install` OR `yarn install` 
 
 
 ###2. Run the API
