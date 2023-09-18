@@ -44,13 +44,13 @@ This web-app is designed to help Pokémon card vendors, enthusiasts, and collect
 This is a full-stack web-app created with an interactice front-end design, unit-testing built into the API, and comprehensive database querying. 
 
 
-###Language: 
+### Language: 
 <img src='/images/Typescript_logo_2020.svg' alt='React Icon' width=48 height=48/>
 
 - The entire codebase is written in **TypeScript**, to ensure application type safety and prevent bugs. 
 
 
-###Front-end: 
+### Front-end: 
 <img src='/images/reactjs.svg' alt='React Icon' width=48 height=48/>
 <img src='/images/css.svg' alt='CSS Icon' width=48 height=48/>
 <img src='/images/reactbootstrap.svg' alt='React Bootstrap Icon' width=48 height=48/>
@@ -58,7 +58,7 @@ This is a full-stack web-app created with an interactice front-end design, unit-
 - Interactive home page and details page are built with **React.js**, connected together with **React Router**
 - Components are styled with combination of **CSS** and **React-Bootstrap**
 
-###API:
+### API:
 <img src='/images/nodejs-vertical-dark.svg' alt='Node.js Icon' height=48/>
 <img src='/images/expressjs-ar21.svg' alt='Express.js Icon' height=48/>
 <img src='/images/jest.svg' alt='Jest Icon' height=48/>
@@ -66,7 +66,7 @@ This is a full-stack web-app created with an interactice front-end design, unit-
 - API is constructed with **Node.js** + **Express.js**, implementing routes, middlewares, controllers, and services
 - Unit-testing is integrated into API, carried out with **Supertest** and **Jest**. Tests every API endpoint extensively (i.e., POST cards, GET card ratings, etc...)
 
-###Database: 
+### Database: 
 <img src='/images/mongodb2-horizontal.svg' alt='MongoDB Icon' height=48/>
 <img src='/images/mongoose-logo.png' alt='Mongoose Icon' height=48/>
 
@@ -79,7 +79,7 @@ This is a full-stack web-app created with an interactice front-end design, unit-
 ## Setup
 You can run this web-app on your local environment in three simple steps: 
 
-###1. Pre-steps
+### 1. Pre-steps
 - Install npm (or yarn) and Node.js
 - Clone the repository onto your local machine
 - Navigate to the `/api` directory and install dependencies: `npm install` OR `yarn install` 
@@ -94,14 +94,14 @@ DB_DATABASE=pokemon
 - Navigate to the `/app` directory and install dependencies: `npm install` OR `yarn install` 
 
 
-###2. Run the API
+### 2. Run the API
 
 - Navigate to the `/api` directory. 
 - Run the API by using: `npm run start` OR `yarn start`
 - This will start the API on port 3000
 
 
-###3. Input your own cards
+### 3. Input your own cards
 
 - Install the [MongoDB Compass GUI](https://www.mongodb.com/try/download/compass)
 - Create a JSON file that contains all of your cards (See `/app/src/realCards.json` for an example of the file format). 
@@ -110,7 +110,7 @@ DB_DATABASE=pokemon
 - Add data into this folder by importing your JSON file containing your cards
 
 
-###4. Start up the React app
+### 4. Start up the React app
 
 - Navigate to the `/app` directory. 
 - Run the React app by using: `npm start` OR `yarn start`
